@@ -1,34 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "./Tour.css";
-// import { Link } from "react-router-dom";
-// import Axios from "axios";
-
-// Imported Icons
+import Axios from "axios";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import img from '../../../assets/card1.jpg';
 
 const Tour = () => {
-  // State to hold data
-//   const [safaris, setSafari] = useState([]);
+  const [safaris, setSafari] = useState([]);
 
-  // UseEffect to getData from the database through the server
-//   useEffect(() => {
-    
-    // const getData = async () => {
-    //   try{
-
-    //     const results = await Axios.get("http://localhost:3003/allHomeSafaris");
-        // console.log(results.data)
-//         setSafari(results.data);
-//       }catch(error){
-//         console.error(error)
-//       }
-//     };
-//     getData();
-//   }, []);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const results = await Axios.get("http://localhost:8000/api/allHomeSafaris");
+        setSafari(results.data);
+      } catch (error) {
+        console.error('Error fetching data:', error.response ? error.response.data : error.message);
+      }
+    };
+    getData();
+  }, []);
+  
 
   return (
     <div className="tours container section">
@@ -39,45 +31,33 @@ const Tour = () => {
         </span>
 
         <div className="tourContainer grid">
-            <div className="singleTour grid" >
+          {safaris.map(safari => (
+            <div className="singleTour grid" key={safari.id}>
               <div className="imgDiv">
-                
-                  <img
-                    src={img}
-                    alt=""
-                  />
-                
+                <img src={safari.image} alt={safari.title} />
               </div>
               <div
                 data-aos="fade-up"
                 data-aos-duration="3000"
                 className="tourInfo"
               >
-                <span className="tourTitle"></span>
+                <span className="tourTitle">{safari.title}</span>
                 <div className="detailsDiv flex">
                   <BsFillPersonCheckFill className="icon" />
-
-                  <small className="infor">
-                    Minimum of guests
-                  </small>
+                  <small className="infor">Minimum of guests: {safari.min_guests}</small>
                 </div>
                 <div className="detailsDiv flex">
                   <AiOutlineFieldTime className="icon" />
-
-                  <small className="infor">Mount Pulag</small>
+                  <small className="infor">Location: {safari.location}</small>
                 </div>
-
-                <Link to='/details' className="btn flex">
+                <Link to={`/details/${safari.id}`} className="btn flex">
                   View Details <AiOutlineSwapRight className="icon" />
                 </Link>
               </div>
-
-              <span className="price">&#8369;800</span>
+              <span className="price">&#8369;{safari.price}</span>
             </div>
+          ))}
         </div>
-
-              
-
       </div>
     </div>
   );
