@@ -5,6 +5,7 @@ import About from './Components/AboutPage/About';
 import Login from './Components/LoginPage/Login';
 import StaffLogin from './Components/LoginPage/StaffLogin';
 import SignUp from './Components/SignupPage/Signup';
+import Details from './Components/DetailsPage/Details';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/stafflogin" element={<StaffLogin />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/details" element={<Details />} />
       </Routes>
       </BrowserRouter>
     </div>

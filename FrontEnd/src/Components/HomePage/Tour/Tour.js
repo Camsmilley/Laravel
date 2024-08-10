@@ -7,6 +7,8 @@ import "./Tour.css";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { AiOutlineSwapRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import img from '../../../assets/card1.jpg';
 
 const Tour = () => {
   // State to hold data
@@ -41,7 +43,7 @@ const Tour = () => {
               <div className="imgDiv">
                 
                   <img
-                    src=''
+                    src={img}
                     alt=""
                   />
                 
@@ -62,15 +64,15 @@ const Tour = () => {
                 <div className="detailsDiv flex">
                   <AiOutlineFieldTime className="icon" />
 
-                  <small className="infor"></small>
+                  <small className="infor">Mount Pulag</small>
                 </div>
 
-                <a src='' className="btn flex">
+                <Link to='/details' className="btn flex">
                   View Details <AiOutlineSwapRight className="icon" />
-                </a>
+                </Link>
               </div>
 
-              <span className="price">&#8369;</span>
+              <span className="price">&#8369;800</span>
             </div>
         </div>
 
