@@ -6,6 +6,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 // Import Logo
 import Logo from '../assets/logo.png'
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [active, setActive] = useState("navBar");
@@ -19,20 +20,20 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logoDiv">
-        <a href=''><img src={Logo} alt="Logo" /></a>
+        <Link to='/'><img src={Logo} alt="Logo" /></Link>
       </div>
 
       <div className={active}>
         <ul className="navList">
           <li className="navItem">
-            <a href='' className="navLink">
+            <Link to='/home' className="navLink">
               Home
-            </a>
+            </Link>
           </li>
           <li className="navItem">
-            <a href='' className="navLink">
+            <Link to='/about' className="navLink">
               About
-            </a>
+            </Link>
           </li>
           {/* <li className="navItem">
                     <a href="" className="navLink">Login</a>

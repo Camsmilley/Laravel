@@ -10,15 +10,15 @@ import Review from './Review/Review'
 
 const HomePage = () => {
   return (
-    <div>
-      {/* <Header/> */}
+    <>
+      <Header/>
       <Home/>
       <Guide/>
       <Tour/>
       <Discount/>
       <Review/> 
-      {/* <Footer/> */}
-    </div>
+      <Footer/>
+    </>
   )
 }
 
