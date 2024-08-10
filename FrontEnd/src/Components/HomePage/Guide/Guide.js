@@ -2,9 +2,9 @@ import React from 'react'
 import './Guide.css'
 
 // Imported Images
-import tourGuide from  '../../assets/tour-guide.png'
-import tourPackage from '../../assets/gift-box.png'
-import safari from  '../../assets/hiking.png'
+import tourGuide from  '../../../assets/tour-guide.png'
+import tourPackage from '../../../assets/gift-box.png'
+import safari from  '../../../assets/hiking.png'
 
 const Guide = () => {
   return (

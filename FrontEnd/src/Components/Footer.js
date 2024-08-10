@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import './Components.css'
+import { Link } from 'react-router-dom'
 
 //imported Icons
 import {HiPhone} from 'react-icons/hi'
@@ -92,7 +93,7 @@ const Footer = () => {
             <AiFillInstagram className='icon'/>
           </div>
 
-          <a className='staffLogin' href="">Treks Safari Dashboard</a>
+          <Link className='staffLogin' to='/stafflogin'>Treks Safari Dashboard</Link>
         </div>
       </div>
       

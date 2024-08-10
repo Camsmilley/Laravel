@@ -42,8 +42,8 @@ const Header = () => {
 
         <AiFillCloseCircle className="icon closeIcon" onClick={closeNavbar} />
         <div className="headerBtns flex">
-          <a href='' className="btn signInBtn">Sign Up</a>
-          <a href='' className="btn loginBtn">Login</a>
+          <Link to='/signup' className="btn signInBtn">Sign Up</Link>
+          <Link to='/login' className="btn loginBtn">Login</Link>
           
         </div>
       </div>

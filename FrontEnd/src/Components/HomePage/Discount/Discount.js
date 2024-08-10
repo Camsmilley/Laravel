@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import './Discount.css'
 
 //IMported Video
-import video from '../../assets/video.mp4'
+import video from '../../../assets/video.mp4'
 
 //  import Aos from 'aos'
 // import 'aos/dist/aos.css'

@@ -2,9 +2,9 @@ import React, {useEffect} from 'react'
 import './Review.css'
 
 // Improted Images
-import user1 from '../../assets/avatar.png'
-import user2 from '../../assets/avatar.png'
-import user3 from '../../assets/avatar.png'
+import user1 from '../../../assets/avatar.png'
+import user2 from '../../../assets/avatar.png'
+import user3 from '../../../assets/avatar.png'
 
 const Review = () => {
 

@@ -37,13 +37,12 @@ const Tour = () => {
         </span>
 
         <div className="tourContainer grid">
-          {/* {safaris.map((safari) => ( */}
             <div className="singleTour grid" >
               <div className="imgDiv">
                 
                   <img
                     src=''
-                    alt="Safari"
+                    alt=""
                   />
                 
               </div>
@@ -73,8 +72,10 @@ const Tour = () => {
 
               <span className="price">&#8369;</span>
             </div>
-        
         </div>
+
+              
+
       </div>
     </div>
   );
