@@ -64,7 +64,7 @@ const Tour = () => {
                 <div className="detailsDiv flex">
                   <AiOutlineFieldTime className="icon" />
 
-                  <small className="infor">Mount Pulag</small>
+                  <small className="infor">Mount Apo</small>
                 </div>
 
                 <Link to='/details' className="btn flex">
@@ -72,7 +72,7 @@ const Tour = () => {
                 </Link>
               </div>
 
-              <span className="price">&#8369;800</span>
+              <span className="price">&#8369;8,999</span>
             </div>
         </div>
 

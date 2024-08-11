@@ -11,6 +11,9 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
+import { FaCheck } from "react-icons/fa";
+import { MdWrongLocation } from "react-icons/md";
+import { FaShuttleVan } from "react-icons/fa";
 import Tour from "../../Components/HomePage/Tour/Tour";
 
 
@@ -30,7 +33,7 @@ const Details = () => {
                 <AiOutlineStar className="icon" />
                 <AiOutlineStar className="icon" />
               </div>
-              <h3>Mount Pulag</h3>
+              <h3>Mount Apo</h3>
             </div>
             
               <img
@@ -41,10 +44,32 @@ const Details = () => {
           </div>
           <div className="detailsInfo">
             <span className="title">About this Item</span>
-            <p>Price depends on your headcount Rate starts around Php800/person
-                 INCLUSIONS: ✔ Service of a guide
-                  ✔ All the fees ✔ All the permits + Optional add-on:
-                   Pick up and drop off from/to any point of Luzon (Baguio, Metro Manila, Bulacan, Cavite...) </p>
+            <p>All roads lead to Mt. Apo.. Let's conquer the highest moubtain in the Phillipine archipelago</p>
+            <br/>
+            <p> TreksSafari TO MT. APO VIA STA. CRUZ CIRCUIT(WAVE 3)</p>
+            <br/>
+            <p>
+            <FaCheck className="icon"/>INCLUSION:<br/>
+              -All entrance and exit<br/>
+              -Lake Venado camping feedback<br/>
+              -Roundtrip van transfer (Davao City-Kapatagan-Davao City)<br/>
+              -Personalized bag tag<br/>
+              -Group Logistics<br/>
+              -6 hosted meals<br/>
+              -Climb certificate<br/>
+              -Guide fees<br/>
+              -Agency charges and taxes<br/>
+              <br/>
+              <MdWrongLocation className="icon"/>Exclusions:<br/>
+              -Flight<br/>
+              -Accommodation before & after hike<br/>
+              -Personal porter<br/>
+              -Meals before and after th Climb-transportation to and from the airport<br/>
+              -Samal island tour(optional)<br/>
+              <br/>
+              <FaShuttleVan className="icon"/> Our Mt.Apo hike is available to joiners from Cagayan, Isabela, Nueva Viscaya,<br/>
+               Quirino, Apayao, Kalinga , Abra, ilocos Norte, Ilocos Sur, La union and Pangasinan
+            </p>
             <div className="specs grid">
               <span className="detailsDiv flex">
                 <AiOutlineFieldTime className="icon" />
@@ -59,13 +84,13 @@ const Details = () => {
               <span className="detailsDiv flex">
                 <FaBaby className="icon" />
                 <small className="infor">
-                  price: &#8369;350
+                  price: &#8369;8,999 per joiner| no hidden charge
                 </small>
               </span>
             </div>
 
             <div className="actionButtons flex">
-              <span className="price">&#8369;800</span>
+              <span className="price">&#8369;8,999</span>
             </div>
 
             <div className="bookingForm">
