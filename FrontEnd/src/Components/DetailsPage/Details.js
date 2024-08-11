@@ -1,211 +1,195 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Axios from "axios";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
+import Tour from "../../Components/HomePage/Tour/Tour";
 import "./Details.css";
-import "../../Components/HomePage/Tour/Tour.css"
-import img from '../../assets/card1.jpg'
-
+import "../../Components/HomePage/Tour/Tour.css";
 
 // Imported Icons
 import { BsFillPersonCheckFill } from "react-icons/bs";
-import { AiOutlineFieldTime } from "react-icons/ai";
-import { FaBaby } from "react-icons/fa";
-import { AiOutlineStar } from "react-icons/ai";
-import { FaCheck } from "react-icons/fa";
+import { AiOutlineFieldTime, AiOutlineStar } from "react-icons/ai";
+import { FaBaby, FaCheck, FaShuttleVan } from "react-icons/fa";
 import { MdWrongLocation } from "react-icons/md";
-import { FaShuttleVan } from "react-icons/fa";
-import Tour from "../../Components/HomePage/Tour/Tour";
-
 
 const Details = () => {
- 
+  const { id } = useParams();
+  const [safari, setSafari] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    safariname: "",
+    guestName: "",
+    nationality: "",
+    contact: "",
+    email: "",
+    nop: "",
+    noc: "",
+    arrivalDate: "",
+    message: ""
+  });
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  useEffect(() => {
+    const fetchSafariDetails = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:8000/api/safaris/${id}`);
+        setSafari(response.data);
+        setFormData(prevState => ({ ...prevState, safariname: response.data.title }));
+      } catch (error) {
+        console.error('Error fetching safari details:', error);
+        setError('Failed to load safari details. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSafariDetails();
+  }, [id]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: name === 'nop' || name === 'noc' ? parseInt(value, 10) || '' : value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus(null);
+    try {
+      const response = await Axios.post('http://localhost:8000/api/bookings', formData);
+      setSubmitStatus({ type: 'success', message: 'Booking submitted successfully!' });
+      setFormData({
+        safariname: safari?.title || "",
+        guestName: "",
+        nationality: "",
+        contact: "",
+        email: "",
+        nop: "",
+        noc: "",
+        arrivalDate: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Error submitting booking:', error.response?.data || error.message);
+      setSubmitStatus({ type: 'error', message: 'Error submitting booking. Please try again.' });
+    }
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!safari) return <div>No safari details found.</div>;
+
+  const renderList = (items) => {
+    if (!items) return null;
+    return items.split('\n').map((item, index) => (
+      <React.Fragment key={index}>
+        {item}<br/>
+      </React.Fragment>
+    ));
+  };
 
   return (
     <>
       <Header />
-        <div className="detailsPage grid container">
-          <div className="imageDiv">
-            <div className="imgText">
-              <div className="stars flex">
-                <AiOutlineStar className="icon" />
-                <AiOutlineStar className="icon" />
-                <AiOutlineStar className="icon" />
-                <AiOutlineStar className="icon" />
-                <AiOutlineStar className="icon" />
-              </div>
-              <h3>Mount Apo</h3>
+      <div className="detailsPage grid container">
+        <div className="imageDiv">
+          <div className="imgText">
+            <div className="stars flex">
+              {[...Array(5)].map((_, i) => (
+                <AiOutlineStar key={i} className="icon" />
+              ))}
             </div>
-            
-              <img
-                src={img}
-                alt=""
-              />
-
+            <h3>{safari.title}</h3>
           </div>
-          <div className="detailsInfo">
-            <span className="title">About this Item</span>
-            <p>All roads lead to Mt. Apo.. Let's conquer the highest moubtain in the Phillipine archipelago</p>
-            <br/>
-            <p> TreksSafari TO MT. APO VIA STA. CRUZ CIRCUIT(WAVE 3)</p>
-            <br/>
+          {safari.image && <img src={`http://localhost:8000${safari.image}`} alt={safari.title} />}
+        </div>
+        <div className="detailsInfo">
+          <span className="title">About this Item</span>
+          <p>{safari.description}</p>
+          <br/>
+          {safari.inclusions && (
             <p>
-            <FaCheck className="icon"/>INCLUSION:<br/>
-              -All entrance and exit<br/>
-              -Lake Venado camping feedback<br/>
-              -Roundtrip van transfer (Davao City-Kapatagan-Davao City)<br/>
-              -Personalized bag tag<br/>
-              -Group Logistics<br/>
-              -6 hosted meals<br/>
-              -Climb certificate<br/>
-              -Guide fees<br/>
-              -Agency charges and taxes<br/>
-              <br/>
-              <MdWrongLocation className="icon"/>Exclusions:<br/>
-              -Flight<br/>
-              -Accommodation before & after hike<br/>
-              -Personal porter<br/>
-              -Meals before and after th Climb-transportation to and from the airport<br/>
-              -Samal island tour(optional)<br/>
-              <br/>
-              <FaShuttleVan className="icon"/> Our Mt.Apo hike is available to joiners from Cagayan, Isabela, Nueva Viscaya,<br/>
-               Quirino, Apayao, Kalinga , Abra, ilocos Norte, Ilocos Sur, La union and Pangasinan
+              <FaCheck className="icon"/>INCLUSION:<br/>
+              {renderList(safari.inclusions)}
             </p>
-            <div className="specs grid">
-              <span className="detailsDiv flex">
-                <AiOutlineFieldTime className="icon" />
-                <small className="infor">Minimum of 25 guests</small>
-              </span>
-              <span className="detailsDiv flex">
-                <BsFillPersonCheckFill className="icon" />
-                <small className="infor">
-                  Minimum of guests
-                </small>
-              </span>
-              <span className="detailsDiv flex">
-                <FaBaby className="icon" />
-                <small className="infor">
-                  price: &#8369;8,999 per joiner| no hidden charge
-                </small>
-              </span>
-            </div>
+          )}
+          <br/>
+          {safari.exclusions && (
+            <p>
+              <MdWrongLocation className="icon"/>Exclusions:<br/>
+              {renderList(safari.exclusions)}
+            </p>
+          )}
+          <br/>
+          {safari.additional_info && (
+            <p>
+              <FaShuttleVan className="icon"/> {safari.additional_info}
+            </p>
+          )}
+          <div className="specs grid">
+            <span className="detailsDiv flex">
+              <BsFillPersonCheckFill className="icon" />
+              <small className="infor">Minimum of guests: {safari.min_guests}</small>
+            </span>
+            <span className="detailsDiv flex">
+              <AiOutlineFieldTime className="icon" />
+              <small className="infor">Location: {safari.location}</small>
+            </span>
+            <span className="detailsDiv flex">
+              <FaBaby className="icon" />
+              <small className="infor">Price: &#8369;{safari.price} per joiner | no hidden charge</small>
+            </span>
+          </div>
 
-            <div className="actionButtons flex">
-              <span className="price">&#8369;8,999</span>
-            </div>
+          <div className="actionButtons flex">
+            <span className="price">&#8369;{safari.price}</span>
+          </div>
 
-            <div className="bookingForm">
-              <span className="title">Booking Form</span>
-              <p>
-                If you would like to be part of this amazing TreksSafari, please fill
-                up this form!
-              </p>
-
-              {/* Booking Form */}
-
-              <div className="gridContainer grid">
-                <div className="inputDiv">
-                  <label htmlFor="safariname">TreksSafari Name</label>
-                  <input
-                    type="text"
-                    id="safariname"
-                    name="safariname"
-                  />
-                  <input
-                    type="hidden"
-                    name="role"
-                    value="guest"
-                  />
-                  <input
-                    type="hidden"
-                    name="safariPrice"
-                  />
-                  <input
-                    type="hidden"
-                    name="childPrice"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="name">Guest Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="guestName"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="Nationality">Nationality</label>
-                  <input
-                    type="text"
-                    id="Nationality"
-                    name="nationality"
-                    placeholder="Enter your nationality"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="number">Guest Contact</label>
-                  <input
-                    type="number"
-                    id="number"
-                    name="contact"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="email">Guest Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="nop">Number of people</label>
-                  <input
-                    type="number"
-                    id="nop"
-                    name="nop"
-                    placeholder="Enter number of people"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="noc">Number of Children</label>
-                  <input
-                    type="number"
-                    id="noc"
-                    name="noc"
-                    placeholder="Number of Children"
-                  />
-                </div>
-
-                <div className="inputDiv">
-                  <label htmlFor="time">Arrival Date & Time</label>
-                  <input
-                    type="datetime-local"
-                    id="time"
-                    name="arrivalDate"
-                  />
-                </div>
-
-                <div className="inputDiv">
-                  <label htmlFor="message">Guest Message</label>
-                  <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Enter an message we need to know"
-                  ></textarea>
-                </div>
-
-                <button className="btn">
-                  Book TreksSafari
-                </button>
+          <div className="bookingForm">
+            <span className="title">Booking Form</span>
+            <p>
+              If you would like to be part of this amazing TreksSafari, please fill
+              up this form!
+            </p>
+            {submitStatus && (
+              <div className={`alert alert-${submitStatus.type}`}>
+                {submitStatus.message}
               </div>
-            </div>
+            )}
+            <form onSubmit={handleSubmit} className="gridContainer grid">
+              {Object.entries(formData).map(([key, value]) => (
+                <div key={key} className="inputDiv">
+                  <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}</label>
+                  {key === "message" ? (
+                    <textarea
+                      id={key}
+                      name={key}
+                      value={value}
+                      onChange={handleInputChange}
+                      placeholder={`Enter ${key}`}
+                    />
+                  ) : (
+                    <input
+                      type={key === "email" ? "email" : key === "arrivalDate" ? "datetime-local" : key === "nop" || key === "noc" ? "number" : "text"}
+                      id={key}
+                      name={key}
+                      value={value}
+                      onChange={handleInputChange}
+                      placeholder={`Enter ${key}`}
+                      required
+                    />
+                  )}
+                </div>
+              ))}
+              <button type="submit" className="btn">Book TreksSafari</button>
+            </form>
           </div>
         </div>
-      
-
+      </div>
       <Tour />
       <Footer />
     </>
