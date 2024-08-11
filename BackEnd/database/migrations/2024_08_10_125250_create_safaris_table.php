@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('min_guests');
+            $table->string('time_estimate');
             $table->string('location');
-            $table->decimal('price', 8, 2);
+            $table->string('price');
             $table->string('image');
             $table->text('description')->nullable();
             $table->text('inclusions')->nullable();
