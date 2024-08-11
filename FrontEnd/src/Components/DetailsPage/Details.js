@@ -10,8 +10,9 @@ import "../../Components/HomePage/Tour/Tour.css";
 // Imported Icons
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime, AiOutlineStar } from "react-icons/ai";
-import { FaBaby, FaCheck, FaShuttleVan } from "react-icons/fa";
+import { FaCheck, FaShuttleVan } from "react-icons/fa";
 import { MdWrongLocation } from "react-icons/md";
+import { IoPricetagsSharp } from "react-icons/io5";
 
 const Details = () => {
   const { id } = useParams();
@@ -137,10 +138,10 @@ const Details = () => {
             </span>
             <span className="detailsDiv flex">
               <AiOutlineFieldTime className="icon" />
-              <small className="infor">Location: {safari.location}</small>
+              <small className="infor">Time Estimate: {safari.time_estimate}</small>
             </span>
             <span className="detailsDiv flex">
-              <FaBaby className="icon" />
+              <IoPricetagsSharp className="icon" />
               <small className="infor">Price: &#8369;{safari.price} per joiner | no hidden charge</small>
             </span>
           </div>

@@ -46,7 +46,7 @@
                     }
 
                     p{
-                        color: var(--greyText);
+                        color: var(--blackColor);
                         max-width: 80%;
                         margin: auto;
                     }
