@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./Tour.css";
 import Axios from "axios";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { AiOutlineSwapRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import "./Tour.css"; // Ensure your CSS file is correctly linked
 
 const Tour = () => {
   const [safaris, setSafari] = useState([]);
@@ -20,21 +20,21 @@ const Tour = () => {
     };
     getData();
   }, []);
-  
 
   return (
     <div className="tours container section">
       <div className="secContainer">
         <span className="secTitle">
           Available Hiking
-          <p>Below are other trekssafari related to this!</p>
+          <p>Below are other trek safaris related to this!</p>
         </span>
 
         <div className="tourContainer grid">
           {safaris.map(safari => (
             <div className="singleTour grid" key={safari.id}>
               <div className="imgDiv">
-                <img src={safari.image} alt={safari.title} />
+                {/* Dynamically display the correct image for each safari */}
+                <img src={`http://localhost:8000${safari.image}`} alt={safari.title} />
               </div>
               <div
                 data-aos="fade-up"

@@ -14,10 +14,21 @@ class SafariController extends Controller
                 $safari->image = asset('images/' . $safari->image);
                 return $safari;
             });
-
+            
             return response()->json($safaris);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $safari = Safari::findOrFail($id);
+            $safari->image = asset('images/' . $safari->image);
+            return response()->json($safari);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 404);
         }
     }
 }

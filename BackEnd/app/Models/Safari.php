@@ -9,5 +9,15 @@ class Safari extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'min_guests', 'location', 'price', 'image'];
+    protected $fillable = [
+        'title',
+        'min_guests',
+        'location',
+        'price',
+        'image',
+        'description',
+        'inclusions',
+        'exclusions',
+        'additional_info',
+    ];
 }

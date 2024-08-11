@@ -17,7 +17,11 @@ return new class extends Migration
             $table->integer('min_guests');
             $table->string('location');
             $table->decimal('price', 8, 2);
-            $table->string('image')->nullable(); // Add this line
+            $table->string('image');
+            $table->text('description')->nullable();
+            $table->text('inclusions')->nullable();
+            $table->text('exclusions')->nullable();
+            $table->text('additional_info')->nullable();
             $table->timestamps();
         });
     }
