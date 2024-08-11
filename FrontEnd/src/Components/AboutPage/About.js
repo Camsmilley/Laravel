@@ -38,7 +38,7 @@ const About = () => {
               well-structured itineraries, we aim to optimize your time and
               provide you with a hassle-free adventure. Trust us to manage your
               time effectively, allowing you to fully immerse yourself in the
-              beauty and activities of the desert.
+              beauty and activities of the Mountain.
             </p>
           </div>
 
@@ -56,11 +56,11 @@ const About = () => {
             </p>
           </div>
           <div className="sigleGrid">
-            <h2>Trusted Accommodation</h2>
+            <h2>Trusted Accommodation and Booking Flight</h2>
             <p>
-            Whether you're traveling on a budget, or looking to enjoy the best luxury accommodation,
+            Whether you're traveling on a budget, or looking to enjoy the best luxury accommodation, and booking flight
             we know the hotels and resorts that we include in our itineraries. We only recommend those that
-            we are familiar with, have visited, and with whom we have a good working relationship.
+            want to book hotels, and want to book flight.
             </p>
           </div>
 

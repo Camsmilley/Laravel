@@ -27,6 +27,7 @@
     overflow: hidden;
     position: relative;
   }
+  
   .detailsPage .imageDiv .imgText {
     position: absolute;
     background: rgba(0, 0, 0, 0.4352941176);
