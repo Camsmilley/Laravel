@@ -6,11 +6,20 @@ import StaffLogin from './Components/LoginPage/StaffLogin';
 import SignUp from './Components/SignupPage/Signup';
 import Details from './Components/DetailsPage/Details';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from './DashboardPage/Dashboard';
+import HeaderDash from './DashboardPage/HeaderDashboard/HeaderDash';
 
 
 function App() {
   return (
+    
     <div>
+      {/* <div>
+      <HeaderDash />
+      <Dashboard />
+      </div>
+     */}
+
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />}/>
@@ -23,6 +32,7 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
       </Routes>
       </BrowserRouter>
+     
     </div>
   );
 }
