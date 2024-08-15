@@ -93,7 +93,7 @@ const Footer = () => {
             <AiFillInstagram className='icon'/>
           </div>
 
-          <Link className='staffLogin' to='/stafflogin'>Treks Safari Dashboard</Link>
+          <Link className='staffLogin' to='/stafflogin'></Link>
         </div>
       </div>
       

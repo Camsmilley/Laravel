@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./Dashboard.css";
+import "./GuestDashboard.css";
 
 
 // Imported Icons
 import { AiFillDelete } from "react-icons/ai";
-import HeaderDash from "./HeaderDashboard/HeaderDash";
+import GuestHeader from "./GuestHeader/GuestHeader";
 
 
-const BookingDetails = () => {
+const GuestDetails = () => {
 
   return (
     <>
-    <HeaderDash/>
+    <GuestHeader/>
     <div className="OutletCSS">
       <div className="pageBody">
         <div className="sectionTitle flex">
@@ -31,33 +30,33 @@ const BookingDetails = () => {
               <div className="guestDetails grid" >
                 <div className="flex">
                   <span className="title">Guest Name</span>
-                  <span>Guest Name</span>
+                  <span>Maria Juan</span>
                 </div>
                 <div className="flex">
                   <span className="title">Nationlity</span>
-                  <span>Nationality</span>
+                  <span>Filipino</span>
                 </div>
                 <div className="flex">
                   <span className="title">Phone</span>
-                  <span>Contact</span>
+                  <span>09058479228</span>
                 </div>
                 <div className="flex">
                   <span className="title">Email</span>
-                  <span>Email</span>
+                  <span>juan@gmail.com</span>
                 </div>
 
                 <div className="flex">
                   <span className="title">Arrival Date</span>
-                  <span>Date</span>
+                  <span>August 28, 2024</span>
                 </div>
                 <div className="flex">
                   <span className="title">Number of People</span>
-                  <span>Number of People</span>
+                  <span>20</span>
                 </div>
 
                 <div className="flex">
                   <span className="title">Number of Children</span>
-                  <span>Number of Children</span>
+                  <span>3</span>
                 </div>
                 <div className="grid">
                   <span
@@ -70,7 +69,7 @@ const BookingDetails = () => {
                   >
                     Guest Message
                   </span>
-                  <span className="title">Guest Message</span>
+                  <span className="title">So excited</span>
                 </div>
               </div>
            
@@ -81,4 +80,4 @@ const BookingDetails = () => {
   );
 };
 
-export default BookingDetails;
+export default GuestDetails;

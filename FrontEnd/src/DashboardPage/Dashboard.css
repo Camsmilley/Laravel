@@ -93,12 +93,12 @@
   color: var(--whiteColor);
 }
 .OutletCSS .pageBody .topSection .video_Summary .flexLeft .videoText .btns .link:hover {
-  color: #FFC700;
+  color: #3f6c29;
   background: var(--primaryColorLight);
 }
 .OutletCSS .pageBody .topSection .video_Summary .flexLeft .videoText .btns .bg {
   background: var(--primaryColorLight);
-  color: #FFC700;
+  color: #3f6c29;
 }
 .OutletCSS .pageBody .topSection .video_Summary .flexLeft .videoText .btns .bg:hover {
   color: var(--whiteColor);
@@ -107,7 +107,7 @@
 .OutletCSS .pageBody .topSection .video_Summary .flexRight {
   height: 100%;
   width: 35%;
-  background: #FFC700;
+  background: #A2CA71;
   padding: 1rem;
   border-radius: var(--borderRadius);
 }
@@ -143,6 +143,7 @@
   color: var(--blackColor);
   padding-bottom: 1rem;
   font-weight: 600;
+  padding-top: 5rem;
 }
 .OutletCSS .pageBody .bottomSection .toursContainer {
   gap: 1.5rem;
@@ -186,7 +187,7 @@
 }
 .OutletCSS .pageBody .singleTour .tourInfo .tourTitle {
   font-size: var(--h2FontSize);
-  color: #FFC700;
+  color: #3f6c29;
   font-weight: 600;
 }
 .OutletCSS .pageBody .singleTour .tourInfo .detailsDiv {
@@ -208,9 +209,9 @@
   padding-bottom: 1rem;
 }
 .OutletCSS .pageBody .singleTour .tourInfo .btn {
-  color: #FFC700;
+  color: #3f6c29;
   font-size: 14px;
-  border: 2px solid #FFC700;
+  border: 2px solid #3f6c29;
   transition: 0.3s ease;
   margin-top: 1rem;
   width: -moz-max-content;
@@ -218,9 +219,9 @@
   background: #EBF4F6;
 }
 .OutletCSS .pageBody .singleTour .tourInfo .btn:hover {
-  background: #FFC700;
+  background: #3f6c29;
   color: #EBF4F6;
-  border: 2px solid #FFC700;
+  border: 2px solid #3f6c29;
 }
 .OutletCSS .pageBody .singleTour .btns {
   gap: 1rem;
@@ -230,7 +231,7 @@
   width: 100%;
 }
 .OutletCSS .pageBody .tableDiv .icon {
-  color: #FFC700;
+  color: #3f6c29;
 }
 .OutletCSS .pageBody .tableDiv .icon:hover {
   color: var(--primaryMediumColor);
@@ -254,7 +255,7 @@
 }
 .OutletCSS .pageBody .tableDiv table .tableHeaders .icon:hover,
 .OutletCSS .pageBody .tableDiv table .tableRows .icon:hover {
-  color: #FFC700;
+  color: #3f6c29;
 }
 .OutletCSS .pageBody .tableDiv table .tableHeaders {
   background: var(--primaryMediumColor);
@@ -319,12 +320,12 @@
   border-radius: var(--borderRadius);
   padding: 0.8rem 1rem;
   color: var(--whiteColor);
-  background: #FFC700;
+  background: #3f6c29;
 }
 .OutletCSS .pageBody .formDiv .addSafariBtn:hover,
 .OutletCSS .pageBody .formDiv .editSafariBtn:hover {
   background: var(--inputColor);
-  color: #FFC700;
+  color: #3f6c29;
   transition: 0.3s ease;
 }
 .OutletCSS .pageBody .SafariDetails .imageDiv {
@@ -361,7 +362,7 @@
 .OutletCSS .pageBody .SafariDetails .detailsInfo .title {
   display: block;
   padding: 1rem 0;
-  color: #FFC700;
+  color: #3f6c29;
   font-size: var(--h2FontSize);
   font-weight: 600;
 }
@@ -391,8 +392,8 @@
 .OutletCSS .pageBody .SafariDetails .detailsInfo .actionButtons .price {
   padding: 0.7rem;
   border-radius: var(--borderRadius);
-  border: 1.5px dashed #FFC700;
-  color: #FFC700;
+  border: 1.5px dashed #3f6c29;
+  color: #3f6c29;
   font-size: var(--h2FontSize);
   font-weight: 600;
 }

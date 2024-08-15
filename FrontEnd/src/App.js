@@ -5,6 +5,7 @@ import Login from './Components/LoginPage/Login';
 import StaffLogin from './Components/LoginPage/StaffLogin';
 import SignUp from './Components/SignupPage/Signup';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Details from './Components/DetailsPage/Details'
 import Dashboard from './DashboardPage/Dashboard';
 import HeaderDash from './DashboardPage/HeaderDashboard/HeaderDash';
 import Bookings from './DashboardPage/Bookings';
@@ -16,13 +17,32 @@ import ViewDetails from './DashboardPage/ViewDetails';
 import Guides from './DashboardPage/Guides';
 import AddGuide from './DashboardPage/AddGuide';
 import EditGuide from './DashboardPage/EditGuide';
+import GuestDashboard from './GuestDashboard/GuestDashboard';
+import GuestBookings from './GuestDashboard/GuestBooking';
+import GuestDetails from './GuestDashboard/GuestDetails';
+import GuestTourPage from './GuestDashboard/GuestTourPage';
 
 
 function App() {
   return (
     
     <div>
+
       <div>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<GuestDashboard />}/>
+        <Route path="/guestdashboard" element={<GuestDashboard />} />
+        <Route path="/guestbooking" element={<GuestBookings />} />
+        <Route path="/guestdetails" element={<GuestDetails />} />
+        <Route path="/guesttourpage" element={<GuestTourPage />} />
+      </Routes>
+      </BrowserRouter>
+
+      </div>
+
+
+      {/* <div>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Dashboard />}/>
@@ -39,7 +59,7 @@ function App() {
       </Routes>
       </BrowserRouter>
      
-      </div>
+      </div> */}
     
 
       {/* <BrowserRouter>
@@ -53,8 +73,8 @@ function App() {
         {/* <Route path="/details" element={<Details />} /> */}
         {/* <Route path="/details/:id" element={<Details />} />
       </Routes>
-      </BrowserRouter>
-      */}
+      </BrowserRouter> */}
+     
     </div>
   );
 }

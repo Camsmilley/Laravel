@@ -6,10 +6,13 @@ import { BiEdit } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import HeaderDash from "./HeaderDashboard/HeaderDash";
 
 const Guides = () => {
 
   return (
+    <>
+    <HeaderDash/>
     <div className="OutletCSS">
       <div className="pageBody">
         <div className="sectionTitle flex">
@@ -54,6 +57,7 @@ const Guides = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

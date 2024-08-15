@@ -88,7 +88,7 @@ video {
   border-radius: var(--borderRadius);
   padding: 0.8rem 1rem;
   color: var(--whiteColor);
-  background: #FFC700;
+  background: #3f6c29;
 }
 .btn:hover {
   transition: 0.3s ease;
@@ -100,7 +100,7 @@ video {
   padding: 1rem 0;
   font-size: 25px;
   font-weight: 700;
-  color: #FFC700;
+  color: #3f6c29;
   flex-direction: column;
   gap: 1rem;
 }
@@ -115,8 +115,8 @@ video {
 }
 
 .btn:hover {
-  color: #FFC700;
-  background: #FAE392;
+  color: #3f6c29;
+  background: #A2CA71;
 }
 
 .section {
@@ -142,7 +142,7 @@ video {
     padding: 1rem 0 3rem;
     font-size: var(--biggestFontSize);
     font-weight: 700;
-    color: #FFC700;
+    color: #3f6c29;
     flex-direction: column;
     gap: 1rem;
   }

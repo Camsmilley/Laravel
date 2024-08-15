@@ -48,7 +48,7 @@
     border: none;
     width: 200px;
     padding: 0.8rem;
-    background: #FAE392;
+    background: #c8d1da;
     border-radius: var(--borderRadius);
     color: var(--blackColor);
     align-items: center;
@@ -81,7 +81,7 @@
     font-size: var(--normalFontSize);
   }
   .formContainer .formCard .btn:hover {
-    color: #FFC700;
+    color: #8b9b74;
   }
   .formContainer .formCard .signUpBtn {
     opacity: 0.6;
