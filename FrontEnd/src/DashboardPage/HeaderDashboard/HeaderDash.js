@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./HeaderDash.css";
 
+
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 // Import Logo
 import Logo from '../../assets/logo.png'
+import { Link } from "react-router-dom";
 
 const HeaderDash = () => {
   const [active, setActive] = useState("navBar");
@@ -17,16 +19,22 @@ const HeaderDash = () => {
   };
 
   return (
+   
     <div className="headerdash">
       <div className="logoDiv">
-        <a src=''><img src={Logo} alt="Logo" /></a>
+        <Link to='/'><img src={Logo} alt="Logo" /></Link>
       </div>
 
       <div className={active}>
         <ul className="navList">
           <li className="navItem">
-            <a src='' className="navLink">
+            <Link to='/dashboard' className="navLink">
             Dashboard
+            </Link>
+          </li>
+          <li className="navItem">
+            <a src='' className="navLink">
+            Admin Profile
             </a>
           </li>
           <li className="navItem">
@@ -35,19 +43,19 @@ const HeaderDash = () => {
             </a>
           </li>
           <li className="navItem">
-            <a src='' className="navLink">
+            <Link to='/bookings' className="navLink">
             Bookings
-            </a>
+            </Link>
           </li>
           <li className="navItem">
-            <a src='' className="navLink">
+            <Link to='/tourpage' className="navLink">
             Tours
-            </a>
+            </Link>
           </li>
           <li className="navItem">
-            <a src='' className="navLink">
+            <Link to='/guides' className="navLink">
             Guide
-            </a>
+            </Link>
           </li>
           {/* <li className="navItem">
                     <a href="" className="navLink">Login</a>
@@ -63,6 +71,7 @@ const HeaderDash = () => {
 
       <GiHamburgerMenu className="toggleIcon icon" onClick={showNavBar}  />
     </div>
+    
   );
 };
 

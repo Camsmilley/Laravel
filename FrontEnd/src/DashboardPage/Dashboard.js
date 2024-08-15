@@ -5,16 +5,19 @@ import Video from "../assets/video1.mp4";
 import img from "../assets/card1.jpg"
 
 import { BsFillPersonCheckFill } from "react-icons/bs";
+import HeaderDash from "./HeaderDashboard/HeaderDash";
 
 
 const Dashboard = () => {
  
   return (
+    <>
+    <HeaderDash/>
     <div className="OutletCSS">
       <div className="pageBody">
         <div className="topSection">
           <div className="sectionTitle">
-            <h1>Treks Safari Guest Dashboard</h1>
+            <h1>Treks Safari Admin Dashboard</h1>
             <p>This is where everything starts to happen!</p>
           </div>
 
@@ -83,6 +86,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
