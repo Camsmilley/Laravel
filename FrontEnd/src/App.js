@@ -27,7 +27,7 @@ function App() {
   return (
     
     <div>
-
+{/* Guest Dashboard */}
       <div>
       <BrowserRouter>
       <Routes>
@@ -41,7 +41,7 @@ function App() {
 
       </div>
 
-
+{/* Admin Dashboard */}
       {/* <div>
       <BrowserRouter>
       <Routes>
