@@ -29,7 +29,7 @@ function App() {
     
     <div>
 {/* Guest Dashboard */}
-      <div>
+      {/* <div>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<GuestDashboard />}/>
@@ -41,7 +41,7 @@ function App() {
       </Routes>
       </BrowserRouter>
 
-      </div>
+      </div> */}
 
 {/* Admin Dashboard */}
       {/* <div>
@@ -64,18 +64,18 @@ function App() {
       </div> */}
     
 
-      {/* <BrowserRouter>
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />}/>
         <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/stafflogin" element={<StaffLogin />} />
-        <Route path="/signup" element={<SignUp />} /> */}
+        <Route path="/signup" element={<SignUp />} />
         {/* <Route path="/details" element={<Details />} /> */}
-        {/* <Route path="/details/:id" element={<Details />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
      
     </div>
   );
