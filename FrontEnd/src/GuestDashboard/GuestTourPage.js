@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import Header from "../Components/Header";
 import "./GuestTourPage.css";
+import video from '../assets/video1.mp4'
 
 
 
 // Imported Icons
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import { FaBaby } from "react-icons/fa";
-import { AiOutlineStar } from "react-icons/ai";
+import { TbCurrencyPeso } from "react-icons/tb";
+import { IoTimeOutline } from "react-icons/io5";
 import img from '../assets/card1.jpg';
 import GuestHeader from "./GuestHeader/GuestHeader";
 
@@ -18,159 +17,98 @@ const GuestTourPage = () => {
     <>
 <GuestHeader/>
 
-        <div className="detailsPage grid container" >
-          <div className="imageDiv">
-            <div className="imgText">
-              <div className="stars flex">
-                
-              </div>
-             
-            </div>
-            
-            
+<div className="OutletCSS">
+      <div className="pageBody">
+        <div className="topSection">
+          <div className="sectionTitle">
+            <h1>Treks Safari Tours</h1>
+            <p>Book Now!</p>
           </div>
-          <div className="detailsInfo">
-            <span className="title">Trek Schedule</span>
-            <p>Description</p>
-            <div className="specs grid">
-              <span className="detailsDiv flex">
-                <AiOutlineFieldTime className="icson" />
-                <small className="infor">Time</small>
-              </span>
-              <span className="detailsDiv flex">
-                <BsFillPersonCheckFill className="icon" />
-                <small className="infor">
-                  Minimum of people guests
-                </small>
-              </span>
-              <span className="detailsDiv flex">
-                <FaBaby className="icon" />
-                <small className="infor">
-               price: &#8369;
-                </small>
-              </span>
-            </div>
 
-            <div className="actionButtons flex">
-              <span className="price">&#8369;</span>
-            </div>
-
-            <div className="bookingForm">
-              <span className="title">Booking Form</span>
-              <p>
-                If you would like to be part of this amazing TreksSafari, please fill
-                up this form!
-              </p>
-
-              {/* Booking Form */}
-
-              <div className="gridContainer grid">
-                <div className="inputDiv">
-                  <label htmlFor="safariname">TreksSafari Name</label>
-                  <input
-                    type="text"
-                    id="safariname"
-                    name="safariname"
-                  />
-                  <input
-                    type="hidden"
-                    value="guest"
-                    readOnly
-                  />
-                  <input
-                    type="hidden"
-                    name="safariPrice"
-            
-                  />
-                  <input
-                    type="hidden"
-                    name="childPrice"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="name">Guest Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="guestName"
-                    placeholder="Enter your name"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="Nationality">Nationality</label>
-                  <input
-                    type="text"
-                    id="Nationality"
-                    name="nationality"
-                    placeholder="Enter your nationality"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="number">Guest Contact</label>
-                  <input
-                    type="number"
-                    id="number"
-                    name="contact"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="email">Guest Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="nop">Number of people</label>
-                  <input
-                    type="number"
-                    id="nop"
-                    name="nop"
-                    placeholder="Enter number of people"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="noc">Number of Children</label>
-                  <input
-                    type="number"
-                    id="noc"
-                    name="noc"
-                    placeholder="Number of Children"
-                  />
-                </div>
-                <div className="inputDiv">
-                  <label htmlFor="time">Arrival Date & Time</label>
-                  <input
-                    type="datetime-local"
-                    id="time"
-                    name="arrivalDate"
-                  />
-                </div>
-
-                <div className="inputDiv">
-                  <label htmlFor="message">Guest Message</label>
-                  <textarea
-                    name="message"
-                    id="message"
-                    placeholder="Enter an message we need to know"
-                  ></textarea>
-                </div>
-
-                <button  className="btn">
-                  Book TreksSafari
-                </button>
+          <div className="video_Summary">
+            <div className="flexLeft flex">
+              <div className="videoDiv">
+                <video src={video} autoPlay loop muted></video>
               </div>
+              <div className="videoText">
+                <h4>Trek with us</h4>
+
+                <div className="btns flex">
+                  <a src='' className="link bg">
+                    We based to serve
+                  </a>
+                  <a src='' className="link ">
+                    Love for the Hikes
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="flexRight">
+              <span>Upcoming Bookings</span>
+              
+                <div className="singleBooking" >
+                  <span>Booking Name</span>
+                  <div className="flex">
+                    <small>Number of person People</small>
+                    <small>Booking Date </small>
+                  </div>
+                </div>
+            
             </div>
           </div>
         </div>
+        <div className="bottomSection">
+          <span className="title">Popular Tours</span>
+          <div className="toursContainer flex">
+              <div className="singleTour grid">
+                <div className="imgDiv">
+                  
+                    <img src={img}
+                    />
+                 
+                </div>
+                <div className="tourInfo">
+                  <span className="tourTitle">Mount Pinatubo</span>
+                  <div className="detailsDiv flex">
+                    <BsFillPersonCheckFill className="icon" />
 
- 
+                    <small className="infor">
+                      Minimum of Number of person guests :30 Person
+                    </small>
+                  </div>
+                  <div className="detailsDiv flex">
+                  <IoTimeOutline  className="icon" />
+
+                    <small className="infor">
+                      Time to Complete: 3hr 31m
+                    </small>
+                  </div>
+                  <div className="detailsDiv flex">
+                  <TbCurrencyPeso className="icon" />
+
+                    <small className="infor">
+                      Price: 1200 per Head
+                    </small>
+                  </div>
+                  
+
+                  {/* <Link
+                    to={`/bookingDetails/${safari.id}`}
+                    className="btn flex"
+                  >
+                    View Details <AiOutlineSwapRight className="icon" />
+                  </Link> */}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   );
 };
+
 
 
 export default GuestTourPage;

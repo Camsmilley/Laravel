@@ -21,6 +21,7 @@ import GuestDashboard from './GuestDashboard/GuestDashboard';
 import GuestBookings from './GuestDashboard/GuestBooking';
 import GuestDetails from './GuestDashboard/GuestDetails';
 import GuestTourPage from './GuestDashboard/GuestTourPage';
+import GuestGuide from './GuestDashboard/GuestGuide'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/guestbooking" element={<GuestBookings />} />
         <Route path="/guestdetails" element={<GuestDetails />} />
         <Route path="/guesttourpage" element={<GuestTourPage />} />
+        <Route path="/guestguide" element={<GuestGuide />} />
       </Routes>
       </BrowserRouter>
 

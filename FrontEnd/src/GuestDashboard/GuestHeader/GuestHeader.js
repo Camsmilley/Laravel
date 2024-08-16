@@ -33,11 +33,6 @@ const GuestHeader = () => {
             </Link>
           </li>
           <li className="navItem">
-            <a src='' className="navLink">
-            Guest Profile
-            </a>
-          </li>
-          <li className="navItem">
             <Link to='/guestbooking' className="navLink">
             Bookings
             </Link>
@@ -48,7 +43,7 @@ const GuestHeader = () => {
             </Link>
           </li>
           <li className="navItem">
-            <Link to='/guides' className="navLink">
+            <Link to='/guestguide' className="navLink">
             Guide
             </Link>
           </li>

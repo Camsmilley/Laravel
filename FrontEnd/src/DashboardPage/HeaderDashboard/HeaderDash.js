@@ -33,16 +33,6 @@ const HeaderDash = () => {
             </Link>
           </li>
           <li className="navItem">
-            <a src='' className="navLink">
-            Admin Profile
-            </a>
-          </li>
-          <li className="navItem">
-            <a src='' className="navLink">
-            Guest Profile
-            </a>
-          </li>
-          <li className="navItem">
             <Link to='/bookings' className="navLink">
             Bookings
             </Link>
