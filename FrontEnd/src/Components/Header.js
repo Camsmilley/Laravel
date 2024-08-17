@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Components.css";
-
+import { AuthContext } from './AuthContext'; // Adjust the import path as needed
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillCloseCircle } from "react-icons/ai";
 
@@ -9,6 +9,7 @@ import Logo from '../assets/logo.png'
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   const [active, setActive] = useState("navBar");
   const showNavBar = () => {
     setActive("navBar showNavbar");
@@ -26,7 +27,7 @@ const Header = () => {
       <div className={active}>
         <ul className="navList">
           <li className="navItem">
-            <Link to='/home' className="navLink">
+            <Link to='/' className="navLink">
               Home
             </Link>
           </li>
@@ -35,9 +36,13 @@ const Header = () => {
               About
             </Link>
           </li>
-          {/* <li className="navItem">
-                    <a href="" className="navLink">Login</a>
-                </li> */}
+          {user && !user.is_admin && (
+            <li className="navItem">
+              <Link to="/guestdashboard" className="navLink">
+                Guest Dashboard
+              </Link>
+            </li>
+          )}
         </ul>
 
         <AiFillCloseCircle className="icon closeIcon" onClick={closeNavbar} />

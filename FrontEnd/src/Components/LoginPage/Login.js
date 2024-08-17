@@ -1,12 +1,31 @@
 import "../../index.css";
 import "./Login.css";
-import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
-
-import { Link } from "react-router-dom";
+import Header from "../Header";
+import Footer from "../Footer";
+import React, { useState, useContext } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { AuthContext } from '../../Components/AuthContext';
 
 const Login = () => {
-  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    const user = await login(email, password);
+    if (user) {
+      const from = location.state?.from?.pathname || (user.is_admin ? "/dashboard" : "/guestdashboard");
+      navigate(from, { replace: true });
+    } else {
+      setError('Invalid email or password');
+    }
+  };
+
   return (
     <>
       <Header />
@@ -15,31 +34,26 @@ const Login = () => {
           <h3>Login Page</h3>
           <span>Welcome Guest</span>
 
-          <form action="">
-            <div className="inputDiv">
+          {error && <div className="error">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
+            <div className="inputDiv" >
               <label htmlFor="userEmail">User Email</label>
-              <input
-                type="email"
-                placeholder="Enter user email"
-                autoComplete="email"
-              />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
             </div>
 
             <div className="inputDiv">
               <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                placeholder="Enter Password"
-              />
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
             </div>
 
-            <button className="btn">
+            <button className="btn" type="submit">
               Login
             </button>
           </form>
 
           <span className="signUpBtn">
-            Don't have an account? <Link to={"/signup"}>Sign Up</Link>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
           </span>
         </div>
       </div>
