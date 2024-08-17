@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Tour from "../../Components/HomePage/Tour/Tour";
+import { AuthContext } from '../../Components/AuthContext'; // Import AuthContext
 import "./Details.css";
 import "../../Components/HomePage/Tour/Tour.css";
 
@@ -16,15 +17,16 @@ import { IoPricetagsSharp } from "react-icons/io5";
 
 const Details = () => {
   const { id } = useParams();
+  const { user } = useContext(AuthContext); // Get user from context
   const [safari, setSafari] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     safariname: "",
-    guestName: "",
+    guestName: user ? user.name : "", // Pre-fill with user's name
     nationality: "",
     contact: "",
-    email: "",
+    email: user ? user.email : "", // Pre-fill with user's email
     nop: "",
     noc: "",
     arrivalDate: "",
@@ -65,10 +67,10 @@ const Details = () => {
       setSubmitStatus({ type: 'success', message: 'Booking submitted successfully!' });
       setFormData({
         safariname: safari?.title || "",
-        guestName: "",
+        guestName: user ? user.name : "",
         nationality: "",
         contact: "",
-        email: "",
+        email: user ? user.email : "",
         nop: "",
         noc: "",
         arrivalDate: "",
@@ -114,14 +116,14 @@ const Details = () => {
           <br/>
           {safari.inclusions && (
             <p>
-              <FaCheck className="icon"/>INCLUSION:<br/>
+              <FaCheck className="icon"/> INCLUSION:<br/>
               {renderList(safari.inclusions)}
             </p>
           )}
           <br/>
           {safari.exclusions && (
             <p>
-              <MdWrongLocation className="icon"/>Exclusions:<br/>
+              <MdWrongLocation className="icon"/> Exclusions:<br/>
               {renderList(safari.exclusions)}
             </p>
           )}
