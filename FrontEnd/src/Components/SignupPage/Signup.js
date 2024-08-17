@@ -1,15 +1,15 @@
-<<<<<<< HEAD
+
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import "../../index.css";
-=======
+
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../Components/AuthContext';
 import Header from "../Header";
 import Footer from "../Footer";
->>>>>>> 3182977c0f2971248efda01b7fce34b8a2a84027
+
 import "./Signup.css";
 
 const SignUp = () => {
