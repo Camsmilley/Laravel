@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 import { BsFillPersonCheckFill } from "react-icons/bs";
-import { AiOutlineFieldTime } from "react-icons/ai";
-import { AiOutlineSwapRight } from "react-icons/ai";
+import { AiOutlineFieldTime, AiOutlineSwapRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import "./Tour.css"; // Ensure your CSS file is correctly linked
+import { AuthContext } from '../../AuthContext'; // Adjust the import path as needed
+import "./Tour.css";
 
 const Tour = () => {
   const [safaris, setSafari] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -33,7 +34,6 @@ const Tour = () => {
           {safaris.map(safari => (
             <div className="singleTour grid" key={safari.id}>
               <div className="imgDiv">
-                {/* Dynamically display the correct image for each safari */}
                 <img src={`http://localhost:8000${safari.image}`} alt={safari.title} />
               </div>
               <div
@@ -53,6 +53,11 @@ const Tour = () => {
                 <Link to={`/details/${safari.id}`} className="btn flex">
                   View Details <AiOutlineSwapRight className="icon" />
                 </Link>
+                {/* {user && !user.is_admin && (
+                  <Link to="/guestdashboard" className="btn flex">
+                    Guest Dashboard <AiOutlineSwapRight className="icon" />
+                  </Link>
+                )} */}
               </div>
               <span className="price">&#8369;{safari.price}</span>
             </div>
