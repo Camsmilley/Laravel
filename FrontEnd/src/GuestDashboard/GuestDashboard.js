@@ -4,6 +4,7 @@ import Video from "../assets/video1.mp4";
 
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import GuestHeader from "./GuestHeader/GuestHeader";
+import Carousel from "./Carousel";
 
 
 const GuestDashboard = () => {
@@ -85,7 +86,7 @@ const GuestDashboard = () => {
                 </div>
               </div>
 
-     
+     <Carousel/>
           {/* </div>
         </div>
       </div>
