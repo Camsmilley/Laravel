@@ -140,7 +140,7 @@
   .OutletCSS .pageBody .bottomSection .title {
     display: block;
     font-size: var(--h1FontSize);
-    color: var(--blackColor);
+    color: #3f6c29;
     padding-bottom: 1rem;
     font-weight: 600;
     padding-top: 5rem;
