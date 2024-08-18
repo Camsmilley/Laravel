@@ -1,8 +1,5 @@
 
-import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
 import "../../index.css";
-
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
