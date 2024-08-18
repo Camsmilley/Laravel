@@ -15,48 +15,64 @@ const EditGuide = () => {
 
         <div className="formDiv grid">
           <div className="fieldDiv ">
-            <label htmlFor="GuideName">Guide Full Name</label>
-            <input type="text" id="GuideName" placeholder="Enter Guide Name" />
+            <label htmlFor="image">Insert Image</label>
+            <input
+              type="file"
+              id="image"
+            />
+          </div>
+
+          <div className="fieldDiv ">
+            <label htmlFor="sName">Guide Full Name</label>
+            <input
+              type="text"
+              name="fullName"
+              id="fullName"
+              placeholder="Enter Second Name"
+            />
           </div>
 
           <div className="fieldDiv ">
             <label htmlFor="GuideTel">Guide Contact Number</label>
             <input
               type="number"
+              name="guideContact"
               id="GuideTel"
               placeholder="Enter guide phone number"
             />
           </div>
 
           <div className="fieldDiv ">
-            <label htmlFor="GuideTel">Account Password</label>
+            <label htmlFor="GuideEmail">Guide Email</label>
             <input
-              type="password"
-              id="GuideTel"
-              placeholder="Enter Password"
-            />
-          </div>
-
-          <div className="fieldDiv ">
-            <label htmlFor="GuideTel">Account Username</label>
-            <input
-              type="text"
-              id="GuideTel"
-              placeholder="Enter Username"
-            />
-          </div>
-
-          <div className="fieldDiv ">
-            <label htmlFor="GuideTel">Guide Email</label>
-            <input
-              type="number"
-              id="GuideTel"
+              type="email"
+              id="GuideEmail"
+              name="guideEmail"
               placeholder="Enter guide email"
             />
+
+          </div>
+          <div className="fieldDiv ">
+            <label htmlFor="password">Guide Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter guide password"
+            />
+          </div>
+
+          <div className="fieldDiv ">
+            <label htmlFor="GuideRole">Guide Role</label>
+            <select>
+              <option value="guide">Tour Guide 1</option>
+              <option value="guide">Tour Guide 2</option>
+              <option value="admin">Administrator</option>
+            </select>
           </div>
 
           <button className="btn flex">
-          Update Guide Details <AiOutlinePlus className="icon" />
+            Add Guide <AiOutlinePlus className="icon" />
           </button>
         </div>
       </div>

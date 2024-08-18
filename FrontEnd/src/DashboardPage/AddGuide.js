@@ -69,7 +69,8 @@ const AddGuide = () => {
           <div className="fieldDiv ">
             <label htmlFor="GuideRole">Guide Role</label>
             <select>
-              <option value="guide">Guide</option>
+            <option value="guide">Tour Guide 1</option>
+            <option value="guide">Tour Guide 2</option>
               <option value="admin">Administrator</option>
             </select>
           </div>

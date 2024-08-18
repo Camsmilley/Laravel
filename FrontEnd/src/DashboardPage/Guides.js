@@ -1,5 +1,6 @@
 import React from "react";
 import "./Dashboard.css";
+import img from "../assets/avatar.png"
 
 // Imported icons
 import { BiEdit } from "react-icons/bi";
@@ -40,8 +41,7 @@ const Guides = () => {
 
             <tbody>
                 <tr className="tableRows flex" >
-                  <td><input
-                  type="file" id="image" /></td>
+                  <td><img style={{ maxWidth: '50px', maxHeight: '50px' }}src={img}/></td>
                   <td>Name</td>
                   <td>Contact</td>
                   <td>Email</td>

@@ -1,10 +1,10 @@
 import "./GuestDashboard.css";
 
 // Imported icons
-// import { BiEdit } from "react-icons/bi";
-// import { AiOutlinePlus } from "react-icons/ai";
-// import { MdOutlineDeleteOutline } from "react-icons/md";
-// import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { Link } from "react-router-dom";
+import img from "../assets/avatar.png"
 import GuestHeader from "./GuestHeader/GuestHeader";
 
 const Guides = () => {
@@ -28,20 +28,18 @@ const Guides = () => {
               <th>Guide Full Name</th>
               <th>Phone</th>
               <th>Email</th>
-              <th>Password</th>
+              <th>Sex</th>
               <th>Guide Role</th>
-              <th>Action</th>
             </tr>
 
             <tbody>
                 <tr className="tableRows flex" >
-                <td><input
-                  type="file" id="image" /></td>
+                <td><img style={{ maxWidth: '50px', maxHeight: '50px' }}src={img}/></td>
                   <td>Name</td>
                   <td>Contact</td>
                   <td>Email</td>
-                  <th>Password</th>
-                  <th>Role</th>
+                  <td>Female</td>
+                  <td>Role</td>
                 </tr>
              
             </tbody>
