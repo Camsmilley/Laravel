@@ -5,7 +5,7 @@ import video from '../assets/video1.mp4'
 
 // Imported Icons
 import { BsFillPersonCheckFill } from "react-icons/bs";
-import { AiOutlineFieldTime } from "react-icons/ai";
+// import { AiOutlineFieldTime } from "react-icons/ai";
 import { TbCurrencyPeso } from "react-icons/tb";
 import { IoTimeOutline } from "react-icons/io5";
 import img from '../assets/card1.jpg';

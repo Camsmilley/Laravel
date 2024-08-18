@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Dashboard.css";
 import img from '../assets/card1.jpg'
 
