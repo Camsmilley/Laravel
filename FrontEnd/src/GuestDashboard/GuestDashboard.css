@@ -423,3 +423,33 @@
     font-weight: 600;
     font-size: var(--h3FontSize);
   }
+
+
+  .carousel-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    /* Adjust width and height as needed */
+    width: 100px;
+    height: 100px;
+  }
+  .carousel-inner img{
+    width: 50%;
+    height: 50%;
+    object-fit: cover; }
+  
+  .carousel-caption{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .carousel-caption h1{
+    font-size: 400%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 15px #000;
+  }
+  
+
+ 
+  

@@ -24,6 +24,9 @@ import GuestTourPage from './GuestDashboard/GuestTourPage';
 import GuestGuide from './GuestDashboard/GuestGuide';
 import ProtectedRoute from './Components/ProtectedRoute';
 import { AuthProvider } from './Components/AuthContext';
+import Carousel from './GuestDashboard/Carousel';
+import EditBooking from './DashboardPage/EditBooking';
+import GuestEditBooking from './GuestDashboard/GuestEditBooking';
 
 function App() {
   return (
@@ -46,6 +49,9 @@ function App() {
             <Route path="/guestdetails" element={<GuestDetails />} />
             <Route path="/guesttourpage" element={<GuestTourPage />} />
             <Route path="/guestguide" element={<GuestGuide />} />
+            <Route path="/guesteditbooking" element={<GuestEditBooking />} />
+            <Route path="/carousel" element={<Carousel />} />
+
           </Route>
 
           {/* Admin Routes */}
@@ -60,6 +66,7 @@ function App() {
             <Route path="/guides" element={<Guides />} />
             <Route path="/addguide" element={<AddGuide />} />
             <Route path="/editguide" element={<EditGuide />} />
+            <Route path="/editbooking" element={<EditBooking />} />
           </Route>
         </Routes>
       </BrowserRouter>

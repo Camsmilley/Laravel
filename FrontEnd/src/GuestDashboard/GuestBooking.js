@@ -5,6 +5,7 @@ import "./GuestDashboard.css";
 import { TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import GuestHeader from "./GuestHeader/GuestHeader";
+import { BiEdit } from "react-icons/bi";
 
 const GuestBookings = () => {
 
@@ -24,10 +25,11 @@ const GuestBookings = () => {
           <table>
             <thead>
               <tr className="tableHeaders flex">
-                <th>ID</th>
+              <th>Name of the Mountain</th>
                 <th>Guest Name</th>
                 <th>Guest Email</th>
-                <th>Number of P'l</th>
+                <th>Number of People</th>
+                <th>Number of Children</th>
                 <th>Trek Type</th>
                 <th>Action</th>
               </tr>
@@ -35,14 +37,18 @@ const GuestBookings = () => {
 
             <tbody>
                 <tr className="tableRows flex">
-                  <td>Booking ID</td>
+                <td>Mount Pinatubos</td>
                   <td>Guest Name</td>
                   <td>Email</td>
+                  <th>Number of People</th>
                   <td>Number of person</td>
                   <td>Booking TreksSafari</td>
 
+
                   <td>
-                    <Link to='/guestdetails'>
+                  <Link to='/guesteditbooking' className="icon">
+                  <BiEdit /></Link>
+                    <Link to='/bookingdetails'>
                       <TbListDetails className="icon" />
                     </Link>
                   </td>

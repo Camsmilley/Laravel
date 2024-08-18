@@ -1,11 +1,9 @@
 import "./GuestDashboard.css";
 
 import Video from "../assets/video1.mp4";
-import img from "../assets/card1.jpg"
 
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import GuestHeader from "./GuestHeader/GuestHeader";
-
 
 
 const GuestDashboard = () => {
@@ -54,7 +52,10 @@ const GuestDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="bottomSection">
+
+        
+ 
+        {/* <div className="bottomSection">
           <span className="title">Popular Tours</span>
           <div className="toursContainer flex">
               <div className="singleTour grid">
@@ -72,7 +73,8 @@ const GuestDashboard = () => {
                     <small className="infor">
                       Minimum of Number of person guests
                     </small>
-                  </div>
+                  </div> */}
+
 
                   {/* <Link
                     to={`/bookingDetails/${safari.id}`}
@@ -82,10 +84,12 @@ const GuestDashboard = () => {
                   </Link> */}
                 </div>
               </div>
-          </div>
+
+     
+          {/* </div>
         </div>
       </div>
-    </div>
+    </div> */}
     </>
   );
 };

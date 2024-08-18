@@ -29,19 +29,24 @@ const Guides = () => {
         <div className="tableDiv">
           <table>
             <tr className="tableHeaders flex">
-              <th>ID</th>
-              <th>Guide Name</th>
+              <th>Image</th>
+              <th>Guide Full Name</th>
               <th>Phone</th>
               <th>Email</th>
+              <th>Password</th>
+              <th>Guide Role</th>
               <th>Action</th>
             </tr>
 
             <tbody>
                 <tr className="tableRows flex" >
-                  <td>ID</td>
+                  <td><input
+                  type="file" id="image" /></td>
                   <td>Name</td>
                   <td>Contact</td>
                   <td>Email</td>
+                  <th>Password</th>
+                  <th>Role</th>
                   <td>
                     <Link to='/editguide' className="icon">
                       <BiEdit />

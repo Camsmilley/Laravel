@@ -19,20 +19,19 @@ const AddGuide = () => {
 
         <div className="formDiv grid">
           <div className="fieldDiv ">
-            <label htmlFor="fName">Guide First Name</label>
+            <label htmlFor="image">Insert Image</label>
             <input
-              type="text"
-              id="fName"
-              placeholder="Enter First Name"
+              type="file"
+              id="image"
             />
           </div>
 
           <div className="fieldDiv ">
-            <label htmlFor="sName">Guide Second Name</label>
+            <label htmlFor="sName">Guide Full Name</label>
             <input
               type="text"
-              name="secName"
-              id="sName"
+              name="fullName"
+              id="fullName"
               placeholder="Enter Second Name"
             />
           </div>
