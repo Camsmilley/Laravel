@@ -1,10 +1,10 @@
 import "./GuestDashboard.css";
 
 // Imported icons
-import { BiEdit } from "react-icons/bi";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdOutlineDeleteOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
+// import { BiEdit } from "react-icons/bi";
+// import { AiOutlinePlus } from "react-icons/ai";
+// import { MdOutlineDeleteOutline } from "react-icons/md";
+// import { Link } from "react-router-dom";
 import GuestHeader from "./GuestHeader/GuestHeader";
 
 const Guides = () => {

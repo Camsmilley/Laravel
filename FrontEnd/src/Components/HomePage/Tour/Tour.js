@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState} from "react";
 import Axios from "axios";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime, AiOutlineSwapRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { AuthContext } from '../../AuthContext'; // Adjust the import path as needed
+// import { AuthContext } from '../../AuthContext'; 
 import "./Tour.css";
 
 const Tour = () => {
   const [safaris, setSafari] = useState([]);
-  const { user } = useContext(AuthContext);
+
 
   useEffect(() => {
     const getData = async () => {
