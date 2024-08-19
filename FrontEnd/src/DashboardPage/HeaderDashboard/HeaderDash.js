@@ -1,22 +1,17 @@
 import React, { useState, useContext } from "react";
-import "./HeaderDash.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillCloseCircle } from "react-icons/ai";
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/logo.png';  // Ensure your logo image is properly referenced
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../Components/AuthContext';
 
 const HeaderDash = () => {
-  const [active, setActive] = useState("navBar");
+  const [active, setActive] = useState(false);
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const showNavBar = () => {
-    setActive("navBar showNavbar");
-  };
-
-  const closeNavbar = () => {
-    setActive("navBar");
+  const toggleNavbar = () => {
+    setActive(!active);
   };
 
   const handleLogout = async () => {
@@ -25,35 +20,36 @@ const HeaderDash = () => {
   };
 
   return (
-    <div className="headerdash">
-      <div className="logoDiv">
-        <Link to='/'><img src={Logo} alt="Logo" /></Link>
-      </div>
-
-      <div className={active}>
-        <ul className="navList">
-          <li className="navItem">
-            <Link to='/dashboard' className="navLink">Dashboard</Link>
-          </li>
-          <li className="navItem">
-            <Link to='/bookings' className="navLink">Bookings</Link>
-          </li>
-          <li className="navItem">
-            <Link to='/tourpage' className="navLink">Tours</Link>
-          </li>
-          <li className="navItem">
-            <Link to='/guides' className="navLink">Guide</Link>
-          </li>
-        </ul>
-
-        <AiFillCloseCircle className="icon closeIcon" onClick={closeNavbar} />
-        <div className="headerBtns flex">
-          <button onClick={handleLogout} className="btn loginBtn">Logout</button>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+      <div className="container-fluid mx-4">
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <img src={Logo} alt="Logo" className="me-2" style={{ height: "40px" }} />
+          <span className="fw-bold">Treks Safari</span>
+        </Link>
+        <button className="navbar-toggler" type="button" onClick={toggleNavbar} aria-controls="navbarNav" aria-expanded={active} aria-label="Toggle navigation">
+          {active ? <AiFillCloseCircle className="icon" /> : <GiHamburgerMenu className="icon" />}
+        </button>
+        <div className={`collapse navbar-collapse ${active ? "show" : ""}`} id="navbarNav">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link to='/dashboard' className="nav-link">Dashboard</Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/bookings' className="nav-link">Bookings</Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/tourpage' className="nav-link">Tours</Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/guides' className="nav-link">Guides</Link>
+            </li>
+          </ul>
+          <div className="d-flex">
+            <button onClick={handleLogout} className="btn btn-outline-primary">Logout</button>
+          </div>
         </div>
       </div>
-
-      <GiHamburgerMenu className="toggleIcon icon" onClick={showNavBar} />
-    </div>
+    </nav>
   );
 };
 

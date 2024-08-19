@@ -77,12 +77,6 @@ class SafariController extends Controller
         }
     }
     
-    
-    
-    
-    
-    
-    
 
     public function update(Request $request, $id)
     {
@@ -116,4 +110,11 @@ class SafariController extends Controller
 
         return response()->json(null, 204);
     }
+
+    public function totalTours()
+    {
+        $total = Safari::count();
+        return response()->json(['total' => $total]);
+    }
+    
 }
