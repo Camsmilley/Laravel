@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::with('guide')->get();
         return response()->json($bookings);
     }
 
     public function show($id)
     {
-        $booking = Booking::find($id);
+        $booking = Booking::with('guide')->find($id);
         if (!$booking) {
             return response()->json(['message' => 'Booking not found'], 404);
         }
@@ -34,6 +35,8 @@ class BookingController extends Controller
             'noc' => 'required|integer',
             'arrivalDate' => 'required|date',
             'message' => 'nullable|string',
+            'guideId' => 'required|exists:guides,id', // Validate guideId
+            'guestId' => 'nullable|exists:users,id' // Validate guestId
         ]);
 
         $booking = Booking::create($validatedData);
@@ -59,6 +62,8 @@ class BookingController extends Controller
             'noc' => 'required|integer',
             'arrivalDate' => 'required|date',
             'message' => 'nullable|string',
+            'guideId' => 'required|exists:guides,id', // Validate guideId
+            'guestId' => 'nullable|exists:users,id' // Validate guestId
         ]);
 
         $booking->update($validatedData);
@@ -77,5 +82,27 @@ class BookingController extends Controller
         $booking->delete();
 
         return response()->json(['message' => 'Booking deleted successfully']);
+    }
+
+    public function dailyBookings()
+    {
+        $today = Carbon::today();
+        $dailyBookings = Booking::with('guide')->whereDate('created_at', $today)->get();
+
+        return response()->json($dailyBookings);
+    }
+
+    // BookingController.php
+    public function totalBookings()
+    {
+        $total = Booking::count();
+        return response()->json(['total' => $total]);
+    }
+
+    // New method to fetch bookings by guestId
+    public function userBookings($guestId)
+    {
+        $bookings = Booking::where('guestId', $guestId)->with('guide')->get();
+        return response()->json($bookings);
     }
 }

@@ -19,6 +19,7 @@ const Details = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext); // Get user from context
   const [safari, setSafari] = useState(null);
+  const [guides, setGuides] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
@@ -30,7 +31,9 @@ const Details = () => {
     nop: "",
     noc: "",
     arrivalDate: "",
-    message: ""
+    message: "",
+    guideId: "", // Add guideId to formData
+    guestId: user ? user.id : "" // Add guestId to formData
   });
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -48,7 +51,17 @@ const Details = () => {
       }
     };
 
+    const fetchGuides = async () => {
+      try {
+        const response = await Axios.get('http://localhost:8000/api/guides');
+        setGuides(response.data);
+      } catch (error) {
+        console.error('Error fetching guides:', error);
+      }
+    };
+
     fetchSafariDetails();
+    fetchGuides();
   }, [id]);
 
   const handleInputChange = (e) => {
@@ -74,7 +87,9 @@ const Details = () => {
         nop: "",
         noc: "",
         arrivalDate: "",
-        message: ""
+        message: "",
+        guideId: "", // Reset guideId
+        guestId: user ? user.id : "" // Reset guestId
       });
     } catch (error) {
       console.error('Error submitting booking:', error.response?.data || error.message);
@@ -166,25 +181,52 @@ const Details = () => {
             <form onSubmit={handleSubmit} className="gridContainer grid">
               {Object.entries(formData).map(([key, value]) => (
                 <div key={key} className="inputDiv">
-                  <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}</label>
-                  {key === "message" ? (
-                    <textarea
+                  {key === "guestId" ? (
+                    <input
+                      type="hidden"
                       id={key}
                       name={key}
                       value={value}
-                      onChange={handleInputChange}
-                      placeholder={`Enter ${key}`}
                     />
                   ) : (
-                    <input
-                      type={key === "email" ? "email" : key === "arrivalDate" ? "datetime-local" : key === "nop" || key === "noc" ? "number" : "text"}
-                      id={key}
-                      name={key}
-                      value={value}
-                      onChange={handleInputChange}
-                      placeholder={`Enter ${key}`}
-                      required
-                    />
+                    <>
+                      <label htmlFor={key}>{key === "guideId" ? "Guide Name" : key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}</label>
+                      {key === "message" ? (
+                        <textarea
+                          id={key}
+                          name={key}
+                          value={value}
+                          onChange={handleInputChange}
+                          placeholder={`Enter ${key}`}
+                        />
+                      ) : key === "guideId" ? (
+                        <select
+                          id={key}
+                          name={key}
+                          value={value}
+                          onChange={handleInputChange}
+                          required
+                          className="custom-select"
+                        >
+                          <option value="">Select Guide</option>
+                          {guides.map(guide => (
+                            <option key={guide.id} value={guide.id}>
+                              {guide.name}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          type={key === "email" ? "email" : key === "arrivalDate" ? "datetime-local" : key === "nop" || key === "noc" ? "number" : "text"}
+                          id={key}
+                          name={key}
+                          value={value}
+                          onChange={handleInputChange}
+                          placeholder={`Enter ${key}`}
+                          required
+                        />
+                      )}
+                    </>
                   )}
                 </div>
               ))}
@@ -195,6 +237,40 @@ const Details = () => {
       </div>
       <Tour />
       <Footer />
+      <style jsx>{`
+        .custom-select {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          background-color: #fff;
+          color: #333;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path fill="%23333" d="M0 0l5 5 5-5H0z"/></svg>');
+          background-repeat: no-repeat;
+          background-position: right 10px center;
+          transition: border-color 0.3s ease;
+        }
+
+        .custom-select:focus {
+          border-color: #3f6b29;
+          outline: none;
+        }
+
+        .custom-select option {
+          padding: 10px;
+          font-size: 16px;
+          background-color: #fff;
+          color: #333;
+        }
+
+        .custom-select option:hover {
+          background-color: #f2f2f2;
+        }
+      `}</style>
     </>
   );
 };

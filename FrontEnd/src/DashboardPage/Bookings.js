@@ -72,6 +72,7 @@ const Bookings = () => {
                   <th style={thStyles}>Number of Children</th>
                   <th style={thStyles}>Arrival Date</th>
                   <th style={thStyles}>Message</th>
+                  <th style={thStyles}>Guide</th>
                   <th style={thStyles}>Action</th>
                 </tr>
               </thead>
@@ -88,6 +89,7 @@ const Bookings = () => {
                     <td style={tdStyles}>{booking.noc}</td>
                     <td style={tdStyles}>{booking.arrivalDate}</td>
                     <td style={tdStyles}>{booking.message || "No message provided"}</td>
+                    <td style={tdStyles}>{booking.guide ? booking.guide.name : "No guide assigned"}</td>
                     <td style={{ ...tdStyles, ...actionStyles }}>
                       <Link to={`/bookingdetails/${booking.id}`} className="icon">
                         <TbListDetails />

@@ -19,5 +19,17 @@ class Booking extends Model
         'noc',
         'arrivalDate',
         'message',
+        'guideId', // Add guideId to fillable
+        'guestId' // Add guestId to fillable
     ];
+
+    public function guide()
+    {
+        return $this->belongsTo(Guide::class, 'guideId');
+    }
+
+    public function guest()
+    {
+        return $this->belongsTo(User::class, 'guestId');
+    }
 }

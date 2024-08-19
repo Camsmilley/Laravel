@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from "react";
+import Axios from 'axios';
+import HeaderDash from "./HeaderDashboard/HeaderDash";
 import Video from "../assets/video1.mp4";
 import img from "../assets/card1.jpg";
-import { BsFillPersonCheckFill } from "react-icons/bs";
-import HeaderDash from "./HeaderDashboard/HeaderDash";
-import Axios from 'axios';
 import moment from 'moment';
+import { FaBook, FaUserFriends, FaMapMarkedAlt } from 'react-icons/fa';
 
 const Dashboard = () => {
+  const [totalBookings, setTotalBookings] = useState(0);
+  const [totalGuides, setTotalGuides] = useState(0);
+  const [totalTours, setTotalTours] = useState(0);
   const [bookingsToday, setBookingsToday] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   useEffect(() => {
-    const fetchBookings = async () => {
+    const fetchData = async () => {
       try {
-        const response = await Axios.get('http://localhost:8000/api/bookings');
-        const today = moment().format('YYYY-MM-DD');
-        const filteredBookings = response.data.filter(booking =>
-          moment(booking.date).format('YYYY-MM-DD') === today
-        );
-        setBookingsToday(filteredBookings);
+        const [bookingsRes, guidesRes, toursRes, dailyBookingsRes] = await Promise.all([
+          Axios.get('http://localhost:8000/api/total-bookings'),
+          Axios.get('http://localhost:8000/api/total-guides'),
+          Axios.get('http://localhost:8000/api/total-tours'),
+          Axios.get('http://localhost:8000/api/daily-bookings')
+        ]);
+
+        setTotalBookings(bookingsRes.data.total);
+        setTotalGuides(guidesRes.data.total);
+        setTotalTours(toursRes.data.total);
+        setBookingsToday(dailyBookingsRes.data);
       } catch (error) {
-        console.error('Error fetching bookings:', error);
+        console.error('Error fetching data:', error);
       }
     };
 
-    fetchBookings();
+    fetchData();
   }, []);
 
-  // Pagination logic
   const indexOfLastBooking = currentPage * itemsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - itemsPerPage;
   const currentBookings = bookingsToday.slice(indexOfFirstBooking, indexOfLastBooking);
@@ -42,119 +49,129 @@ const Dashboard = () => {
   return (
     <>
       <HeaderDash />
-      <div className="OutletCSS">
-        <div className="pageBody">
-          <div className="topSection">
-            <div className="sectionTitle">
-              <h1>Treks Safari Admin Dashboard</h1>
-              <p>This is where everything starts to happen!</p>
-            </div>
+      <div className="container-fluid my-5">
+        {/* <div className="row mb-4">
+          <div className="col text-center">
+            <h1 className="display-4">Treks Safari Admin Dashboard</h1>
+            <p className="lead">Your hub for managing safaris and bookings</p>
+          </div>
+        </div> */}
 
-            <div className="video_Summary">
-              <div className="flexLeft flex">
-                <div className="videoDiv">
-                  <video src={Video} autoPlay loop muted></video>
+        <div className="row g-4 mx-5">
+          <div className="col-lg-4">
+            <div className="card bg-white text-dark mb-3">
+              <div className="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <FaBook size={50} />
                 </div>
-                <div className="videoText">
-                  <h4>Looking for an extraordinary service for the community!</h4>
-                  <div className="btns flex">
-                    <a href="#" className="link bg">
-                      We base to serve
-                    </a>
-                    <a href="#" className="link">
-                      Love for the Hikes
-                    </a>
-                  </div>
+                <div className="ms-3">
+                  <h5 className="card-title">Total Bookings</h5>
+                  <h3 className="card-text btn">{totalBookings}</h3>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="card bg-white text-dark mb-3">
+              <div className="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <FaUserFriends size={50} />
+                </div>
+                <div className="ms-3">
+                  <h5 className="card-title">Total Guides</h5>
+                  <h3 className="card-text btn">{totalGuides}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="card bg-white text-dark mb-3">
+              <div className="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <FaMapMarkedAlt size={50} />
+                </div>
+                <div className="ms-3">
+                  <h5 className="card-title">Total Tours</h5>
+                  <h3 className="card-text btn">{totalTours}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              <div className="flexRight">
-                <span>Bookings Today</span>
+        <div className="row g-4 mx-5">
+          <div className="col-lg-8">
+            <div className="card text-center">
+            <div className="card-body">
+                <h4 className="card-title">Providing top-notch services for every adventure!</h4>
+                <div className="d-flex justify-content-start mt-3 d-flex justify-content-center">
+                  <a href="#" className="btn btn-primary me-2">Our Mission</a>
+                  <a href="#" className="btn btn-success">Explore More</a>
+                </div>
+              </div>
+              <div className="ratio ratio-16x9">
+                <video src={Video} autoPlay loop muted className="card-img-top"></video>
+              </div>
+             
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="card h-100">
+              <div className="card-header btn text-white">
+                <h3 className="card-title mb-0">Bookings Today</h3>
+              </div>
+              <div className="card-body p-0">
                 {bookingsToday.length > 0 ? (
-                  <div>
-                    <table style={styles.bookingsTable}>
+                  <>
+                    <table className="table table-hover">
                       <thead>
                         <tr>
-                          <th>Guest Name</th>
-                          <th>Safari Name</th>
-                          <th>Guide Name</th>
-                          <th>Arrival Date</th>
+                          <th scope="col">Guest Name</th>
+                          <th scope="col">Safari Name</th>
+                          <th scope="col">Guide Name</th>
+                          <th scope="col">Arrival Date</th>
                         </tr>
                       </thead>
                       <tbody>
                         {currentBookings.map((booking) => (
                           <tr key={booking.id}>
-                            <td>{booking?.guestName || 'Guest name not available'}</td>
-                            <td>{booking?.safariname || 'Safari name not available'}</td>
-                            <td>{booking?.guide?.name || 'Guide name not available'}</td>
+                            <td>{booking?.guestName || 'N/A'}</td>
+                            <td>{booking?.safariname || 'N/A'}</td>
+                            <td>{booking?.guide?.name || 'N/A'}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
                           </tr>
                         ))}
                       </tbody>
                     </table>
 
-                    {/* Pagination Controls */}
-                    <div style={styles.pagination}>
-                      {Array.from({ length: totalPages }, (_, index) => (
-                        <button
-                          key={index + 1}
-                          onClick={() => handlePageChange(index + 1)}
-                          style={currentPage === index + 1 ? styles.activePage : styles.page}
-                        >
-                          {index + 1}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                    <nav className="d-flex justify-content-center">
+                      <ul className="pagination">
+                        {Array.from({ length: totalPages }, (_, index) => (
+                          <li key={index + 1} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                            <button
+                              className="btn" //page-link
+                              onClick={() => handlePageChange(index + 1)}
+                            >
+                              {index + 1}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  </>
                 ) : (
-                  <p>No bookings today.</p>
+                  <div className="p-3 text-center">No bookings today.</div>
                 )}
               </div>
             </div>
           </div>
-
-          <div className="bottomSection">
-            <span className="title">Popular Tours</span>
-            <div className="toursContainer flex">
-              <div className="singleTour grid">
-                <div className="imgDiv">
-                  <img src={img} alt="Tour" />
-                </div>
-               
-              </div>
-            </div>
-          </div>
         </div>
+
+       
       </div>
     </>
   );
-};
-
-const styles = {
-  bookingsTable: {
-    width: '100%',
-    borderCollapse: 'collapse'
-  },
-  page: {
-    margin: '0 5px',
-    padding: '10px 15px',
-    border: 'none',
-    backgroundColor: '#007bff',
-    color: 'white',
-    cursor: 'pointer'
-  },
-  activePage: {
-    margin: '0 5px',
-    padding: '10px 15px',
-    border: 'none',
-    backgroundColor: '#0056b3',
-    color: 'white',
-    cursor: 'pointer'
-  },
-  pagination: {
-    marginTop: '20px',
-    textAlign: 'center'
-  }
 };
 
 export default Dashboard;

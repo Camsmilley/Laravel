@@ -151,6 +151,18 @@ const BookingDetails = () => {
                 className="readonlyTextarea"
               />
             </div>
+
+            <div className="fieldDiv">
+              <label htmlFor="guide" className="title">Guide</label>
+              <input
+                type="text"
+                id="guide"
+                name="guide"
+                value={booking.guide ? booking.guide.name : "No guide assigned"}
+                readOnly
+                className="readonlyInput"
+              />
+            </div>
           </div>
 
           <div className="actions flex"

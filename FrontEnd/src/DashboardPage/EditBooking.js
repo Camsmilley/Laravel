@@ -16,9 +16,11 @@ const EditBooking = () => {
     nop: '',
     noc: '',
     arrivalDate: '',
-    message: ''
+    message: '',
+    guideId: ''
   });
 
+  const [guides, setGuides] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +30,14 @@ const EditBooking = () => {
       })
       .catch(error => {
         console.error('Error fetching booking details:', error);
+      });
+
+    Axios.get('http://localhost:8000/api/guides')
+      .then(response => {
+        setGuides(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching guides:', error);
       });
   }, [id]);
 
@@ -167,6 +177,24 @@ const EditBooking = () => {
                 onChange={handleChange}
                 placeholder="Enter any additional information"
               />
+            </div>
+
+            <div className="fieldDiv">
+              <label htmlFor="guideId">Guide</label>
+              <select
+                id="guideId"
+                name="guideId"
+                value={formData.guideId}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Guide</option>
+                {guides.map(guide => (
+                  <option key={guide.id} value={guide.id}>
+                    {guide.name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <button type="submit" className="btn flex addBookingBtn">

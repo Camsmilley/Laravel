@@ -30,9 +30,16 @@ Route::post('/bookings', [BookingController::class, 'store']);
 Route::put('/bookings/{id}', [BookingController::class, 'update']);
 Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
 
+Route::get('/daily-bookings', [BookingController::class, 'dailyBookings']);
 
+// total
+
+Route::get('/total-bookings', [BookingController::class, 'totalBookings']);
+Route::get('/total-guides', [GuideController::class, 'totalGuides']);
+Route::get('/total-tours', [SafariController::class, 'totalTours']);
 
 Route::resource('guides', GuideController::class);
 
-
+// New route for fetching bookings by guestId
+Route::get('/user-bookings/{guestId}', [BookingController::class, 'userBookings']);
 
