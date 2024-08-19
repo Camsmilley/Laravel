@@ -12,6 +12,7 @@ class Safari extends Model
     protected $fillable = [
         'title',
         'min_guests',
+        'time_estimate',
         'location',
         'price',
         'image',

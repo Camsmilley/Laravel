@@ -24,7 +24,7 @@
     padding: 2rem;
     gap: 2rem;
     margin-top: 40px;
-  
+    overflow-y: scroll;
   }
   .OutletCSS .pageBody {
     flex-basis: 80%;
@@ -425,31 +425,55 @@
   }
 
 
-  .carousel-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    /* Adjust width and height as needed */
-    width: 100px;
-    height: 100px;
-  }
-  .carousel-inner img{
-    width: 50%;
-    height: 50%;
-    object-fit: cover; }
-  
-  .carousel-caption{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .carousel-caption h1{
-    font-size: 400%;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 15px #000;
-  }
-  
 
- 
+
+  .carousel-container {
+    width: 100%;
+    /* max-width: 2000px; */
+    margin: 0 auto;
+    margin-bottom: 10rem;
+    /* padding: 0 15px; */
+  }
+  
+  .carousel-inner {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .carousel-item img {
+    object-fit: cover;
+    height: 400px;
+    width: 100%;
+  }
+  
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .carousel-caption h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: 300px;
+    }
+  
+    .carousel-caption h1 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .carousel-item img {
+      height: 200px;
+    }
+  
+    .carousel-caption h1 {
+      font-size: 1.2rem;
+    }
+  }
   

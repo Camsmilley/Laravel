@@ -1,14 +1,31 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import Axios from 'axios';
 import "./Dashboard.css";
-import img from '../assets/card1.jpg'
 
 // Imported Icons
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
-import { Link} from "react-router-dom";
 
 const ViewDetails = () => {
+  const { id } = useParams();
+  const [safari, setSafari] = useState(null);
+
+  useEffect(() => {
+    const fetchSafari = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:8000/api/safaris/${id}`);
+        setSafari(response.data);
+      } catch (error) {
+        console.error('Error fetching safari:', error);
+      }
+    };
+    fetchSafari();
+  }, [id]);
+
+  if (!safari) return <div>Loading...</div>;
 
   return (
     <div className="OutletCSS">
@@ -20,46 +37,47 @@ const ViewDetails = () => {
           </div>
         </div>
 
-          <div className="SafariDetails grid">
-            <div className="imageDiv">
-              <div className="imgText">
-                <div className="stars flex">
-                  <AiOutlineStar className="icon" />
-                  <AiOutlineStar className="icon" />
-                  <AiOutlineStar className="icon" />
-                  <AiOutlineStar className="icon" />
-                  <AiOutlineStar className="icon" />
-                </div>
-                <h3>Mount Apo</h3>
+        <div className="SafariDetails grid">
+          <div className="imageDiv">
+            <div className="imgText">
+              <div className="stars flex">
+                <AiOutlineStar className="icon" />
+                <AiOutlineStar className="icon" />
+                <AiOutlineStar className="icon" />
+                <AiOutlineStar className="icon" />
+                <AiOutlineStar className="icon" />
               </div>
-               <img src={img} />
+              <h3>{safari.title}</h3>
             </div>
-            <div className="detailsInfo">
-              <span className="title">About this Item</span>
-              <p>Description</p>
-              <div className="specs grid">
-                <span className="detailsDiv flex">
-                  <AiOutlineFieldTime className="icon" />
-                  <small className="infor">Time: 6am</small>
-                </span>
-                <span className="detailsDiv flex">
-                  <BsFillPersonCheckFill className="icon" />
-                  <small className="infor">Minimum of guests: 25</small>
-                </span>
-                <span className="detailsDiv flex">
-                  <FaBaby className="icon" />
-                  <small className="infor"> Children Price: &#8369; 150</small>
-                </span>
-              </div>
+            <img src={`http://localhost:8000${safari.image}`} alt={safari.title} />
+          </div>
+          <div className="detailsInfo">
+            <span className="title">About this Item</span>
+            <p>{safari.description}</p>
+            <div className="specs grid">
+              <span className="detailsDiv flex">
+                <AiOutlineFieldTime className="icon" />
+                <small className="infor">Location: {safari.location}</small>
+              </span>
+              <span className="detailsDiv flex">
+                <BsFillPersonCheckFill className="icon" />
+                <small className="infor">Minimum of guests: {safari.min_guests}</small>
+              </span>
+              {/* You might want to add a field for children's price in your Safari model */}
+              <span className="detailsDiv flex">
+                <FaBaby className="icon" />
+                <small className="infor">Children Price: &#8369; {safari.children_price || 'N/A'}</small>
+              </span>
+            </div>
 
-              <div className="actionButtons flex">
-                <span className="price">Price: &#8369; 800</span>
-                <Link to='/edit' className="btn buyBtn">
-                  Edit TreksSafari
-                </Link>
-              </div>
+            <div className="actionButtons flex">
+              <span className="price">Price: &#8369; {safari.price}</span>
+              <Link to={`/edit/${safari.id}`} className="btn buyBtn">
+                Edit TreksSafari
+              </Link>
             </div>
           </div>
+        </div>
       </div>
     </div>
   );

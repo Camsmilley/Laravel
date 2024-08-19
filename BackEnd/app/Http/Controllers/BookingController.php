@@ -7,32 +7,75 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    public function index()
+    {
+        $bookings = Booking::all();
+        return response()->json($bookings);
+    }
+
+    public function show($id)
+    {
+        $booking = Booking::find($id);
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
+        }
+        return response()->json($booking);
+    }
+
     public function store(Request $request)
     {
-        try {
-            $validatedData = $request->validate([
-                'safariname' => 'required|string',
-                'guestName' => 'required|string',
-                'nationality' => 'required|string',
-                'contact' => 'required|string',
-                'email' => 'required|email',
-                'nop' => 'required|integer',
-                'noc' => 'required|integer',
-                'arrivalDate' => 'required|date',
-                'message' => 'nullable|string',
-            ]);
+        $validatedData = $request->validate([
+            'safariname' => 'required|string',
+            'guestName' => 'required|string',
+            'nationality' => 'required|string',
+            'contact' => 'required|string',
+            'email' => 'required|email',
+            'nop' => 'required|integer',
+            'noc' => 'required|integer',
+            'arrivalDate' => 'required|date',
+            'message' => 'nullable|string',
+        ]);
 
-            // Ensure nop and noc are integers
-            $validatedData['nop'] = (int) $validatedData['nop'];
-            $validatedData['noc'] = (int) $validatedData['noc'];
+        $booking = Booking::create($validatedData);
 
-            $booking = Booking::create($validatedData);
+        return response()->json($booking, 201);
+    }
 
-            return response()->json($booking, 201);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json(['errors' => $e->errors()], 400);
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+    public function update(Request $request, $id)
+    {
+        $booking = Booking::find($id);
+
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
         }
+
+        $validatedData = $request->validate([
+            'safariname' => 'required|string',
+            'guestName' => 'required|string',
+            'nationality' => 'required|string',
+            'contact' => 'required|string',
+            'email' => 'required|email',
+            'nop' => 'required|integer',
+            'noc' => 'required|integer',
+            'arrivalDate' => 'required|date',
+            'message' => 'nullable|string',
+        ]);
+
+        $booking->update($validatedData);
+
+        return response()->json($booking);
+    }
+
+    public function destroy($id)
+    {
+        $booking = Booking::find($id);
+
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
+        }
+
+        $booking->delete();
+
+        return response()->json(['message' => 'Booking deleted successfully']);
     }
 }

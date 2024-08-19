@@ -56,18 +56,18 @@ function App() {
 
           {/* Admin Routes */}
           <Route element={<ProtectedRoute adminOnly={true} />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/bookings" element={<Bookings />} />
-            <Route path="/bookingdetails" element={<BookingDetails />} />
-            <Route path="/tourpage" element={<ToursPage />} />
-            <Route path="/add" element={<Add />} />
-            <Route path="/viewdetails" element={<ViewDetails />} />
-            <Route path="/edit" element={<Edit />} />
-            <Route path="/guides" element={<Guides />} />
-            <Route path="/addguide" element={<AddGuide />} />
-            <Route path="/editguide" element={<EditGuide />} />
-            <Route path="/editbooking" element={<EditBooking />} />
-          </Route>
+  <Route path="/dashboard" element={<Dashboard />} />
+  <Route path="/bookings" element={<Bookings />} />
+  <Route path="/bookingdetails/:id" element={<BookingDetails />} />
+  <Route path="/tourpage" element={<ToursPage />} />
+  <Route path="/add" element={<Add />} />
+  <Route path="/viewdetails/:id" element={<ViewDetails />} />
+  <Route path="/edit/:id" element={<Edit />} />
+  <Route path="/guides" element={<Guides />} />
+  <Route path="/addguide" element={<AddGuide />} />
+  <Route path="/editguide/:id" element={<EditGuide />} />
+  <Route path="/editbooking/:id" element={<EditBooking />} />
+</Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
