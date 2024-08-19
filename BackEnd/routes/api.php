@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SafariController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuideController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -16,4 +17,22 @@ Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logo
 
 Route::get('allHomeSafaris', [SafariController::class, 'index']);
 Route::get('safaris/{id}', [SafariController::class, 'show']);
+
+Route::post('safaris', [SafariController::class, 'store']);
+Route::post('safaris/{id}', [SafariController::class, 'update']);
+Route::delete('safaris/{id}', [SafariController::class, 'destroy']);
+
+
+
+Route::get('/bookings', [BookingController::class, 'index']);
+Route::get('/bookings/{id}', [BookingController::class, 'show']);
 Route::post('/bookings', [BookingController::class, 'store']);
+Route::put('/bookings/{id}', [BookingController::class, 'update']);
+Route::delete('/bookings/{id}', [BookingController::class, 'destroy']);
+
+
+
+Route::resource('guides', GuideController::class);
+
+
+

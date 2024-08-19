@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // In your User model
+        // public function getIsAdminAttribute()
+        // {
+        //     return $this->role === 'admin'; // Adjust this logic based on your role field
+        // }
+
 }

@@ -1,83 +1,182 @@
-import React from 'react'
-import "./Dashboard.css"
-
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
+import HeaderDash from './HeaderDashboard/HeaderDash';
+import "./Dashboard.css";
 import { AiOutlinePlus } from "react-icons/ai";
-const EditBooking = () => {
-  return (
-    <div>
-       <div className="OutletCSS">
-      <div className="pageBody">
-        <div className="sectionTitle">
-          <h1>Edit Bookings</h1>
-          <p>Edit youir Book!</p>
-        </div>
 
-        <form action="" encType="multipart/form-data">
-          <div className="formDiv grid">
-            <div className="fieldDiv ">
-              <label htmlFor="safariName"> Name of the Mountain</label>
+const EditBooking = () => {
+  const { id } = useParams();
+  const [formData, setFormData] = useState({
+    safariname: '',
+    guestName: '',
+    nationality: '',
+    contact: '',
+    email: '',
+    nop: '',
+    noc: '',
+    arrivalDate: '',
+    message: ''
+  });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    Axios.get(`http://localhost:8000/api/bookings/${id}`)
+      .then(response => {
+        setFormData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching booking details:', error);
+      });
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    Axios.put(`http://localhost:8000/api/bookings/${id}`, formData)
+      .then(response => {
+        navigate('/bookings'); // Redirect to bookings list
+      })
+      .catch(error => {
+        console.error('Error updating booking:', error);
+      });
+  };
+
+  return (
+    <>
+      <HeaderDash />
+      <div className="OutletCSS">
+        <div className="pageBody">
+          <div className="sectionTitle">
+            <h1>Edit Booking</h1>
+            <p>Edit your booking details!</p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="formDiv grid">
+            <div className="fieldDiv">
+              <label htmlFor="safariname">Name of the Mountain</label>
               <input
                 type="text"
-                id="safariName"
+                id="safariname"
+                name="safariname"
+                value={formData.safariname}
+                onChange={handleChange}
                 placeholder="Enter Mountain"
               />
             </div>
 
             <div className="fieldDiv">
-              <label htmlFor="name">Guest Name</label>
+              <label htmlFor="guestName">Guest Name</label>
               <input
-                type="name"
-                id="name"
-                placeholder="Enter Name "
+                type="text"
+                id="guestName"
+                name="guestName"
+                value={formData.guestName}
+                onChange={handleChange}
+                placeholder="Enter Name"
+              />
+            </div>
+
+            <div className="fieldDiv">
+              <label htmlFor="nationality">Nationality</label>
+              <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                value={formData.nationality}
+                onChange={handleChange}
+                placeholder="Enter Nationality"
+              />
+            </div>
+
+            <div className="fieldDiv">
+              <label htmlFor="contact">Contact Number</label>
+              <input
+                type="text"
+                id="contact"
+                name="contact"
+                value={formData.contact}
+                onChange={handleChange}
+                placeholder="Enter Contact Number"
               />
             </div>
 
             <div className="fieldDiv">
               <label htmlFor="email">Guest Email</label>
               <input
-                type="text"
+                type="email"
                 id="email"
-                placeholder="Enter Email "
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter Email"
               />
             </div>
 
             <div className="fieldDiv">
-              <label htmlFor="childPrice">Total of People</label>
+              <label htmlFor="nop">Total Number of People</label>
               <input
                 type="number"
-                id="totalguest"
-                placeholder="Whats the max number of guests"
+                id="nop"
+                name="nop"
+                value={formData.nop}
+                onChange={handleChange}
+                placeholder="Total number of people"
               />
             </div>
 
             <div className="fieldDiv">
-              <label htmlFor="totalGuests">Number of Childern</label>
+              <label htmlFor="noc">Number of Children</label>
               <input
                 type="number"
-                id="totalchild"
-                placeholder="Whats the max number of children?"
+                id="noc"
+                name="noc"
+                value={formData.noc}
+                onChange={handleChange}
+                placeholder="Number of children"
               />
             </div>
 
             <div className="fieldDiv">
-              <label htmlFor="type">Trek Type</label>
+              <label htmlFor="arrivalDate">Arrival Date</label>
+              <input
+                type="datetime-local"
+                id="arrivalDate"
+                name="arrivalDate"
+                value={formData.arrivalDate}
+                onChange={handleChange}
+                placeholder="Select Arrival Date"
+              />
+            </div>
 
+            <div className="fieldDiv">
+              <label htmlFor="message">Message</label>
               <textarea
-                type="text"
-                name="type"
-                placeholder="Enter Type"
-              ></textarea>
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Enter any additional information"
+              />
             </div>
 
-            <button  className="flex addSafariBtn">
-              Edit Booking <AiOutlinePlus className="icon" />
+            <button type="submit" className="btn flex addBookingBtn">
+              Update Booking <AiOutlinePlus className="icon" />
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default EditBooking
+export default EditBooking;

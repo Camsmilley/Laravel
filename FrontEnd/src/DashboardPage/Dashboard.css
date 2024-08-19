@@ -24,7 +24,7 @@
   padding: 2rem;
   gap: 2rem;
   margin-top: 40px;
-
+overflow-y: scroll;
 }
 .OutletCSS .pageBody {
   flex-basis: 80%;
