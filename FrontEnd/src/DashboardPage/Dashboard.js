@@ -5,6 +5,9 @@ import Video from "../assets/video1.mp4";
 import img from "../assets/card1.jpg";
 import moment from 'moment';
 import { FaBook, FaUserFriends, FaMapMarkedAlt } from 'react-icons/fa';
+import { MdOutlineTour } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import './Dashboard.css'
 
 const Dashboard = () => {
   const [totalBookings, setTotalBookings] = useState(0);
@@ -58,41 +61,70 @@ const Dashboard = () => {
         </div> */}
 
         <div className="row g-4 mx-5">
-          <div className="col-lg-4">
-            <div className="card bg-white text-dark mb-3">
+          <div className="col-lg-2">
+            <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
-                  <FaBook size={50} />
+                  <FaBook className="text-primary" size={50} />
                 </div>
                 <div className="ms-3">
                   <h5 className="card-title">Total Bookings</h5>
-                  <h3 className="card-text btn">{totalBookings}</h3>
+                  <h3 className="card-text text-dark">{totalBookings}</h3>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-lg-4">
-            <div className="card bg-white text-dark mb-3">
+          <div className="col-lg-2">
+            <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
-                  <FaUserFriends size={50} />
+                  <FaUserFriends className="text-danger" size={50}/>
                 </div>
                 <div className="ms-3">
                   <h5 className="card-title">Total Guides</h5>
-                  <h3 className="card-text btn">{totalGuides}</h3>
+                  <h3 className="card-text text-dark">{totalGuides}</h3>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-lg-4">
-            <div className="card bg-white text-dark mb-3">
+          <div className="col-lg-2">
+            <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
-                  <FaMapMarkedAlt size={50} />
+                  <FaMapMarkedAlt className="text-success" size={50} />
                 </div>
                 <div className="ms-3">
                   <h5 className="card-title">Total Tours</h5>
-                  <h3 className="card-text btn">{totalTours}</h3>
+                  <h3 className="card-text text-dark">{totalTours}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-2">
+            <div className="card bg-success text-dark mb-3">
+              <div className="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <IoIosPeople className="text-warning" size={50} />
+                </div>
+                <div className="ms-3" >
+                  <h5 className="card-title">Total Guests</h5>
+                  <h3 className="card-text text-dark">{totalTours}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <div className="card bg-success text-dark mb-3">
+              <div className="card-body d-flex justify-content-between align-items-center">
+                <div>
+                <MdOutlineTour className="text-secondary" size={50} />
+                   <span>Mountain</span>
+                </div>
+                <div className="ms-3">
+                  <h5 className="card-title">Ongoing Tour</h5>
+                  <h3 className="card-text text-dark">{totalTours}</h3>
                 </div>
               </div>
             </div>
@@ -101,8 +133,8 @@ const Dashboard = () => {
 
         <div className="row g-4 mx-5">
           <div className="col-lg-8">
-            <div className="card text-center">
-            <div className="card-body">
+            <div className="card text-center bg-success "> 
+            <div className="card-body" >
                 <h4 className="card-title">Providing top-notch services for every adventure!</h4>
                 <div className="d-flex justify-content-start mt-3 d-flex justify-content-center">
                   <a href="#" className="btn btn-primary me-2">Our Mission</a>
@@ -116,8 +148,8 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-lg-4">
-            <div className="card h-100">
+          <div className="col-lg-4 ">
+            <div className="card h-100 bg-success">
               <div className="card-header btn text-white">
                 <h3 className="card-title mb-0">Bookings Today</h3>
               </div>
@@ -161,7 +193,7 @@ const Dashboard = () => {
                     </nav>
                   </>
                 ) : (
-                  <div className="p-3 text-center">No bookings today.</div>
+                  <div className="p-3 text-center" >No bookings today.</div>
                 )}
               </div>
             </div>

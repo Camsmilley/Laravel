@@ -423,3 +423,11 @@ overflow-y: scroll;
   font-weight: 600;
   font-size: var(--h3FontSize);
 }
+
+.card{
+  background: #EBF4F6;
+}
+
+.card-body{
+  background: #EBF4F6;
+}

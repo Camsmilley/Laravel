@@ -50,7 +50,7 @@ const GuestDashboard = () => {
           <div className="col-lg-8">
             <div className="card text-center">
               <div className="card-body">
-                <h2 className="card-title mb-5">Looking for extraordinary service for the community!</h2>
+                <h2 className="card-title mb-5">Looking for Treking Adventure!</h2>
                  <Carousel />
                  <div className="d-flex justify-content-center m-0">
                   <a href="#" className="btn me-2">We based to serve</a>
