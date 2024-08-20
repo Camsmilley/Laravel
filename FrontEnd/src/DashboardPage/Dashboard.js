@@ -8,6 +8,7 @@ import { FaBook, FaUserFriends, FaMapMarkedAlt } from 'react-icons/fa';
 import { MdOutlineTour } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import './Dashboard.css'
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [totalBookings, setTotalBookings] = useState(0);
@@ -137,7 +138,7 @@ const Dashboard = () => {
             <div className="card-body" >
                 <h4 className="card-title">Providing top-notch services for every adventure!</h4>
                 <div className="d-flex justify-content-start mt-3 d-flex justify-content-center">
-                  <a href="#" className="btn btn-primary me-2">Our Mission</a>
+                  <Link to="/ourmission" className="btn btn-primary me-2">Our Mission</Link>
                   <a href="#" className="btn btn-success">Explore More</a>
                 </div>
               </div>

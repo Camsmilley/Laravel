@@ -6,6 +6,7 @@ import GuestHeader from "./GuestHeader/GuestHeader";
 import Carousel from "./Carousel";
 import { AuthContext } from '../Components/AuthContext';
 import moment from 'moment';
+import { Link } from "react-router-dom";
 
 const GuestDashboard = () => {
   const [bookings, setBookings] = useState([]);
@@ -42,7 +43,8 @@ const GuestDashboard = () => {
         <div className="row mb-4">
           <div className="col text-center">
             <h1 className="display-4">Treks Safari Guest Dashboard</h1>
-            <p className="lead">This is where everything starts to happen!</p>
+            <p className="lead">This is where everything starts to happen?</p>
+            <small className="lead">Enjoy the Mountain</small>
           </div>
         </div>
 
@@ -53,8 +55,8 @@ const GuestDashboard = () => {
                 <h2 className="card-title mb-5">Looking for Treking Adventure!</h2>
                  <Carousel />
                  <div className="d-flex justify-content-center m-0">
-                  <a href="#" className="btn me-2">We based to serve</a>
-                  <a href="#" className="btn">Love for the Hikes</a>
+                  <Link to="/ourmission" className="btn me-2">Our Mission</Link>
+                  <Link to="/loveforhikes" className="btn">Love for the Hikes</Link>
                 </div>
               </div>
             </div>

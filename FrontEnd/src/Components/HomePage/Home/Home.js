@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import './Home.css'
+import { Link } from 'react-router-dom'
 
 // import Aos from 'aos'
 // import 'aos/dist/aos.css'
@@ -22,7 +23,7 @@ const Home = () => {
           Trust <strong>Our Hiking Experience</strong>
         </div>
 
-        <div data-aos='fade-up' data-aos-duration='6000' className="btn">Get In Touch</div>
+        <Link to="/getintouch" data-aos='fade-up' data-aos-duration='6000' className="btn">Get In Touch</Link>
       </div>
       
 
