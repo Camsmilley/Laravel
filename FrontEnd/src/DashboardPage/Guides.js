@@ -111,7 +111,7 @@ const Guides = () => {
                     <td style={tdStyles}>{guide.email}</td>
                     <td style={tdStyles}>{guide.role}</td>
                     <td style={{ ...tdStyles, ...actionStyles }}>
-                      <Link to={`/editguide/${guide.id}`} className="icon">
+                     <Link to={`/editguide/${guide.id}`} className="icon">
                         <BiEdit />
                       </Link>
                       <MdOutlineDeleteOutline

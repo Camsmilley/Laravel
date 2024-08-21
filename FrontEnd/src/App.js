@@ -30,7 +30,7 @@ import GuestEditBooking from './GuestDashboard/GuestEditBooking';
 import OurMission from './DashboardPage/OurMission';
 import GuestOurMission from './GuestDashboard/GuestOurMission';
 import WhattoWear from './GuestDashboard/WhattoWear';
-import ExploreMore from './GuestDashboard/ExploreMore';
+import BookNow from './GuestDashboard/BookNow';
 
 function App() {
   return (
@@ -57,7 +57,7 @@ function App() {
             <Route path="/carousel" element={<Carousel />} />
             <Route path="/ourmission" element={<GuestOurMission/>} />
             <Route path="/whattowear" element={<WhattoWear/>} />
-            <Route path="/exploremore" element={<ExploreMore/>} />
+            <Route path="/booknow" element={<BookNow/>} />
 
           </Route>
 

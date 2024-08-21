@@ -28,7 +28,7 @@
   }
   .OutletCSS .pageBody {
     flex-basis: 80%;
-    background: #EBF4F6;
+    background: #CCD3CA;
     height: 100%;
     border-radius: var(--borderRadius);
     padding: 2rem;
@@ -160,12 +160,12 @@
     border-radius: 10px;
     overflow: hidden;
     transition: 0.4s ease;
-    background: #EBF4F6;
+    background: #CCD3CA;
     box-shadow: 0 2px 2px var(--primaryMediumColor);
   }
   .OutletCSS .pageBody .singleTour:hover {
-    background: #EBF4F6;
-    border: 2px dashed #EBF4F6;
+    background: #CCD3CA;
+    border: 2px dashed #CCD3CA;
   }
   .OutletCSS .pageBody .singleTour .imgDiv {
     height: 150px !important;
@@ -216,11 +216,11 @@
     margin-top: 1rem;
     width: -moz-max-content;
     width: max-content;
-    background: #EBF4F6;
+    background: #CCD3CA;
   }
   .OutletCSS .pageBody .singleTour .tourInfo .btn:hover {
     background: #3f6c29;
-    color: #EBF4F6;
+    color: #CCD3CA;
     border: 2px solid #3f6c29;
   }
   .OutletCSS .pageBody .singleTour .btns {

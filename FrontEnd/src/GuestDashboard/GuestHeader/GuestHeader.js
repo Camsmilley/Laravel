@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillCloseCircle } from "react-icons/ai";
-import Logo from '../../assets/logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../Components/AuthContext';
 
@@ -20,11 +19,13 @@ const GuestHeader = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <nav className="navbar navbar-expand-lg" style={{
+      backgroundColor: '#CCD3CA'
+    }}>
       <div className="container-fluid mx-4">
-        <Link className="navbar-brand d-flex align-items-center" to="/">
-          <img src={Logo} alt="Logo" className="me-2" style={{ height: "40px" }} />
-          <span className="fw-bold">Treks Safari</span>
+      <Link className="navbar-brand d-flex align-items-center" to="/">
+          <em className="fw-bold text-success">Treks</em>
+          <span className="text-dark">Safari</span>
         </Link>
         <button className="navbar-toggler" type="button" onClick={toggleNavbar} aria-controls="navbarNav" aria-expanded={active} aria-label="Toggle navigation">
           {active ? <AiFillCloseCircle className="icon" /> : <GiHamburgerMenu className="icon" />}

@@ -21,7 +21,10 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logoDiv">
-        <Link to='/'><img src={Logo} alt="Logo" /></Link>
+      <Link className="navbar-brand d-flex align-items-center" to="/">
+          <em className="fw-bold text-success">Treks</em>
+          <span className="text-dark">Safari</span></Link>
+       
       </div>
 
       <div className={active}>

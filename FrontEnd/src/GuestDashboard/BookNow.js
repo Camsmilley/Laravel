@@ -4,10 +4,9 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime, AiOutlineSwapRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 // import { AuthContext } from '../../AuthContext'; 
-import "./ExploreMore.css";
 import GuestHeader from "./GuestHeader/GuestHeader";
 
-const ExploreMore = () => {
+const BookNow = () => {
   const [safaris, setSafari] = useState([]);
 
 
@@ -72,4 +71,4 @@ const ExploreMore = () => {
   );
 };
 
-export default ExploreMore;
+export default BookNow;

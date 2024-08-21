@@ -24,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem 1.5rem;
-    background: #EBF4F6;
+    background: #CCD3CA;
     z-index: 1000;
   }
   .headerdash .logoDiv img {
@@ -33,7 +33,7 @@
   @media screen and (max-width: 768px) {
     .headerdash .navBar {
       position: absolute;
-      background: #EBF4F6;
+      background: #CCD3CA;
       top: -50rem;
       width: 80%;
       padding: 1rem;
@@ -94,7 +94,7 @@
   }
   
   .footer {
-    background: #EBF4F6;
+    background: #CCD3CA;
   }
   .footer .secContainer {
     display: grid;
@@ -152,7 +152,7 @@
     justify-content: space-around;
     gap: 1rem;
     background: #3f6c29;
-    color: #EBF4F6;
+    color: #CCD3CA;
     border-radius: 10px;
     margin-bottom: 1rem;
   }

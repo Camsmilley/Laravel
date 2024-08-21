@@ -7,6 +7,9 @@ import Carousel from "./Carousel";
 import { AuthContext } from '../Components/AuthContext';
 import moment from 'moment';
 import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { GiConfirmed } from "react-icons/gi";
 
 const GuestDashboard = () => {
   const [bookings, setBookings] = useState([]);
@@ -54,7 +57,7 @@ const GuestDashboard = () => {
                 <h2 className="card-title mb-5">Looking for Treking Adventure?</h2>
                  <Carousel />
                  <div className="d-flex justify-content-center m-0">
-                 <Link to="/exploremore" className="btn me-2">Book Now</Link>
+                 <Link to="/booknow" className="btn me-2">Book Now</Link>
                   <Link to="/ourmission" className="btn me-2">Our Mission</Link>
                   <Link to="/whattowear" className="btn">What to Wear Hiking</Link>
                 </div>
@@ -77,6 +80,7 @@ const GuestDashboard = () => {
                           <th scope="col">Name</th>
                           <th scope="col">Guide Name</th>
                           <th scope="col">Arrival Date</th>
+                          <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -86,6 +90,9 @@ const GuestDashboard = () => {
                             <td>{booking.guestName}</td>
                             <td>{booking.guide.name}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
+                            <td><a><GiConfirmed className='icon me-2'/></a>
+                              <a ><BiEdit className="icon"/> </a>
+                            <a><MdOutlineDeleteOutline className="icon"/></a></td>
                           </tr>
                         ))}
                       </tbody>

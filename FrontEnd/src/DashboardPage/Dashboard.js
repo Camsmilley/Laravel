@@ -4,11 +4,15 @@ import HeaderDash from "./HeaderDashboard/HeaderDash";
 import Video from "../assets/video1.mp4";
 import img from "../assets/card1.jpg";
 import moment from 'moment';
-import { FaBook, FaUserFriends, FaMapMarkedAlt } from 'react-icons/fa';
+import { BsBookmarkCheck } from "react-icons/bs";
 import { MdOutlineTour } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import './Dashboard.css'
 import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import { GiConfirmed } from "react-icons/gi";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { MdFreeCancellation } from "react-icons/md";
 
 const Dashboard = () => {
   const [totalBookings, setTotalBookings] = useState(0);
@@ -62,11 +66,11 @@ const Dashboard = () => {
         </div> */}
 
         <div className="row g-4 mx-5">
-          <div className="col-lg-2">
+          <div className="col-lg-3">
             <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
-                  <FaBook className="text-primary" size={50} />
+                  <BsBookmarkCheck className="text-primary" size={50} />
                 </div>
                 <div className="ms-3">
                   <h5 className="card-title">Total Bookings</h5>
@@ -75,27 +79,27 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-4">
             <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
-                  <FaUserFriends className="text-danger" size={50}/>
+                  <GiConfirmed className="text-success" size={50}/>
                 </div>
                 <div className="ms-3">
-                  <h5 className="card-title">Total Guides</h5>
+                  <h5 className="card-title">Completed Bookings</h5>
                   <h3 className="card-text text-dark">{totalGuides}</h3>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-3">
             <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
-                  <FaMapMarkedAlt className="text-success" size={50} />
+                  <MdFreeCancellation className="text-danger" size={50} />
                 </div>
-                <div className="ms-3">
-                  <h5 className="card-title">Total Tours</h5>
+                <div className="ms-4">
+                  <h5 className="card-title">Cancelled Bookings</h5>
                   <h3 className="card-text text-dark">{totalTours}</h3>
                 </div>
               </div>
@@ -108,23 +112,8 @@ const Dashboard = () => {
                 <div>
                   <IoIosPeople className="text-warning" size={50} />
                 </div>
-                <div className="ms-3" >
+                <div className="ms-2" >
                   <h5 className="card-title">Total Guests</h5>
-                  <h3 className="card-text text-dark">{totalTours}</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4">
-            <div className="card bg-success text-dark mb-3">
-              <div className="card-body d-flex justify-content-between align-items-center">
-                <div>
-                <MdOutlineTour className="text-secondary" size={50} />
-                   <span>Mountain</span>
-                </div>
-                <div className="ms-3">
-                  <h5 className="card-title">Ongoing Tour</h5>
                   <h3 className="card-text text-dark">{totalTours}</h3>
                 </div>
               </div>
@@ -133,7 +122,7 @@ const Dashboard = () => {
         </div>
 
         <div className="row g-4 mx-5">
-          <div className="col-lg-8">
+          <div className="col-lg-7">
             <div className="card text-center bg-success "> 
             <div className="card-body" >
                 <h4 className="card-title">Providing top-notch services for every adventure!</h4>
@@ -149,7 +138,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 ">
+          <div className="col-lg-5 ">
             <div className="card h-100 bg-success">
               <div className="card-header btn text-white">
                 <h3 className="card-title mb-0">Bookings Today</h3>
@@ -164,6 +153,7 @@ const Dashboard = () => {
                           <th scope="col">Safari Name</th>
                           <th scope="col">Guide Name</th>
                           <th scope="col">Arrival Date</th>
+                          <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -173,6 +163,9 @@ const Dashboard = () => {
                             <td>{booking?.safariname || 'N/A'}</td>
                             <td>{booking?.guide?.name || 'N/A'}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
+                            <td><a><GiConfirmed className='icon me-2'/></a>
+                              <a ><BiEdit className="icon"/> </a>
+                            <a><MdOutlineDeleteOutline className="icon"/></a></td>
                           </tr>
                         ))}
                       </tbody>

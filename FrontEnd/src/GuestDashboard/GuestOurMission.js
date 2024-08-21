@@ -9,7 +9,7 @@ const GuestOurMission = () => {
             <div className='secTitle'>
                 <div className='title'>
                 </div>
-    <small> Mission and Vision Statement</small>
+    <h1> Mission and Vision Statement</h1>
                     <h4></h4>
       </div>
       <hr/>

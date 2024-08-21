@@ -46,7 +46,7 @@
   .home .homeTitle strong {
     font-weight: 800;
   }
-  .home .btn {
+  /* .home .btn {
     background: transparent;
     border: 2px solid var(--whiteColor);
     color: var(--whiteColor);
@@ -56,10 +56,10 @@
     width: max-content;
   }
   .home .btn:hover {
-    background: #EBF4F6;
+    background: #CCD3CA;
     color: #3f6c29;
     border: 2px solid var(--whiteColor);
-  }
+  } */
   
   @media screen and (min-width: 690px) {
     .home .homeText {

@@ -28,15 +28,15 @@
     .tours .secContainer .tourContainer .singleTour {
       width: 100%;
       position: relative;
-      border: 2px dashed #EBF4F6;
+      border: 2px dashed #CCD3CA;
       padding-bottom: 1rem;
       border-radius: 10px;
       overflow: hidden;
       transition: 0.4s ease;
     }
     .tours .secContainer .tourContainer .singleTour:hover {
-      background: #EBF4F6;
-      border: 2px dashed #EBF4F6;
+      background: #CCD3CA;
+      border: 2px dashed #CCD3CA;
     }
     .tours .secContainer .tourContainer .singleTour .imgDiv {
       height: 210px !important;
@@ -84,15 +84,15 @@
     .tours .secContainer .tourContainer .singleTour .tourInfo .btn {
       color: #3f6c29;
       font-size: 14px;
-      border: 2px solid #EBF4F6;
+      border: 2px solid #CCD3CA;
       transition: 0.3s ease;
       margin-top: 1rem;
       width: -moz-max-content;
       width: max-content;
-      background: #EBF4F6;
+      background: #CCD3CA;
     }
     .tours .secContainer .tourContainer .singleTour .tourInfo .btn:hover {
-      background: #EBF4F6;
+      background: #CCD3CA;
       color: #3f6c29;
       border: 2px solid #3f6c29;
     }
@@ -137,11 +137,11 @@
         border: 2px solid #3f6c29;
       }
       .tours .secContainer .tourContainer .singleTour:nth-child(even) {
-        background: #EBF4F6;
+        background: #CCD3CA;
       }
       .tours .secContainer .tourContainer .singleTour:nth-child(even):hover {
         background: none;
-        border: 2px dashed #EBF4F6;
+        border: 2px dashed #CCD3CA;
       }
     }
     @media screen and (min-width: 1054px) {

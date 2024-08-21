@@ -28,16 +28,23 @@
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem 1.5rem;
-  background: #EBF4F6;
+  background: #CCD3CA;
   z-index: 1000;
 }
 .header .logoDiv img {
   width: 50px;
 }
+.header .text-success {
+  font-size: 20px;
+}
+
+.header .text-dark{
+  font-size: 20px;
+}
 @media screen and (max-width: 768px) {
   .header .navBar {
     position: absolute;
-    background: #EBF4F6;
+    background: #CCD3CA;
     top: -50rem;
     width: 80%;
     padding: 1rem;
@@ -98,7 +105,7 @@
 }
 
 .footer {
-  background: #EBF4F6;
+  background: #CCD3CA;
 }
 .footer .secContainer {
   display: grid;
@@ -156,7 +163,7 @@
   justify-content: space-around;
   gap: 1rem;
   background: #3f6c29;
-  color: #EBF4F6;
+  color: #CCD3CA;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
@@ -168,13 +175,13 @@
   cursor: pointer;
 }
 .footer .secContainer .bottomDiv .social .icon:hover {
-  color: white;
+  color: #A2CA71;
 }
-.footer .staffLogin {
+.footer .nav-link {
   color: var(--whiteColor);
 }
-.footer .staffLogin:hover {
-  color: var(--primaryColorLight);
+.footer .nav-link:hover {
+  color: #A2CA71;
 }
 
 @media screen and (min-width: 574px) {
