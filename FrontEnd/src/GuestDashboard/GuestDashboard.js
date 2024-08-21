@@ -52,11 +52,12 @@ const GuestDashboard = () => {
           <div className="col-lg-8">
             <div className="card text-center">
               <div className="card-body">
-                <h2 className="card-title mb-5">Looking for Treking Adventure!</h2>
+                <h2 className="card-title mb-5">Looking for Treking Adventure?</h2>
                  <Carousel />
                  <div className="d-flex justify-content-center m-0">
+                 <Link to="/exploremore" className="btn me-2">Explore More</Link>
                   <Link to="/ourmission" className="btn me-2">Our Mission</Link>
-                  <Link to="/loveforhikes" className="btn">Love for the Hikes</Link>
+                  <Link to="/whattowear" className="btn">What to Wear Hiking</Link>
                 </div>
               </div>
             </div>

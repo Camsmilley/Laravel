@@ -27,10 +27,10 @@ import { AuthProvider } from './Components/AuthContext';
 import Carousel from './GuestDashboard/Carousel';
 import EditBooking from './DashboardPage/EditBooking';
 import GuestEditBooking from './GuestDashboard/GuestEditBooking';
-import GetinTouch from './Components/HomePage/Home/GetinTouch';
-import LoveforHikes from './GuestDashboard/LoveforHikes';
 import OurMission from './DashboardPage/OurMission';
 import GuestOurMission from './GuestDashboard/GuestOurMission';
+import WhattoWear from './GuestDashboard/WhattoWear';
+import ExploreMore from './GuestDashboard/ExploreMore';
 
 function App() {
   return (
@@ -55,8 +55,9 @@ function App() {
             <Route path="/guestguide" element={<GuestGuide />} />
             <Route path="/guesteditbooking" element={<GuestEditBooking />} />
             <Route path="/carousel" element={<Carousel />} />
-            <Route path="/loveforhikes" element={<LoveforHikes/>} />
             <Route path="/ourmission" element={<GuestOurMission/>} />
+            <Route path="/whattowear" element={<WhattoWear/>} />
+            <Route path="/exploremore" element={<ExploreMore/>} />
 
           </Route>
 
@@ -73,7 +74,6 @@ function App() {
   <Route path="/addguide" element={<AddGuide />} />
   <Route path="/editguide/:id" element={<EditGuide />} />
   <Route path="/editbooking/:id" element={<EditBooking />} />
-  <Route path="/getintouch" element={<GetinTouch />} />
   <Route path="/ourmission" element={<OurMission />} />
 </Route>
         </Routes>
