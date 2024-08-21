@@ -5,6 +5,7 @@ import { AiOutlineFieldTime, AiOutlineSwapRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 // import { AuthContext } from '../../AuthContext'; 
 import "./ExploreMore.css";
+import GuestHeader from "./GuestHeader/GuestHeader";
 
 const ExploreMore = () => {
   const [safaris, setSafari] = useState([]);
@@ -23,11 +24,13 @@ const ExploreMore = () => {
   }, []);
 
   return (
+    <>
+    <GuestHeader/>
     <div className="tours container section">
       <div className="secContainer">
         <span className="secTitle">
           Book Now!
-          <p>Top Outdoor Adventures Awaiting You</p>
+          <p>Top outdoor adventures awaits you</p>
         </span>
 
         <div className="tourContainer grid">
@@ -65,6 +68,7 @@ const ExploreMore = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

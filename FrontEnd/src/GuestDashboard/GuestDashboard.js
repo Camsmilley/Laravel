@@ -43,8 +43,7 @@ const GuestDashboard = () => {
         <div className="row mb-4">
           <div className="col text-center">
             <h1 className="display-4">Treks Safari Guest Dashboard</h1>
-            <p className="lead">This is where everything starts to happen?</p>
-            <small className="lead">Enjoy the Mountain</small>
+            <p className="lead">This is where everything starts to happen!</p>
           </div>
         </div>
 
