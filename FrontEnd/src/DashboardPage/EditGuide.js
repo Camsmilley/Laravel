@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { useParams, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 import { AiOutlinePlus } from "react-icons/ai";
+import HeaderDash from "./HeaderDashboard/HeaderDash";
 
 const EditGuide = () => {
   const { id } = useParams();
@@ -71,6 +72,8 @@ const EditGuide = () => {
   };
 
   return (
+    <>
+    <HeaderDash/>
     <div className="OutletCSS">
       <div className="pageBody">
         <div className="sectionTitle">
@@ -158,6 +161,7 @@ const EditGuide = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

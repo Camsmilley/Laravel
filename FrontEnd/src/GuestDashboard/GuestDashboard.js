@@ -55,7 +55,7 @@ const GuestDashboard = () => {
                 <h2 className="card-title mb-5">Looking for Treking Adventure?</h2>
                  <Carousel />
                  <div className="d-flex justify-content-center m-0">
-                 <Link to="/exploremore" className="btn me-2">Explore More</Link>
+                 <Link to="/exploremore" className="btn me-2">Book Now</Link>
                   <Link to="/ourmission" className="btn me-2">Our Mission</Link>
                   <Link to="/whattowear" className="btn">What to Wear Hiking</Link>
                 </div>

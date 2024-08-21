@@ -93,7 +93,7 @@ const Footer = () => {
             <AiFillInstagram className='icon'/>
           </div>
 
-          <Link className='staffLogin' to='/stafflogin'></Link>
+          <a href="#top" className="nav-link">Back to Top</a>
         </div>
       </div>
       
