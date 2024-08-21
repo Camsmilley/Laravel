@@ -15,7 +15,7 @@ import {AiOutlineWhatsApp} from 'react-icons/ai'
 const Footer = () => {
 
   return (
-    <div className='footer'>
+    <div className='foot'>
 
       <div className="secContainer container">
         <div className="content grid">
