@@ -65,7 +65,7 @@ const Dashboard = () => {
           </div>
         </div> */}
 
-        <div className="row g-4 mx-5">
+        <div className="row g-4 mx-6">
           <div className="col-lg-3">
             <div className="card bg-success text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
@@ -121,7 +121,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="row g-4 mx-5">
+        <div className="row g-4 mx-6">
           <div className="col-lg-7">
             <div className="card text-center bg-success "> 
             <div className="card-body" >
@@ -163,9 +163,8 @@ const Dashboard = () => {
                             <td>{booking?.safariname || 'N/A'}</td>
                             <td>{booking?.guide?.name || 'N/A'}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><a><GiConfirmed className='icon me-2'/></a>
-                              <a ><BiEdit className="icon"/> </a>
-                            <a><MdOutlineDeleteOutline className="icon"/></a></td>
+                            <td><button className="btn"><GiConfirmed className='icon me-2'/>Confirm</button>
+                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Delete</button></td>
                           </tr>
                         ))}
                       </tbody>
