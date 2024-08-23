@@ -31,6 +31,8 @@ import OurMission from './DashboardPage/OurMission';
 import GuestOurMission from './GuestDashboard/GuestOurMission';
 import WhattoWear from './GuestDashboard/WhattoWear';
 import BookNow from './GuestDashboard/BookNow';
+import Mission from './Components/Mission';
+import Wear from './Components/Wear';
 
 function App() {
   return (
@@ -44,6 +46,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/stafflogin" element={<StaffLogin />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/ourpurpose" element={<Mission />} />
+          <Route path="/whattowear" element={<Wear />} />
+
+
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>

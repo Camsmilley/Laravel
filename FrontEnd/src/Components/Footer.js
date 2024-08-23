@@ -73,10 +73,10 @@ const Footer = () => {
              </div>
              <div className="footerLinks">
               <ul>
-                <Link to='/about' className="text-dark">About Us</Link>
-                <li>Review</li>
+                <Link to='/about' className="text-dark">About Us</Link><br/>
+                <Link to='/ourpurpose' className="text-dark">Our Purpose</Link><br/>
+                <Link to='/whattowear' className="text-dark">What to Wear</Link>
                 <li>Gallery</li>
-                <li>Blog</li>
                 <li>Careers</li>
               </ul>
              </div>

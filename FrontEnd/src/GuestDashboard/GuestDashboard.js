@@ -8,7 +8,7 @@ import { AuthContext } from '../Components/AuthContext';
 import moment from 'moment';
 import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
-import { MdOutlineDeleteOutline } from "react-icons/md";
+import { FcCancel } from "react-icons/fc";
 import { GiConfirmed } from "react-icons/gi";
 
 const GuestDashboard = () => {
@@ -90,8 +90,8 @@ const GuestDashboard = () => {
                             <td>{booking.guestName}</td>
                             <td>{booking.guide.name}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><button className="btn"><GiConfirmed className="icon gap-2"/>Confirm</button>
-                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Cancel</button></td>
+                            <td><button className="btn  gap-2 "><GiConfirmed className="icon gap-2 text-success"/>Confirm</button>
+                            <button className="btn"><FcCancel className="icon"/>Cancel</button></td>
                           </tr>
                         ))}
                       </tbody>

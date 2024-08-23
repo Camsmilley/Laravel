@@ -11,7 +11,7 @@ import './Dashboard.css'
 import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { GiConfirmed } from "react-icons/gi";
-import { MdOutlineDeleteOutline } from "react-icons/md";
+import { FcCancel } from "react-icons/fc";
 import { MdFreeCancellation } from "react-icons/md";
 
 const Dashboard = () => {
@@ -163,8 +163,8 @@ const Dashboard = () => {
                             <td>{booking?.safariname || 'N/A'}</td>
                             <td>{booking?.guide?.name || 'N/A'}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><button className="btn"><GiConfirmed className='icon'/>Confirm</button>
-                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Cancel</button></td>
+                            <td><button className="btn text-white"><GiConfirmed className='icon text-success'/>Confirm</button>
+                            <button className="btn"><FcCancel className="icon"/>Cancel</button></td>
                           </tr>
                         ))}
                       </tbody>
