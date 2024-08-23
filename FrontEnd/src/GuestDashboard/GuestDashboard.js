@@ -51,7 +51,7 @@ const GuestDashboard = () => {
         </div>
 
         <div className="row g-4 mx-5">
-          <div className="col-lg-7">
+          <div className="col-lg-6">
             <div className="card text-center">
               <div className="card-body">
                 <h2 className="card-title mb-5">Looking for Treking Adventure?</h2>
@@ -65,7 +65,7 @@ const GuestDashboard = () => {
             </div>
           </div>
 
-          <div className="col-lg-5">
+          <div className="col-lg-6">
             <div className="card h-100">
               <div className="card-header btn text-white">
                 <h3 className="card-title mb-0">Your Bookings</h3>
@@ -90,8 +90,8 @@ const GuestDashboard = () => {
                             <td>{booking.guestName}</td>
                             <td>{booking.guide.name}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><button className="btn"><GiConfirmed className='icon me-2'/>Confirm</button>
-                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Delete</button></td>
+                            <td><button className="btn"><GiConfirmed className="icon gap-2"/>Confirm</button>
+                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Cancel</button></td>
                           </tr>
                         ))}
                       </tbody>

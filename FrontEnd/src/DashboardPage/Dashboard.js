@@ -163,8 +163,8 @@ const Dashboard = () => {
                             <td>{booking?.safariname || 'N/A'}</td>
                             <td>{booking?.guide?.name || 'N/A'}</td>
                             <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><button className="btn"><GiConfirmed className='icon me-2'/>Confirm</button>
-                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Delete</button></td>
+                            <td><button className="btn"><GiConfirmed className='icon'/>Confirm</button>
+                            <button className="btn"><MdOutlineDeleteOutline className="icon"/>Cancel</button></td>
                           </tr>
                         ))}
                       </tbody>
