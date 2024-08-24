@@ -62,8 +62,9 @@ class BookingController extends Controller
             'noc' => 'required|integer',
             'arrivalDate' => 'required|date',
             'message' => 'nullable|string',
-            'guideId' => 'required|exists:guides,id', // Validate guideId
-            'guestId' => 'nullable|exists:users,id' // Validate guestId
+            'guideId' => 'required|exists:guides,id',
+            'guestId' => 'nullable|exists:users,id',
+            'status' => 'required|in:pending,confirmed,cancelled' // Add this line
         ]);
 
         $booking->update($validatedData);
@@ -93,10 +94,39 @@ class BookingController extends Controller
     }
 
     // BookingController.php
+    // public function totalBookings()
+    // {
+    //     $total = Booking::count();
+    //     return response()->json(['total' => $total]);
+    // }
+
     public function totalBookings()
     {
         $total = Booking::count();
-        return response()->json(['total' => $total]);
+        $completed = Booking::where('status', 'confirmed')->count();
+        $cancelled = Booking::where('status', 'cancelled')->count();
+        return response()->json([
+            'total' => $total,
+            'completed' => $completed,
+            'cancelled' => $cancelled
+        ]);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $booking = Booking::find($id);
+
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
+        }
+
+        $validatedData = $request->validate([
+            'status' => 'required|in:pending,confirmed,cancelled',
+        ]);
+
+        $booking->update($validatedData);
+
+        return response()->json($booking);
     }
 
     // New method to fetch bookings by guestId

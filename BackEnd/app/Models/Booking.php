@@ -19,8 +19,9 @@ class Booking extends Model
         'noc',
         'arrivalDate',
         'message',
-        'guideId', // Add guideId to fillable
-        'guestId' // Add guestId to fillable
+        'guideId',
+        'guestId',
+        'status' // Add status to fillable
     ];
 
     public function guide()

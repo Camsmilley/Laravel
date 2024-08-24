@@ -43,3 +43,4 @@ Route::resource('guides', GuideController::class);
 // New route for fetching bookings by guestId
 Route::get('/user-bookings/{guestId}', [BookingController::class, 'userBookings']);
 
+Route::put('/bookings/{id}/status', [BookingController::class, 'updateStatus']);

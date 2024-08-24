@@ -16,33 +16,41 @@ import { MdFreeCancellation } from "react-icons/md";
 
 const Dashboard = () => {
   const [totalBookings, setTotalBookings] = useState(0);
-  const [totalGuides, setTotalGuides] = useState(0);
-  const [totalTours, setTotalTours] = useState(0);
+  const [completedBookings, setCompletedBookings] = useState(0);
+  const [cancelledBookings, setCancelledBookings] = useState(0);
   const [bookingsToday, setBookingsToday] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [bookingsRes, guidesRes, toursRes, dailyBookingsRes] = await Promise.all([
-          Axios.get('http://localhost:8000/api/total-bookings'),
-          Axios.get('http://localhost:8000/api/total-guides'),
-          Axios.get('http://localhost:8000/api/total-tours'),
-          Axios.get('http://localhost:8000/api/daily-bookings')
-        ]);
-
-        setTotalBookings(bookingsRes.data.total);
-        setTotalGuides(guidesRes.data.total);
-        setTotalTours(toursRes.data.total);
-        setBookingsToday(dailyBookingsRes.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const [bookingsRes, dailyBookingsRes] = await Promise.all([
+        Axios.get('http://localhost:8000/api/total-bookings'),
+        Axios.get('http://localhost:8000/api/daily-bookings')
+      ]);
+
+      setTotalBookings(bookingsRes.data.total);
+      setCompletedBookings(bookingsRes.data.completed);
+      setCancelledBookings(bookingsRes.data.cancelled);
+      setBookingsToday(dailyBookingsRes.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  const handleStatusChange = (bookingId, newStatus) => {
+    Axios.put(`http://localhost:8000/api/bookings/${bookingId}/status`, { status: newStatus })
+      .then(response => {
+        fetchData(); // Refresh data after status change
+      })
+      .catch(error => {
+        console.error('Error updating booking status:', error);
+      });
+  };
 
   const indexOfLastBooking = currentPage * itemsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - itemsPerPage;
@@ -87,7 +95,7 @@ const Dashboard = () => {
                 </div>
                 <div className="ms-3">
                   <h5 className="card-title">Completed Bookings</h5>
-                  <h3 className="card-text text-dark">{totalGuides}</h3>
+                  <h3 className="card-text text-dark">{completedBookings}</h3>
                 </div>
               </div>
             </div>
@@ -100,7 +108,7 @@ const Dashboard = () => {
                 </div>
                 <div className="ms-4">
                   <h5 className="card-title">Cancelled Bookings</h5>
-                  <h3 className="card-text text-dark">{totalTours}</h3>
+                  <h3 className="card-text text-dark">{cancelledBookings}</h3>
                 </div>
               </div>
             </div>
@@ -114,7 +122,7 @@ const Dashboard = () => {
                 </div>
                 <div className="ms-2" >
                   <h5 className="card-title">Total Guests</h5>
-                  <h3 className="card-text text-dark">{totalTours}</h3>
+                  <h3 className="card-text text-dark">{totalBookings}</h3>
                 </div>
               </div>
             </div>
@@ -149,24 +157,36 @@ const Dashboard = () => {
                     <table className="table table-hover">
                       <thead>
                         <tr>
-                          <th scope="col">Guest Name</th>
-                          <th scope="col">Safari Name</th>
-                          <th scope="col">Guide Name</th>
-                          <th scope="col">Arrival Date</th>
-                          <th scope="col">Action</th>
+                            <th scope="col">Guest Name</th>
+                            <th scope="col">Safari Name</th>
+                            <th scope="col">Guide Name</th>
+                            <th scope="col">Arrival Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {currentBookings.map((booking) => (
-                          <tr key={booking.id}>
-                            <td>{booking?.guestName || 'N/A'}</td>
-                            <td>{booking?.safariname || 'N/A'}</td>
-                            <td>{booking?.guide?.name || 'N/A'}</td>
-                            <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><button className="btn text-white"><GiConfirmed className='icon text-success'/>Confirm</button>
-                            <button className="btn"><FcCancel className="icon"/>Cancel</button></td>
-                          </tr>
-                        ))}
+                      {currentBookings.map((booking) => (
+                        <tr key={booking.id}>
+                          <td>{booking?.guestName || 'N/A'}</td>
+                          <td>{booking?.safariname || 'N/A'}</td>
+                          <td>{booking?.guide?.name || 'N/A'}</td>
+                          <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
+                          <td>{booking.status}</td>
+                          <td>
+                            {booking.status === 'pending' && (
+                              <>
+                                <button className="btn text-white" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
+                                  <GiConfirmed className='icon text-success'/>Confirm
+                                </button>
+                                <button className="btn" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
+                                  <FcCancel className="icon"/>Cancel
+                                </button>
+                              </>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
                       </tbody>
                     </table>
 

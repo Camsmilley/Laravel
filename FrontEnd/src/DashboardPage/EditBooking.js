@@ -17,7 +17,8 @@ const EditBooking = () => {
     noc: '',
     arrivalDate: '',
     message: '',
-    guideId: ''
+    guideId: '',
+    status: '' // Add status to formData
   });
 
   const [guides, setGuides] = useState([]);
@@ -177,6 +178,22 @@ const EditBooking = () => {
                 onChange={handleChange}
                 placeholder="Enter any additional information"
               />
+            </div>
+
+            <div className="fieldDiv">
+              <label htmlFor="status">Booking Status</label>
+              <select
+                id="status"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Status</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
             </div>
 
             <div className="fieldDiv">
