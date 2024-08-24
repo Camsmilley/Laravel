@@ -37,10 +37,11 @@ const GuestDashboard = () => {
     axios.put(`http://localhost:8000/api/bookings/${bookingId}/status`, { status: newStatus })
       .then(response => {
         fetchBookings(); // Refresh bookings after status change
-        window.location.reload(); // Reload the page
+        alert(response.data.message); // Show a message to the user
       })
       .catch(error => {
         console.error('Error updating booking status:', error);
+        alert('An error occurred while updating the booking status. Please try again.');
       });
   };
 
@@ -111,12 +112,15 @@ const GuestDashboard = () => {
                         <td>
                           {booking.status === 'pending' && (
                             <>
-                              <button className="btn gap-2" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
-                                <GiConfirmed className="icon gap-2 text-success"/>Confirm
-                              </button>
-                              <button className="btn" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
-                                <FcCancel className="icon"/>Cancel
-                              </button>
+                            <div className="d-flex justify-content-center"> 
+                              <button className="btn gap-2 me-1" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
+                                  Confirm
+                                </button>
+                                <button className="btn" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
+                                  Cancel
+                                </button>
+                            </div>
+                             
                             </>
                           )}
                         </td>

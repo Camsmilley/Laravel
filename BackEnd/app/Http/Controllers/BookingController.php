@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Mail\BookingStatusUpdated;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -115,20 +117,41 @@ class BookingController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $booking = Booking::find($id);
-
+    
         if (!$booking) {
             return response()->json(['message' => 'Booking not found'], 404);
         }
-
+    
         $validatedData = $request->validate([
-            'status' => 'required|in:pending,confirmed,cancelled',
+            'status' => 'required|in:confirmed,cancelled',
         ]);
-
-        $booking->update($validatedData);
-
-        return response()->json($booking);
+    
+        $booking->update(['status' => $validatedData['status']]);
+    
+        try {
+            // Send email directly to the guest
+            Mail::to($booking->email)->send(new BookingStatusUpdated($booking));
+    
+            // Log success
+            \Log::info("Email sent successfully for booking {$id}.");
+    
+            return response()->json([
+                'message' => 'Booking status updated and email sent successfully',
+                'booking' => $booking
+            ]);
+        } catch (\Exception $e) {
+            // Log the error
+            \Log::error("Failed to send email for booking {$id}: " . $e->getMessage());
+    
+            return response()->json([
+                'message' => 'Booking status updated but failed to send email',
+                'booking' => $booking,
+                'error' => 'Email could not be sent. Please contact the guest directly.'
+            ], 200);
+        }
     }
-
+    
+    
     // New method to fetch bookings by guestId
     public function userBookings($guestId)
     {

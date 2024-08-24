@@ -83,7 +83,7 @@ const Footer = () => {
           </div>
 
         </div>
-        <div  className="bottomDiv flex">
+        <div  className="bottomDiv flex container-fluid">
           <p >TreksSafari 2024 - All rights reserved</p>
 
           <div className="social flex">
