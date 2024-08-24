@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [totalBookings, setTotalBookings] = useState(0);
   const [completedBookings, setCompletedBookings] = useState(0);
   const [cancelledBookings, setCancelledBookings] = useState(0);
+  const [totalGuest, setTotalGuest] = useState(0);
   const [bookingsToday, setBookingsToday] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -28,12 +29,14 @@ const Dashboard = () => {
 
   const fetchData = async () => {
     try {
-      const [bookingsRes, dailyBookingsRes] = await Promise.all([
+      const [bookingsRes, dailyBookingsRes, totalGuestRes] = await Promise.all([
         Axios.get('http://localhost:8000/api/total-bookings'),
-        Axios.get('http://localhost:8000/api/daily-bookings')
+        Axios.get('http://localhost:8000/api/daily-bookings'),
+        Axios.get('http://localhost:8000/api/total-guest')
       ]);
 
       setTotalBookings(bookingsRes.data.total);
+      setTotalGuest(totalGuestRes.data.total);
       setCompletedBookings(bookingsRes.data.completed);
       setCancelledBookings(bookingsRes.data.cancelled);
       setBookingsToday(dailyBookingsRes.data);
@@ -122,7 +125,7 @@ const Dashboard = () => {
                 </div>
                 <div className="ms-2" >
                   <h5 className="card-title">Total Guests</h5>
-                  <h3 className="card-text text-dark">{totalBookings}</h3>
+                  <h3 className="card-text text-dark">{totalGuest}</h3>
                 </div>
               </div>
             </div>
@@ -132,13 +135,13 @@ const Dashboard = () => {
         <div className="row g-4 mx-6">
           <div className="col-lg-7">
             <div className="card text-center bg-success "> 
-            <div className="card-body" >
+            {/* <div className="card-body" >
                 <h4 className="card-title">Providing top-notch services for every adventure!</h4>
                 <div className="d-flex justify-content-start mt-3 d-flex justify-content-center">
                   <Link to="/ourmission" className="btn btn-primary me-2">Our Mission</Link>
                   <a href="#" className="btn btn-success">Explore More</a>
                 </div>
-              </div>
+              </div> */}
               <div className="ratio ratio-16x9">
                 <video src={Video} autoPlay loop muted className="card-img-top"></video>
               </div>
@@ -176,12 +179,15 @@ const Dashboard = () => {
                           <td>
                             {booking.status === 'pending' && (
                               <>
-                                <button className="btn text-white" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
-                                  <GiConfirmed className='icon text-success'/>Confirm
-                                </button>
-                                <button className="btn" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
-                                  <FcCancel className="icon"/>Cancel
-                                </button>
+                              <div className="d-flex justify-content-center">
+                                 <button className="btn btn-sm me-1" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
+                                   Confirm
+                                  </button>
+                                  <button className="btn btn-sm" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
+                                    Cancel
+                                  </button>
+                              </div>
+                               
                               </>
                             )}
                           </td>

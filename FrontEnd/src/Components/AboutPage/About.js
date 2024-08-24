@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./About.css";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 
 const About = () => {
+  const [name, setName] = useState("");
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here we would typically send the feedback to a server
+    // For this example, we'll use localStorage to store the feedback
+    const newFeedback = { name, feedback, date: new Date().toISOString() };
+    const existingFeedback = JSON.parse(localStorage.getItem("feedback") || "[]");
+    localStorage.setItem("feedback", JSON.stringify([...existingFeedback, newFeedback]));
+
+    // Clear the form
+    setName("");
+    setFeedback("");
+
+   
+  };
+
   return (
     <>
       <Header />
@@ -98,21 +116,32 @@ const About = () => {
         </span>
 
         <div className="formDiv">
-           <div className="inputDiv">
-            <label htmlFor="name">Reviewer Name</label>
-            <input type="text" placeholder="Enter your name" />
-           </div>
-           {/* <div className="inputDiv flex">
-            <label htmlFor="name">Reviewer Name</label>
-            <input type="text" placeholder="Enter your name" />
-           </div> */}
-           <div className="inputDiv">
-            <label htmlFor="name">Feedback</label>
-            <textarea name="" id="" placeholder="Write feedback"></textarea>
-           </div>
-           <button className="btn">
-            Submit Feedback
-           </button>
+        <form onSubmit={handleSubmit}>
+              <div className="inputDiv">
+                <label htmlFor="name">Reviewer Name</label>
+                <input 
+                  type="text" 
+                  placeholder="Enter your name" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="inputDiv">
+                <label htmlFor="feedback">Feedback</label>
+                <textarea 
+                  name="feedback" 
+                  id="feedback" 
+                  placeholder="Write feedback"
+                  value={feedback}
+                  onChange={(e) => setFeedback(e.target.value)}
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" className="btn">
+                Submit Feedback
+              </button>
+            </form>
         </div>
         </div>
       </div>

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\BookingStatusUpdated;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Booking;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test-email', function () {
+    $booking = Booking::first(); // Get the first booking for testing
+    Mail::to('mcdharnelpagaragan@gmail.com')->send(new BookingStatusUpdated($booking));
+    return 'Test email sent';
 });

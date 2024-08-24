@@ -77,4 +77,11 @@ class AuthController extends Controller
             'is_admin' => $request->user()->is_admin,
         ]);
     }
+
+    public function totalGuest()
+    {
+        $totalGuest = User::where('is_admin', false)->count();
+        return response()->json(['total' => $totalGuest]);
+    }
+    
 }
