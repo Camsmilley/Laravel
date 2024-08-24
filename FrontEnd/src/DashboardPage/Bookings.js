@@ -71,6 +71,7 @@ const Bookings = () => {
                   <th style={thStyles}>Number of People</th>
                   <th style={thStyles}>Number of Children</th>
                   <th style={thStyles}>Arrival Date</th>
+                  <th style={thStyles}>Status</th>
                   <th style={thStyles}>Message</th>
                   <th style={thStyles}>Guide</th>
                   <th style={thStyles}>Action</th>
@@ -88,6 +89,7 @@ const Bookings = () => {
                     <td style={tdStyles}>{booking.nop}</td>
                     <td style={tdStyles}>{booking.noc}</td>
                     <td style={tdStyles}>{booking.arrivalDate}</td>
+                    <td style={tdStyles}>{booking.status}</td>
                     <td style={tdStyles}>{booking.message || "No message provided"}</td>
                     <td style={tdStyles}>{booking.guide ? booking.guide.name : "No guide assigned"}</td>
                     <td style={{ ...tdStyles, ...actionStyles }}>

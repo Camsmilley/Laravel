@@ -1,12 +1,10 @@
-
 import "../../index.css";
 import React, { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../Components/AuthContext';
 import Header from "../Header";
 import Footer from "../Footer";
-
 import "./Signup.css";
 
 const SignUp = () => {
@@ -15,6 +13,7 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
@@ -24,7 +23,8 @@ const SignUp = () => {
       await axios.post('http://localhost:8000/api/register', { name, email, password });
       const user = await login(email, password);  // This sets the user context
       if (user) {
-        navigate('/guestdashboard');
+        const from = location.state?.from || "/";
+        navigate(from, { replace: true });
       }
     } catch (error) {
       console.error('Registration failed:', error);

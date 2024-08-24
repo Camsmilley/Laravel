@@ -19,15 +19,31 @@ const GuestDashboard = () => {
 
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:8000/api/user-bookings/${user.id}`)
-        .then(response => {
-          setBookings(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching bookings:', error);
-        });
+      fetchBookings();
     }
   }, [user]);
+
+  const fetchBookings = () => {
+    axios.get(`http://localhost:8000/api/user-bookings/${user.id}`)
+      .then(response => {
+        setBookings(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching bookings:', error);
+      });
+  };
+
+  const handleStatusChange = (bookingId, newStatus) => {
+    axios.put(`http://localhost:8000/api/bookings/${bookingId}/status`, { status: newStatus })
+      .then(response => {
+        fetchBookings(); // Refresh bookings after status change
+        window.location.reload(); // Reload the page
+      })
+      .catch(error => {
+        console.error('Error updating booking status:', error);
+      });
+  };
+
 
   const indexOfLastBooking = currentPage * itemsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - itemsPerPage;
@@ -80,20 +96,32 @@ const GuestDashboard = () => {
                           <th scope="col">Name</th>
                           <th scope="col">Guide Name</th>
                           <th scope="col">Arrival Date</th>
+                          <th scope="col">Status</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {currentBookings.map((booking) => (
-                          <tr key={booking.id}>
-                            <td>{booking.safariname}</td>
-                            <td>{booking.guestName}</td>
-                            <td>{booking.guide.name}</td>
-                            <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
-                            <td><button className="btn  gap-2 "><GiConfirmed className="icon gap-2 text-success"/>Confirm</button>
-                            <button className="btn"><FcCancel className="icon"/>Cancel</button></td>
-                          </tr>
-                        ))}
+                       {currentBookings.map((booking) => (
+                      <tr key={booking.id}>
+                        <td>{booking.safariname}</td>
+                        <td>{booking.guestName}</td>
+                        <td>{booking.guide.name}</td>
+                        <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>
+                        <td>{booking.status}</td>
+                        <td>
+                          {booking.status === 'pending' && (
+                            <>
+                              <button className="btn gap-2" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
+                                <GiConfirmed className="icon gap-2 text-success"/>Confirm
+                              </button>
+                              <button className="btn" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
+                                <FcCancel className="icon"/>Cancel
+                              </button>
+                            </>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
                       </tbody>
                     </table>
 

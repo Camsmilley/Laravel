@@ -6,6 +6,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { AuthContext } from '../../Components/AuthContext';
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,7 +20,7 @@ const Login = () => {
     setError('');
     const user = await login(email, password);
     if (user) {
-      const from = location.state?.from?.pathname || (user.is_admin ? "/dashboard" : "/guestdashboard");
+      const from = location.state?.from || "/";
       navigate(from, { replace: true });
     } else {
       setError('Invalid email or password');
