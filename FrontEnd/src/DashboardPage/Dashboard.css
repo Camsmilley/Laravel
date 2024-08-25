@@ -20,7 +20,7 @@
   position: fixed;
   width: 100%;
   background: var(--bgColor);
-  height: 100vh;
+  height: 100vhc;
   padding: 2rem;
   gap: 2rem;
   margin-top: 40px;
