@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Dashboard.css";
 import Axios from "axios";
 import { AiOutlineSwapRight, AiFillDelete, AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -35,45 +34,44 @@ const ToursPage = () => {
   return (
     <>
       <HeaderDash />
-      <div className="OutletCSS">
-        <div className="pageBody">
-          <div className="sectionTitle flex">
-            <div>
-              <h1>Upcoming Hikes</h1>
-              <p>Available Hikes added by admin!</p>
-            </div>
-            <Link to="/add" className="btn flex">
-              Add Treks Safari <AiOutlinePlus className="icon" />
+      <div className="container py-4 mb-5 mt-5">
+        <div className="row mb-4">
+          <div className="col-md-8">
+            <h1 className="display-5 fw-bold">Upcoming Hikes</h1>
+            <p className="lead">Available Hikes added by admin!</p>
+          </div>
+          <div className="col-md-4 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <Link to="/add" className="btn btn-primary d-flex align-items-center">
+              Add Treks Safari <AiOutlinePlus className="ms-2" />
             </Link>
           </div>
+        </div>
 
-          <div className="tourContainer grid">
-            {safaris.map((safari) => (
-              <div className="singleTour grid" key={safari.id}>
-                <div className="imgDiv">
-                <img src={`http://localhost:8000${safari.image}`} alt={safari.title} />
-                </div>
-                <div className="tourInfo">
-                  <span className="tourTitle">{safari.title}</span>
-
-                  <div className="btns flex">
-                  <Link to={`/viewdetails/${safari.id}`} className="btn flex">
-                    View Details <AiOutlineSwapRight className="icon" />
-                  </Link>
-                  {/* <Link to={`/edit/${safari.id}`} className="btn flex">
-                    Edit
-                  </Link> */}
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {safaris.map((safari) => (
+            <div className="col" key={safari.id}>
+              <div className="card h-100 shadow-sm">
+                <img src={`http://localhost:8000${safari.image}`} className="card-img-top" alt={safari.title} style={{height: '200px', objectFit: 'cover'}} />
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h5 className="card-title">{safari.title}</h5>
+                    <span className="">Price: &#8369; {safari.price}</span>
+                  </div>
+                  <div className="d-flex justify-content-between mt-3">
+                    <Link to={`/viewdetails/${safari.id}`} className="btn btn-outline-primary d-flex align-items-center">
+                      View Details <AiOutlineSwapRight className="ms-2" />
+                    </Link>
                     <button
-                      className="btn flex"
+                      className="btn btn-outline-danger d-flex align-items-center"
                       onClick={() => handleDelete(safari.id)}
                     >
-                      Delete Item <AiFillDelete className="icon" />
+                      Delete <AiFillDelete className="ms-2" />
                     </button>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

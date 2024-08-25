@@ -78,7 +78,7 @@ const Dashboard = () => {
 
         <div className="row g-4 mx-6">
           <div className="col-lg-3">
-            <div className="card bg-success text-dark mb-3">
+            <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
                   <BsBookmarkCheck className="text-primary" size={50} />
@@ -91,7 +91,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="col-lg-4">
-            <div className="card bg-success text-dark mb-3">
+            <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
                   <GiConfirmed className="text-success" size={50}/>
@@ -104,7 +104,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="col-lg-3">
-            <div className="card bg-success text-dark mb-3">
+            <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
                   <MdFreeCancellation className="text-danger" size={50} />
@@ -118,7 +118,7 @@ const Dashboard = () => {
           </div>
 
           <div className="col-lg-2">
-            <div className="card bg-success text-dark mb-3">
+            <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
                   <IoIosPeople className="text-warning" size={50} />
