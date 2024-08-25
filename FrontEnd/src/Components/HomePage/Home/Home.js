@@ -23,7 +23,7 @@ const Home = () => {
           Trust <strong>Our Hiking Experience</strong>
         </div>
 
-        {/* <Link to="/getintouch" data-aos='fade-up' data-aos-duration='6000' className="btn">Get In Touch</Link> */}
+        <Link to="/booknow" data-aos='fade-up' data-aos-duration='6000' className="btn">Book Now</Link>
       </div>
       
 

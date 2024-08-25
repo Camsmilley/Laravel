@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./About.css";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
+import img from '../../assets/staff.webp';
 
 const About = () => {
   const [name, setName] = useState("");

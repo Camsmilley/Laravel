@@ -33,7 +33,6 @@ import WhattoWear from './GuestDashboard/WhattoWear';
 import BookNow from './GuestDashboard/BookNow';
 import Mission from './Components/Mission';
 import Wear from './Components/Wear';
-
 function App() {
   return (
     <AuthProvider>

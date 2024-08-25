@@ -73,11 +73,11 @@ const GuestDashboard = () => {
               <div className="card-body">
                 <h2 className="card-title mb-5">Looking for Treking Adventure?</h2>
                  <Carousel />
-                 <div className="d-flex justify-content-center m-0">
+                 {/* <div className="d-flex justify-content-center m-0">
                  <Link to="/booknow" className="btn me-2">Book Now</Link>
                   <Link to="/ourmission" className="btn me-2">Our Mission</Link>
                   <Link to="/whattowear" className="btn">What to Wear Hiking</Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
