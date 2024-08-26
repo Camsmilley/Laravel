@@ -21,8 +21,14 @@ class Booking extends Model
         'message',
         'guideId',
         'guestId',
-        'status' // Add status to fillable
+        'status',
+        'price'
     ];
+
+    public function safari()
+    {
+        return $this->belongsTo(Safari::class, 'safariname', 'title');
+    }
 
     public function guide()
     {

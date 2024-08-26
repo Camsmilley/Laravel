@@ -64,6 +64,7 @@ const Bookings = () => {
               <thead>
                 <tr style={trStyles}>
                   <th style={thStyles}>Name of the Mountain</th>
+                  <th style={thStyles}>Price</th>
                   <th style={thStyles}>Guest Name</th>
                   <th style={thStyles}>Nationality</th>
                   <th style={thStyles}>Contact</th>
@@ -82,6 +83,7 @@ const Bookings = () => {
                 {bookings.map(booking => (
                   <tr key={booking.id} style={trStyles}>
                     <td style={tdStyles}>{booking.safariname}</td>
+                    <td style={tdStyles}>{booking.price}</td>
                     <td style={tdStyles}>{booking.guestName}</td>
                     <td style={tdStyles}>{booking.nationality}</td>
                     <td style={tdStyles}>{booking.contact}</td>
