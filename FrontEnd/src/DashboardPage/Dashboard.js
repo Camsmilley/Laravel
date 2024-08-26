@@ -123,7 +123,7 @@ const Dashboard = () => {
                 <div>
                   <IoIosPeople className="text-warning" size={50} />
                 </div>
-                <div className="ms-2" >
+                <div className="ms-4" >
                   <h5 className="card-title">Total Guests</h5>
                   <h3 className="card-text text-dark">{totalGuest}</h3>
                 </div>
