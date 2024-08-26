@@ -193,7 +193,7 @@ const Details = () => {
                         {key === "guideId" ? "Guide Name" :
                          key === "nop" ? "Number of People" :
                          key === "noc" ? "Number of Children" :
-                         key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $0')}
+                         key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
                       </label>
                       {key === "message" ? (
                         <textarea
