@@ -123,7 +123,7 @@ const Add = () => {
 
           <div className='d-flex justify-content-end'>  
               <button type="submit" className="btn btn-primary">
-              Add TreksSafari <AiOutlinePlus className="ms-2" />
+              Add TreksSafari <AiOutlinePlus className="icon ms-2" />
               </button>
           </div>
 
