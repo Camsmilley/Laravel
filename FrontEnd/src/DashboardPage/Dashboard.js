@@ -77,7 +77,7 @@ const Dashboard = () => {
         </div> */}
 
         <div className="row g-4 mx-6">
-          <div className="col-lg-3">
+          <div className="col-lg-2">
             <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
@@ -90,7 +90,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-3">
             <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-3">
+          <div className="col-lg-4">
             <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
@@ -117,7 +117,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-lg-2">
+          <div className="col-lg-3">
             <div className="card  text-dark mb-3">
               <div className="card-body d-flex justify-content-between align-items-center">
                 <div>
