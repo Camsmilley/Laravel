@@ -57,7 +57,7 @@ const GuestDashboard = () => {
     <>
       <GuestHeader />
       <div className="container-fluid bg-light mt-5">
-        <div className="container">
+        <div className="">
           <div className="row mb-5">
             <div className="col-12 text-center">
               <h1 className="fw-bold" style={{ color: '#3f6b29' }}>Treks Safari Guest Dashboard</h1>
@@ -66,13 +66,13 @@ const GuestDashboard = () => {
           </div>
 
           <div className="row g-4">
-            <div className="col-lg-6">
+            <div className="col-lg-5">
              
                   <Carousel />
             
             </div>
 
-            <div className="col-lg-6">
+            <div className="col-lg-7">
               <div className="card border-0 shadow-lg rounded-3">
                 <div className="card-header text-white py-3" style={{ backgroundColor: '#3f6b29' }}>
                   <h3 className="card-title mb-0">Your Bookings</h3>
@@ -84,6 +84,7 @@ const GuestDashboard = () => {
                         <thead className="table-light">
                           <tr>
                             <th>Safari</th>
+                            <th>Price</th>
                             <th>Guest</th>
                             <th>Guide</th>
                             <th>Arrival Date</th>
@@ -95,23 +96,30 @@ const GuestDashboard = () => {
                           {currentBookings.map((booking) => (
                             <tr key={booking.id}>
                               <td>{booking.safariname}</td>
+                              <td>{booking.price}</td>
                               <td>{booking.guestName}</td>
                               <td>{booking.guide.name}</td>
                               <td>{moment(booking.arrivalDate).format('MMM Do YYYY')}</td>
                               <td>
-                                <span className={`badge bg-${booking.status === 'confirmed' ? 'success' : booking.status === 'cancelled' ? 'danger' : 'warning'}`}>
+                              <span
+                                  className={`badge ${booking.status === 'confirmed' ? 'bg-success' : booking.status === 'cancelled' ? 'bg-danger' : ''}`}
+                                  style={{ backgroundColor: booking.status === 'confirmed' ? '' : booking.status === 'cancelled' ? '' : '#74cc47' }}
+                                >
                                   {booking.status}
                                 </span>
+
                               </td>
                               <td>
                                 {booking.status === 'pending' && (
                                   <div className="btn-group" role="group">
-                                    <button className="btn btn-sm btn-outline-success" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
-                                      <GiConfirmed /> Confirm
-                                    </button>
-                                    <button className="btn btn-sm btn-outline-danger" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
-                                      <FcCancel /> Cancel
-                                    </button>
+                                    <div className="d-flex justify-content-center">
+                                        <button className="btn btn-sm me-1" onClick={() => handleStatusChange(booking.id, 'confirmed')}>
+                                          Confirm
+                                          </button>
+                                          <button className="btn btn-sm" onClick={() => handleStatusChange(booking.id, 'cancelled')}>
+                                            Cancel
+                                          </button>
+                                    </div>
                                   </div>
                                 )}
                               </td>

@@ -133,7 +133,7 @@ const Dashboard = () => {
         </div>
 
         <div className="row g-4 mx-6">
-          <div className="col-lg-7">
+          <div className="col-lg-5">
             <div className="card text-center bg-success "> 
             {/* <div className="card-body" >
                 <h4 className="card-title">Providing top-notch services for every adventure!</h4>
@@ -149,7 +149,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-lg-5 ">
+          <div className="col-lg-7 ">
             <div className="card h-100 bg-success">
               <div className="card-header btn text-white">
                 <h3 className="card-title mb-0">Bookings Today</h3>
@@ -161,6 +161,7 @@ const Dashboard = () => {
                       <thead>
                         <tr>
                             <th scope="col">Guest Name</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Safari Name</th>
                             <th scope="col">Guide Name</th>
                             <th scope="col">Arrival Date</th>
@@ -172,6 +173,7 @@ const Dashboard = () => {
                       {currentBookings.map((booking) => (
                         <tr key={booking.id}>
                           <td>{booking?.guestName || 'N/A'}</td>
+                          <td>{booking?.price || 'N/A'}</td>
                           <td>{booking?.safariname || 'N/A'}</td>
                           <td>{booking?.guide?.name || 'N/A'}</td>
                           <td>{moment(booking.arrivalDate).format('MMMM Do YYYY')}</td>

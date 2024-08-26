@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Safari;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Mail\BookingStatusUpdated;
@@ -12,13 +13,13 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::with('guide')->get();
+        $bookings = Booking::with(['guide', 'safari'])->get();
         return response()->json($bookings);
     }
 
     public function show($id)
     {
-        $booking = Booking::with('guide')->find($id);
+        $booking = Booking::with(['guide', 'safari'])->find($id);
         if (!$booking) {
             return response()->json(['message' => 'Booking not found'], 404);
         }
@@ -28,7 +29,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'safariname' => 'required|string',
+            'safariname' => 'required|string|exists:safaris,title',
             'guestName' => 'required|string',
             'nationality' => 'required|string',
             'contact' => 'required|string',
@@ -37,9 +38,12 @@ class BookingController extends Controller
             'noc' => 'required|integer',
             'arrivalDate' => 'required|date',
             'message' => 'nullable|string',
-            'guideId' => 'required|exists:guides,id', // Validate guideId
-            'guestId' => 'nullable|exists:users,id' // Validate guestId
+            'guideId' => 'required|exists:guides,id',
+            'guestId' => 'nullable|exists:users,id'
         ]);
+
+        $safari = Safari::where('title', $validatedData['safariname'])->first();
+        $validatedData['price'] = $safari->price;
 
         $booking = Booking::create($validatedData);
 
@@ -55,7 +59,8 @@ class BookingController extends Controller
         }
 
         $validatedData = $request->validate([
-            'safariname' => 'required|string',
+            'safariname' => 'required|string|exists:safaris,title',
+            'price' => 'nullable',
             'guestName' => 'required|string',
             'nationality' => 'required|string',
             'contact' => 'required|string',
@@ -66,8 +71,13 @@ class BookingController extends Controller
             'message' => 'nullable|string',
             'guideId' => 'required|exists:guides,id',
             'guestId' => 'nullable|exists:users,id',
-            'status' => 'required|in:pending,confirmed,cancelled' // Add this line
+            'status' => 'required|in:pending,confirmed,cancelled'
         ]);
+
+        if ($booking->safariname !== $validatedData['safariname']) {
+            $safari = Safari::where('title', $validatedData['safariname'])->first();
+            $validatedData['price'] = $safari->price;
+        }
 
         $booking->update($validatedData);
 
@@ -90,17 +100,10 @@ class BookingController extends Controller
     public function dailyBookings()
     {
         $today = Carbon::today();
-        $dailyBookings = Booking::with('guide')->whereDate('created_at', $today)->get();
+        $dailyBookings = Booking::with(['guide', 'safari'])->whereDate('created_at', $today)->get();
 
         return response()->json($dailyBookings);
     }
-
-    // BookingController.php
-    // public function totalBookings()
-    // {
-    //     $total = Booking::count();
-    //     return response()->json(['total' => $total]);
-    // }
 
     public function totalBookings()
     {
@@ -116,7 +119,7 @@ class BookingController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $booking = Booking::find($id);
+        $booking = Booking::with('safari')->find($id);
     
         if (!$booking) {
             return response()->json(['message' => 'Booking not found'], 404);
@@ -127,12 +130,16 @@ class BookingController extends Controller
         ]);
     
         $booking->update(['status' => $validatedData['status']]);
+
+        // Set the image URL for the email
+        if ($booking->safari) {
+            $booking->imageUrl = asset('images/' . $booking->safari->image);
+        } else {
+            $booking->imageUrl = null;
+        }
     
         try {
-            // Send email directly to the guest
             Mail::to($booking->email)->send(new BookingStatusUpdated($booking));
-    
-            // Log success
             \Log::info("Email sent successfully for booking {$id}.");
     
             return response()->json([
@@ -140,7 +147,6 @@ class BookingController extends Controller
                 'booking' => $booking
             ]);
         } catch (\Exception $e) {
-            // Log the error
             \Log::error("Failed to send email for booking {$id}: " . $e->getMessage());
     
             return response()->json([
@@ -151,11 +157,9 @@ class BookingController extends Controller
         }
     }
     
-    
-    // New method to fetch bookings by guestId
     public function userBookings($guestId)
     {
-        $bookings = Booking::where('guestId', $guestId)->with('guide')->get();
+        $bookings = Booking::where('guestId', $guestId)->with(['guide', 'safari'])->get();
         return response()->json($bookings);
     }
 }

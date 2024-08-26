@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { useParams, useNavigate } from "react-router-dom";
-import "./Dashboard.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import HeaderDash from "./HeaderDashboard/HeaderDash";
 
@@ -47,7 +46,7 @@ const EditGuide = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const form = new FormData();
     form.append('_method', 'PUT'); // Use PUT method for updating
     form.append('name', formData.name);
@@ -73,27 +72,29 @@ const EditGuide = () => {
 
   return (
     <>
-    <HeaderDash/>
-    <div className="OutletCSS">
-      <div className="pageBody">
-        <div className="sectionTitle">
-          <h1>Edit Guide Page!</h1>
-          <p>Edit this guide's details</p>
+      <HeaderDash />
+      <div className="container mt-5 mb-5">
+        <div className="row">
+          <div className="col-12">
+            <h1 className="mb-4 fw-bold">Edit Guide Page!</h1>
+            <p className="mb-4">Edit this guide's details</p>
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="formDiv grid">
-          <div className="fieldDiv">
-            <label htmlFor="image">Insert Image</label>
+        <form onSubmit={handleSubmit} className="row g-3">
+          <div className="col-md-6">
+            <label htmlFor="image" className="form-label">Insert Image</label>
             <input
               type="file"
               id="image"
               name="image"
               onChange={handleChange}
+              className="form-control"
             />
           </div>
 
-          <div className="fieldDiv">
-            <label htmlFor="name">Guide Full Name</label>
+          <div className="col-md-6">
+            <label htmlFor="name" className="form-label">Guide Full Name</label>
             <input
               type="text"
               id="name"
@@ -101,11 +102,12 @@ const EditGuide = () => {
               value={formData.name}
               placeholder="Enter guide's full name"
               onChange={handleChange}
+              className="form-control"
             />
           </div>
 
-          <div className="fieldDiv">
-            <label htmlFor="name">Gender</label>
+          <div className="col-md-6">
+            <label htmlFor="gender" className="form-label">Gender</label>
             <input
               type="text"
               id="gender"
@@ -113,11 +115,12 @@ const EditGuide = () => {
               value={formData.gender}
               placeholder="Gender"
               onChange={handleChange}
+              className="form-control"
             />
           </div>
 
-          <div className="fieldDiv">
-            <label htmlFor="phone">Guide Contact Number</label>
+          <div className="col-md-6">
+            <label htmlFor="phone" className="form-label">Guide Contact Number</label>
             <input
               type="text"
               id="phone"
@@ -125,11 +128,12 @@ const EditGuide = () => {
               value={formData.phone}
               placeholder="Enter guide's phone number"
               onChange={handleChange}
+              className="form-control"
             />
           </div>
 
-          <div className="fieldDiv">
-            <label htmlFor="email">Guide Email</label>
+          <div className="col-md-6">
+            <label htmlFor="email" className="form-label">Guide Email</label>
             <input
               type="email"
               id="email"
@@ -137,16 +141,18 @@ const EditGuide = () => {
               value={formData.email}
               placeholder="Enter guide's email"
               onChange={handleChange}
+              className="form-control"
             />
           </div>
 
-          <div className="fieldDiv">
-            <label htmlFor="role">Guide Role</label>
+          <div className="col-md-6">
+            <label htmlFor="role" className="form-label">Guide Role</label>
             <select
               id="role"
               name="role"
               value={formData.role}
               onChange={handleChange}
+              className="form-select"
             >
               <option value="">Select role</option>
               <option value="Tour Guide 1">Tour Guide 1</option>
@@ -155,12 +161,13 @@ const EditGuide = () => {
             </select>
           </div>
 
-          <button type="submit" className="btn flex">
-            Update Guide <AiOutlinePlus className="icon" />
-          </button>
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary">
+              Update Guide <AiOutlinePlus className="icon" />
+            </button>
+          </div>
         </form>
       </div>
-    </div>
     </>
   );
 };

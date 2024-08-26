@@ -4,11 +4,10 @@ import Axios from "axios";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Tour from "../../Components/HomePage/Tour/Tour";
-import { AuthContext } from '../../Components/AuthContext'; // Import AuthContext
+import { AuthContext } from '../../Components/AuthContext';
 import "./Details.css";
 import "../../Components/HomePage/Tour/Tour.css";
 
-// Imported Icons
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { AiOutlineFieldTime, AiOutlineStar } from "react-icons/ai";
 import { FaCheck, FaShuttleVan } from "react-icons/fa";
@@ -17,23 +16,23 @@ import { IoPricetagsSharp } from "react-icons/io5";
 
 const Details = () => {
   const { id } = useParams();
-  const { user } = useContext(AuthContext); // Get user from context
+  const { user } = useContext(AuthContext);
   const [safari, setSafari] = useState(null);
   const [guides, setGuides] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     safariname: "",
-    guestName: user ? user.name : "", // Pre-fill with user's name
+    guestName: user ? user.name : "",
     nationality: "",
     contact: "",
-    email: user ? user.email : "", // Pre-fill with user's email
+    email: user ? user.email : "",
     nop: "",
     noc: "",
     arrivalDate: "",
     message: "",
-    guideId: "", // Add guideId to formData
-    guestId: user ? user.id : "" // Add guestId to formData
+    guideId: "",
+    guestId: user ? user.id : ""
   });
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -88,8 +87,8 @@ const Details = () => {
         noc: "",
         arrivalDate: "",
         message: "",
-        guideId: "", // Reset guideId
-        guestId: user ? user.id : "" // Reset guestId
+        guideId: "",
+        guestId: user ? user.id : ""
       });
     } catch (error) {
       console.error('Error submitting booking:', error.response?.data || error.message);
@@ -190,7 +189,12 @@ const Details = () => {
                     />
                   ) : (
                     <>
-                      <label htmlFor={key}>{key === "guideId" ? "Guide Name" : key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}</label>
+                      <label htmlFor={key}>
+                        {key === "guideId" ? "Guide Name" :
+                         key === "nop" ? "Number of People" :
+                         key === "noc" ? "Number of Children" :
+                         key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
+                      </label>
                       {key === "message" ? (
                         <textarea
                           id={key}
