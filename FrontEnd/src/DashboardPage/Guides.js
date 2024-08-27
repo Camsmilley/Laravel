@@ -112,9 +112,9 @@ const Guides = () => {
                     <td style={tdStyles}>{guide.role}</td>
                     <td style={{ ...tdStyles, ...actionStyles }}>
                      <Link to={`/editguide/${guide.id}`} className="icon">
-                        <BiEdit />
+                        <BiEdit size={30}/>
                       </Link>
-                      <MdOutlineDeleteOutline
+                      <MdOutlineDeleteOutline size={30}
                         className="icon"
                         onClick={() => handleDelete(guide.id)}
                         style={{ cursor: 'pointer', color: 'red' }}

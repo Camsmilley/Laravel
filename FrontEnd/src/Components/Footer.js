@@ -1,6 +1,7 @@
 import React from "react";
 import './Components.css'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
 
 //imported Icons
 import {HiPhone} from 'react-icons/hi'
@@ -13,6 +14,19 @@ import {AiOutlineWhatsApp} from 'react-icons/ai'
 
 
 const Footer = () => {
+  useEffect(() => {
+    const handleScrollToTop = () => {
+      window.scrollTo(0, 0);
+    };
+
+    // Add event listener for page refresh or navigation
+    window.addEventListener('beforeunload', handleScrollToTop);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('beforeunload', handleScrollToTop);
+    };
+  }, []);
 
   return (
     <div className='foot'>
