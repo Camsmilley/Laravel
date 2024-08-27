@@ -96,7 +96,7 @@ const Bookings = () => {
                     <td style={tdStyles}>{booking.guide ? booking.guide.name : "No guide assigned"}</td>
                     <td style={{ ...tdStyles, ...actionStyles }}>
                       <Link to={`/bookingdetails/${booking.id}`} className="icon">
-                        <TbListDetails />
+                        <TbListDetails size={30} />
                       </Link>
                     </td>
                   </tr>
