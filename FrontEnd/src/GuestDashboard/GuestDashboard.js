@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { FcCancel } from "react-icons/fc";
 import { GiConfirmed } from "react-icons/gi";
+import { TbListDetails } from "react-icons/tb";
 
 const GuestDashboard = () => {
   const [bookings, setBookings] = useState([]);
@@ -53,16 +54,72 @@ const GuestDashboard = () => {
 
   const totalPages = Math.ceil(bookings.length / itemsPerPage);
 
+  const tableStyles = {
+    width: '100%',
+    borderCollapse: 'collapse',
+    margin: '20px 0',
+    fontSize: '16px',
+    textAlign: 'left',
+  };
+
+  const thStyles = {
+    backgroundColor: '#3f6b29',
+    color: 'white',
+    padding: '12px 15px',
+    border: '1px solid #ddd',
+  };
+
+  const tdStyles = {
+    padding: '12px 15px',
+    border: '1px solid #ddd',
+  };
+
+  const trStyles = {
+    backgroundColor: '#f2f2f2',
+    '&:nth-child(even)': {
+      backgroundColor: '#f9f9f9',
+    },
+  };
+
+  const actionStyles = {
+    display: 'flex',
+    justifyContent: 'center',
+  };
+
   return (
     <>
       <GuestHeader />
-      <div className="container-fluid bg-light mt-5">
-        <div className="">
-          <div className="row mb-5">
-            <div className="col-12 text-center">
-              <h1 className="fw-bold" style={{ color: '#3f6b29' }}>Treks Safari Guest Dashboard</h1>
-              <p className="lead text-muted">Embark on your next adventure with us!</p>
+      <div className="container-fluid bg-light mt-4 w-75">
+        <div className="row">
+          <div className="col-md-10 offset-md-1">
+            <div className="banner border border light-suitable mt-5">
+              <h1 className="banner-text" style={{ color: '#3f6b29' }}>Welcome!</h1>
+              <p className="banner-slogan">Embark on your next adventure with us!</p>
+              <h3  className="banner-text text-dark">Basic Information</h3>
+              <div className="tableDiv ">
+            <table style={tableStyles}>
+              <thead>
+                <tr style={trStyles}>
+                  <th style={thStyles}>Guest Name</th>
+                  <th style={thStyles}>Nationality</th>
+                  <th style={thStyles}>Contact</th>
+                  <th style={thStyles}>Email</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {bookings.map(booking => (
+                  <tr key={booking.id} style={trStyles}>
+                    <td style={tdStyles}>{booking.guestName}</td>
+                    <td style={tdStyles}>{booking.nationality}</td>
+                    <td style={tdStyles}>{booking.contact}</td>
+                    <td style={tdStyles}>{booking.email}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
             </div>
+          </div>
           </div>
 
           <div className="row g-4">
