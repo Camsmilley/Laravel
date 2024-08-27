@@ -75,8 +75,8 @@ const Footer = () => {
               <ul>
                 <Link to='/about' className="text-dark">About Us</Link><br/>
                 <Link to='/ourpurpose' className="text-dark">Our Purpose</Link><br/>
-                <Link to='/whattowear' className="text-dark">What to Wear</Link>
-                <li>Gallery</li>
+                <Link to='/whattowear' className="text-dark">What to Wear</Link><br/>
+                <Link to='/safety' className="text-dark">Safety</Link><br/>
                 <li>Careers</li>
               </ul>
              </div>
