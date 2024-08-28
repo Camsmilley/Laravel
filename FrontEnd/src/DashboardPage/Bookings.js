@@ -17,92 +17,62 @@ const Bookings = () => {
       });
   }, []);
 
-  const tableStyles = {
-    width: '100%',
-    borderCollapse: 'collapse',
-    margin: '20px 0',
-    fontSize: '16px',
-    textAlign: 'left',
-  };
-
-  const thStyles = {
-    backgroundColor: '#3f6b29',
-    color: 'white',
-    padding: '12px 15px',
-    border: '1px solid #ddd',
-  };
-
-  const tdStyles = {
-    padding: '12px 15px',
-    border: '1px solid #ddd',
-  };
-
-  const trStyles = {
-    backgroundColor: '#f2f2f2',
-    '&:nth-child(even)': {
-      backgroundColor: '#f9f9f9',
-    },
-  };
-
-  const actionStyles = {
-    display: 'flex',
-    justifyContent: 'center',
-  };
-
   return (
     <>
       <HeaderDash />
-      <div className="OutletCSS">
-        <div className="pageBody">
-          <div className="sectionTitle">
-            <h1>TreksSafari Bookings!</h1>
-            <p>All hikes bookings, includes completed and the upcoming bookings!</p>
-          </div>
+      <div className="container-fluid my-5 px-5">
+        <div className="row">
+          <div className="col-12">
+            <div className="sectionTitle">
+              <h1 className="mb-4 fw-bold">TreksSafari Bookings!</h1>
+              <p>All hikes bookings, includes completed and the upcoming bookings!</p>
+            </div>
 
-          <div className="tableDiv">
-            <table style={tableStyles}>
-              <thead>
-                <tr style={trStyles}>
-                  <th style={thStyles}>Name of the Mountain</th>
-                  <th style={thStyles}>Price</th>
-                  <th style={thStyles}>Guest Name</th>
-                  <th style={thStyles}>Nationality</th>
-                  <th style={thStyles}>Contact</th>
-                  <th style={thStyles}>Email</th>
-                  <th style={thStyles}>Number of People</th>
-                  <th style={thStyles}>Number of Children</th>
-                  <th style={thStyles}>Arrival Date</th>
-                  <th style={thStyles}>Status</th>
-                  <th style={thStyles}>Message</th>
-                  <th style={thStyles}>Guide</th>
-                  <th style={thStyles}>Action</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {bookings.map(booking => (
-                  <tr key={booking.id} style={trStyles}>
-                    <td style={tdStyles}>{booking.safariname}</td>
-                    <td style={tdStyles}>{booking.price}</td>
-                    <td style={tdStyles}>{booking.guestName}</td>
-                    <td style={tdStyles}>{booking.nationality}</td>
-                    <td style={tdStyles}>{booking.contact}</td>
-                    <td style={tdStyles}>{booking.email}</td>
-                    <td style={tdStyles}>{booking.nop}</td>
-                    <td style={tdStyles}>{booking.noc}</td>
-                    <td style={tdStyles}>{booking.arrivalDate}</td>
-                    <td style={tdStyles}>{booking.status}</td>
-                    <td style={tdStyles}>{booking.message || "No message provided"}</td>
-                    <td style={tdStyles}>{booking.guide ? booking.guide.name : "No guide assigned"}</td>
-                    <td style={{ ...tdStyles, ...actionStyles }}>
-                      <Link to={`/bookingdetails/${booking.id}`} className="icon">
-                        <TbListDetails size={30} />
-                      </Link>
-                    </td>
+            <div className="table-responsive">
+              <table className="table table-bordered table-hover align-middle mb-0">
+                <thead className="table-success">
+                  <tr>
+                    <th>Name of the Mountain</th>
+                    <th>Price</th>
+                    <th>Guest Name</th>
+                    <th>Nationality</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Number of People</th>
+                    <th>Number of Children</th>
+                    <th>Arrival Date</th>
+                    <th>Status</th>
+                    <th>Message</th>
+                    <th>Guide</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {bookings.map(booking => (
+                    <tr key={booking.id}>
+                      <td>{booking.safariname}</td>
+                      <td>{booking.price}</td>
+                      <td>{booking.guestName}</td>
+                      <td>{booking.nationality}</td>
+                      <td>{booking.contact}</td>
+                      <td>{booking.email}</td>
+                      <td>{booking.nop}</td>
+                      <td>{booking.noc}</td>
+                      <td>{booking.arrivalDate}</td>
+                      <td>{booking.status}</td>
+                      <td>{booking.message || "No message provided"}</td>
+                      <td>{booking.guide ? booking.guide.name : "No guide assigned"}</td>
+                      <td className="text-center">
+                      <Link to={`/bookingdetails/${booking.id}`} className="icon">
+                        <TbListDetails size={30} style={{ color: '#3f6b29' }} /> {/* Set your desired color */}
+                      </Link>
+
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

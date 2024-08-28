@@ -31,40 +31,6 @@ const Guides = () => {
     }
   };
 
-  const tableStyles = {
-    width: '100%',
-    borderCollapse: 'collapse',
-    margin: '20px 0',
-    fontSize: '16px',
-    textAlign: 'left',
-  };
-
-  const thStyles = {
-    backgroundColor: '#3f6b29',
-    color: 'white',
-    padding: '12px 15px',
-    border: '1px solid #ddd',
-  };
-
-  const tdStyles = {
-    padding: '12px 15px',
-    border: '1px solid #ddd',
-    textAlign: 'center',
-  };
-
-  const trStyles = {
-    backgroundColor: '#f2f2f2',
-    '&:nth-child(even)': {
-      backgroundColor: '#f9f9f9',
-    },
-  };
-
-  const actionStyles = {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '10px',
-  };
-
   const imgStyles = {
     maxWidth: '50px',
     maxHeight: '50px',
@@ -75,55 +41,59 @@ const Guides = () => {
   return (
     <>
       <HeaderDash />
-      <div className="OutletCSS">
-        <div className="pageBody">
-          <div className="sectionTitle flex">
-            <div>
-              <h1>TreksSafari Guides!</h1>
-              <p>All verified guides!</p>
+      <div className="container-fluid my-5 px-5">
+        <div className="row">
+          <div className="col-12">
+            <div className="sectionTitle d-flex justify-content-between align-items-center">
+              <div>
+                <h1 className="mb-4 fw-bold">TreksSafari Guides!</h1>
+                <p>All verified guides!</p>
+              </div>
+              <Link to='/addguide' className="btn btn-primary d-flex align-items-center">
+                Add Guide <AiOutlinePlus className="ms-2" />
+              </Link>
             </div>
-            <Link to='/addguide' className="btn flex">
-              Add Guide <AiOutlinePlus className="icon" />
-            </Link>
-          </div>
-          <div className="tableDiv">
-            <table style={tableStyles}>
-              <thead>
-                <tr style={trStyles}>
-                  <th style={thStyles}>Image</th>
-                  <th style={thStyles}>Guide Full Name</th>
-                  <th style={thStyles}>Gender</th>
-                  <th style={thStyles}>Phone</th>
-                  <th style={thStyles}>Email</th>
-                  <th style={thStyles}>Guide Role</th>
-                  <th style={thStyles}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {guides.map(guide => (
-                  <tr key={guide.id} style={trStyles}>
-                    <td style={tdStyles}>
-                      <img style={imgStyles} src={`http://localhost:8000/images/${guide.image}`} alt="Guide" />
-                    </td>
-                    <td style={tdStyles}>{guide.name}</td>
-                    <td style={tdStyles}>{guide.gender}</td>
-                    <td style={tdStyles}>{guide.phone}</td>
-                    <td style={tdStyles}>{guide.email}</td>
-                    <td style={tdStyles}>{guide.role}</td>
-                    <td style={{ ...tdStyles, ...actionStyles }}>
-                     <Link to={`/editguide/${guide.id}`} className="icon">
-                        <BiEdit size={30}/>
-                      </Link>
-                      <MdOutlineDeleteOutline size={30}
-                        className="icon"
-                        onClick={() => handleDelete(guide.id)}
-                        style={{ cursor: 'pointer', color: 'red' }}
-                      />
-                    </td>
+
+            <div className="table-responsive">
+              <table className="table table-hover align-middle mb-0">
+                <thead className="table-success">
+                  <tr>
+                    <th>Image</th>
+                    <th>Guide Full Name</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Guide Role</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {guides.map(guide => (
+                    <tr key={guide.id}>
+                      <td>
+                        <img style={imgStyles} src={`http://localhost:8000/images/${guide.image}`} alt="Guide" />
+                      </td>
+                      <td>{guide.name}</td>
+                      <td>{guide.gender}</td>
+                      <td>{guide.phone}</td>
+                      <td>{guide.email}</td>
+                      <td>{guide.role}</td>
+                      <td className="text-center">
+                        <Link to={`/editguide/${guide.id}`} className="me-2">
+                          <BiEdit size={30} style={{ color: '#3f6b29' }} />
+                        </Link>
+                        <MdOutlineDeleteOutline
+                          size={30}
+                          className="text-danger"
+                          onClick={() => handleDelete(guide.id)}
+                          style={{ cursor: 'pointer' }}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
