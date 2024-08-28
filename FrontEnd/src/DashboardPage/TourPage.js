@@ -34,7 +34,7 @@ const ToursPage = () => {
   return (
     <>
       <HeaderDash />
-      <div className="container py-4 mb-5 mt-5">
+      <div className="container-fluid py-4 mb-5 mt-5 px-5">
         <div className="row mb-4">
           <div className="col-md-8">
             <h1 className="display-5 fw-bold">Upcoming Hikes</h1>
