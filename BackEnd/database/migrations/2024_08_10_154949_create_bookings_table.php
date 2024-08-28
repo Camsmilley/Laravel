@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('contact');
             $table->string('email');
             $table->integer('nop');
-            $table->integer('noc');
+            $table->integer('noc')->nullable();
             $table->dateTime('arrivalDate');
             $table->text('message')->nullable();
             $table->timestamps();

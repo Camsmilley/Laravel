@@ -28,7 +28,7 @@ const Details = () => {
     contact: "",
     email: user ? user.email : "",
     nop: "",
-    noc: "",
+    noc: "0", // Default to "0" but user can change it
     arrivalDate: "",
     message: "",
     guideId: "",
@@ -67,7 +67,7 @@ const Details = () => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
-      [name]: name === 'nop' || name === 'noc' ? parseInt(value, 10) || '' : value
+      [name]: name === 'nop' || name === 'noc' ? value : value
     }));
   };
 
@@ -84,7 +84,7 @@ const Details = () => {
         contact: "",
         email: user ? user.email : "",
         nop: "",
-        noc: "",
+        noc: "0", // Reset to "0" after submission
         arrivalDate: "",
         message: "",
         guideId: "",
@@ -227,7 +227,6 @@ const Details = () => {
                           value={value}
                           onChange={handleInputChange}
                           placeholder={`Enter ${key}`}
-                          required
                         />
                       )}
                     </>
@@ -253,26 +252,23 @@ const Details = () => {
           appearance: none;
           -webkit-appearance: none;
           -moz-appearance: none;
-          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path fill="%23333" d="M0 0l5 5 5-5H0z"/></svg>');
+          background-image: url('data:image/svg+xml;charset=US-ASCII,');
           background-repeat: no-repeat;
           background-position: right 10px center;
-          transition: border-color 0.3s ease;
+          background-size: 12px;
         }
-
-        .custom-select:focus {
-          border-color: #3f6b29;
-          outline: none;
-        }
-
-        .custom-select option {
+        .alert {
           padding: 10px;
-          font-size: 16px;
-          background-color: #fff;
-          color: #333;
+          margin-bottom: 15px;
+          border-radius: 5px;
         }
-
-        .custom-select option:hover {
-          background-color: #f2f2f2;
+        .alert-success {
+          background-color: #d4edda;
+          color: #155724;
+        }
+        .alert-error {
+          background-color: #f8d7da;
+          color: #721c24;
         }
       `}</style>
     </>

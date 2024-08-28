@@ -93,7 +93,7 @@ const GuestDashboard = () => {
         <div className="row">
           <div className="col-md-10 offset-md-1">
             <div className="banner border border light-suitable mt-5">
-              <h1 className="banner-text" style={{ color: '#3f6b29' }}>Welcome!</h1>
+              <h1 className="banner-text" style={{ color: '#3f6b29' }}>Welcome! {bookings[0].guestName}</h1>
               <p className="banner-slogan">Embark on your next adventure with us!</p>
               <h3  className="banner-text text-dark">Basic Information</h3>
               <div className="tableDiv ">

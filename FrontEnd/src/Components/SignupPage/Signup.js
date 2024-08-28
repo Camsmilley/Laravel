@@ -36,7 +36,7 @@ const SignUp = () => {
     <>
       <Header />
       <div className="container formContainer">
-        <div className="formCard">
+        <div className="formCard1">
           <h3>SignUp Page</h3>
           <span>Create an account</span>
 

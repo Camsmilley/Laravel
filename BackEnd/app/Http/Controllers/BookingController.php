@@ -35,7 +35,7 @@ class BookingController extends Controller
             'contact' => 'required|string',
             'email' => 'required|email',
             'nop' => 'required|integer',
-            'noc' => 'integer',
+            'noc' => 'nullable|integer',
             'arrivalDate' => 'required|date',
             'message' => 'nullable|string',
             'guideId' => 'required|exists:guides,id',
