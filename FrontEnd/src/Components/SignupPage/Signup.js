@@ -1,11 +1,10 @@
-import "../../index.css";
+// import "../../index.css";
 import React, { useState, useContext } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../Components/AuthContext';
 import Header from "../Header";
 import Footer from "../Footer";
-import "./Signup.css";
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -35,37 +34,41 @@ const SignUp = () => {
   return (
     <>
       <Header />
-      <div className="container formContainer">
-        <div className="formCard1">
-          <h3>SignUp Page</h3>
-          <span>Create an account</span>
+      <div className="container-fluid mt-5 mb-5">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-6 col-lg-4">
+            <div className="card formCard1 p-4">
+              <h2 className="text-center">SignUp Page</h2>
+              <span className="d-block text-center">Create an account</span>
 
-          {error && <div className="error">{error}</div>}
+              {error && <div className="alert alert-danger">{error}</div>}
 
-          <form onSubmit={handleSubmit}>
-            <div className="inputDiv">
-              <label htmlFor="name">Name</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">Name</label>
+                  <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">User Email</label>
+                  <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Password</label>
+                  <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                </div>
+
+                <button className="btn btn-primary w-100" type="submit">
+                  Sign Up
+                </button>
+              </form>
+
+              <span className="d-block text-center mt-3">
+                Have an account? <Link to="/login">Login</Link>
+              </span>
             </div>
-
-            <div className="inputDiv">
-              <label htmlFor="email">User Email</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-            </div>
-
-            <div className="inputDiv">
-              <label htmlFor="password">Password</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-            </div>
-
-            <button className="btn" type="submit">
-              Sign Up
-            </button>
-          </form>
-
-          <span className="signUpBtn">
-            Have an account? <Link to="/login">Login</Link>
-          </span>
+          </div>
         </div>
       </div>
       <Footer />
