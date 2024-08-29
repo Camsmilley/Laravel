@@ -1,5 +1,4 @@
-import "../../index.css";
-import "./Login.css";
+// import "../../index.css";
 import Header from "../Header";
 import Footer from "../Footer";
 import React, { useState, useContext } from 'react';
@@ -39,32 +38,36 @@ const Login = () => {
   return (
     <>
       <Header />
-      <div className="container formContainer">
-        <div className="formCard">
-          <h3>Login Page</h3>
-          <span>Welcome Guest</span>
+      <div className="container-fluid mt-5 mb-5">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-6 col-lg-4">
+            <div className="card formCard p-4 w-100">
+              <h2 className="text-center">Login Page</h2>
+              <span className="d-block text-center">Welcome Guest</span>
 
-          {error && <div className="error">{error}</div>}
+              {error && <div className="alert alert-danger">{error}</div>}
 
-          <form onSubmit={handleSubmit}>
-            <div className="inputDiv" >
-              <label htmlFor="userEmail">User Email</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="userEmail" className="form-label">User Email</label>
+                  <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Password</label>
+                  <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
+                </div>
+
+                <button className="btn btn-primary w-100" type="submit">
+                  Login
+                </button>
+              </form>
+
+              <span className="d-block text-center mt-3">
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+              </span>
             </div>
-
-            <div className="inputDiv">
-              <label htmlFor="password">Password</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-            </div>
-
-            <button className="btn" type="submit">
-              Login
-            </button>
-          </form>
-
-          <span className="signUpBtn">
-            Don't have an account? <Link to="/signup">Sign Up</Link>
-          </span>
+          </div>
         </div>
       </div>
       <Footer />

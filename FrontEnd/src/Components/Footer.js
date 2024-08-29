@@ -1,17 +1,11 @@
-import React from "react";
-import './Components.css'
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react';
+import React, { useEffect } from "react";
+import { Link } from 'react-router-dom';
 
-//imported Icons
-import {HiPhone} from 'react-icons/hi'
-import {MdEmail} from 'react-icons/md'
-import {FaFacebookF} from 'react-icons/fa'
-import {AiOutlineTwitter} from 'react-icons/ai'
-import {AiFillYoutube} from 'react-icons/ai'
-import {AiFillInstagram} from 'react-icons/ai'
-import {AiOutlineWhatsApp} from 'react-icons/ai'
-
+// Imported Icons
+import { HiPhone } from 'react-icons/hi';
+import { MdEmail } from 'react-icons/md';
+import { FaFacebookF } from 'react-icons/fa';
+import { AiOutlineTwitter, AiFillYoutube, AiFillInstagram, AiOutlineWhatsApp } from 'react-icons/ai';
 
 const Footer = () => {
   useEffect(() => {
@@ -29,90 +23,73 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className='foot'>
-
-      <div className="secContainer container">
-        <div className="content grid">
-
-          <div data-aos='fade-up' data-aos-duration='2000' className="row">
-            <div className="spanText">
-              CONTACT US
-            </div>
-
+    <footer className="bg-light text-dark py-4">
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-4 mb-4 mb-md-0">
+            <h5 className="mb-3">CONTACT US</h5>
             <div className="contactDiv">
-              <span className="flex">
-                <HiPhone className='icon'/>
+              <div className="d-flex align-items-center mb-2">
+                <HiPhone className="icon me-2" />
                 <span>+639 334 556 671</span>
-              </span>
-              <span className="flex">
-                <MdEmail className='icon'/>
+              </div>
+              <div className="d-flex align-items-center mb-2">
+                <MdEmail className="icon me-2" />
                 <span>trekssafari@gmail.com</span>
-              </span>
-              <span className="flex">
-                <AiOutlineWhatsApp className='icon'/>
+              </div>
+              <div className="d-flex align-items-center mb-2">
+                <AiOutlineWhatsApp className="icon me-2" />
                 <span>+639 334 556 671</span>
-              </span>
+              </div>
             </div>
           </div>
 
-          <div data-aos='fade-up' data-aos-duration='2000' className="row">
-            <div className="spanText">
-            POPULAR NEWS
+          <div className="col-12 col-md-4 mb-4 mb-md-0">
+            <h5 className="mb-3">POPULAR NEWS</h5>
+            <div className="singleNews mb-3">
+              <span className="text">Your Personal Guide to the hiking places in the Philippines</span>
+              <p>August 01, 2024</p>
             </div>
-
             <div className="singleNews">
-              <span className="text">
-              Your Personal Guide to the hiking places in the Philippines
-              </span>
-              <p>
-                August 01, 2024
-              </p>
-            </div>
-
-            <div className="singleNews">
-              <span className="text">
-              With ForeverHiking, you will be treated like family. 
-              Your safety and enjoyment is our primary mission.<br/> 
-              We are excited to meet you!
-              </span>
-              <p>
-                August 01, 2024
-              </p>
+              <span className="text">With ForeverHiking, you will be treated like family. Your safety and enjoyment is our primary mission. We are excited to meet you!</span>
+              <p>August 01, 2024</p>
             </div>
           </div>
 
-          <div data-aos='fade-up' data-aos-duration='2000' className="row">
-             <div className="spanText">
-              QUICK LINKS
-             </div>
-             <div className="footerLinks">
-              <ul>
-                <Link to='/about' className="text-dark">About Us</Link><br/>
-                <Link to='/ourpurpose' className="text-dark">Our Purpose</Link><br/>
-                <Link to='/whattowear' className="text-dark">What to Wear</Link><br/>
-                <Link to='/safety' className="text-dark">Safety</Link><br/>
+          <div className="col-12 col-md-4">
+            <h5 className="mb-3">QUICK LINKS</h5>
+            <div className="footerLinks">
+              <ul className="list-unstyled">
+                <li><Link to="/about" className="text-dark">About Us</Link></li>
+                <li><Link to="/ourpurpose" className="text-dark">Our Purpose</Link></li>
+                <li><Link to="/whattowear" className="text-dark">What to Wear</Link></li>
+                <li><Link to="/safety" className="text-dark">Safety</Link></li>
                 <li>Careers</li>
               </ul>
-             </div>
+            </div>
           </div>
-
         </div>
-        <div  className="bottomDiv flex container-fluid">
-          <p >TreksSafari 2024 - All rights reserved</p>
 
-          <div className="social flex">
-            <FaFacebookF className='icon'/>
-            <AiOutlineTwitter className='icon'/>
-            <AiFillYoutube className='icon'/>
-            <AiFillInstagram className='icon'/>
-          </div>
-
-          <a href="#top" className="nav-link">Back to Top</a>
-        </div>
+       
       </div>
-      
-    </div>
-  )
-}
+      <div className="row mt-4 py-3 text-white" style={{backgroundColor: '#3f6b29'}}>
+          <div className="col-12 text-center">
+            <p className="mb-0">TreksSafari 2024 - All rights reserved</p>
+          </div>
+          <div className="col-12 text-center mt-2">
+            <div className="social d-flex justify-content-center">
+              <FaFacebookF className="icon mx-2" />
+              <AiOutlineTwitter className="icon mx-2" />
+              <AiFillYoutube className="icon mx-2" />
+              <AiFillInstagram className="icon mx-2" />
+            </div>
+          </div>
+          <div className="col-12 text-center mt-2">
+            <a href="#top" className="nav-link">Back to Top</a>
+          </div>
+        </div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
